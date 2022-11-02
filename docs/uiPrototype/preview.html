@@ -1,0 +1,132 @@
+
+<!DOCTYPE HTML>
+    <head>
+    <meta charset="utf-8">
+
+    <title>UI - Proto.io player</title>
+
+    
+				<link type="text/css" rel="stylesheet" href="./src/stylesheets/preview-export-min.css">
+				<script type="text/javascript" src="./src/scripts/preview-export-min.js"></script>
+			
+
+    <script type="text/javascript">
+        var prx = window.prx || {};
+        prx.orientation = 'landscape';
+        prx.orientations = {};
+        prx.orientations.portrait = 1;
+        prx.orientations.landscape = 1;
+        prx.project = {};
+        prx.project.id = 'c2dd1c9d-be20-4235-aab5-0c282d9f0160';
+        prx.project.title = 'UI';
+        prx.project.version = 0;
+        prx.project.livepreview = 0;
+        prx.project.account = "lukasnmeyer";
+        prx.activePage = {};
+        prx.usercountry = "us";
+        
+            prx.user = false;
+        
+        prx.skin = 'default';
+        prx.ver = '6.8.10.0';
+        //prx.flashactions = 1;
+		prx.flashactions = 1; //we are not using the DB value anymore
+
+        prx.nodejsassetsserver = {};
+        prx.nodejsassetsserver.host = ".proto.io";
+        prx.nodejsassetsserver.subdomainprefix = "https://a3";
+        prx.nodejsassetsserver.maxsubdomains = "20";
+        prx.account = "lukasnmeyer";
+        prx.browserShowScreenshots = 'true';
+        prx.url.crossmsg = 'https://lukasnmeyer.proto.io';
+        prx.playerUrl = 'https://lukasnmeyer.proto.io/player/';
+        prx.fullScreenUrl = 'https://lukasnmeyer.proto.io/player/fullscreen/index.cfm?id=c2dd1c9d-be20-4235-aab5-0c282d9f0160';
+        prx.spaces = false;
+        prx.csrf_token = '7404D292DE2B687EE052491DA167D2EB89D05803A924186DC18D99ECE63E6509';
+
+        prx.bShowPlayerBetaPrompt = false;
+
+        
+
+    </script>
+
+    
+
+</head>
+
+
+<body style="background-color:#FFFFFF">
+
+    
+
+    <div class="page-sidebar">
+        
+        <div class="sidebar-action-buttons">
+
+            
+                <span class="header-action-button player-icon-reload embed-icon-reload" id="refresh-preview">
+                    <span class="tooltip">Refresh preview</span>
+                </span>
+                
+                    <span  class="header-action-button player-icon-rotate embed-icon-rotate" id="change-orientation">
+                        <span class="tooltip">Change orientation</span>
+                    </span>
+                
+
+            <div class="header-action-button player-icon-enter-fullscreen-mode-icon" id="go-fullscreen">
+                <span class="tooltip">Go full screen</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="maincontent" class="landscape">
+
+        <div id="shortcut-pressed-outer">
+            <div id="shortcut-pressed"></div>
+        </div>
+        
+
+			<div class="frame_generic">
+				
+				<div class="body_generic skin_default skin-wrapper skin-os-default skin-device-phone skin-model- skin-size-1 skin-color-white skin-orientation-landscape skin-dimensions-1920-1080">
+
+					<div class="buttons top"></div>
+					<div class="detail-top"></div>
+					<div class="web-search"></div>
+					<div class="buttons left"></div>
+
+					<div class="body_generic_inner">
+						
+						<iframe id="pio-playerframe" src="./src/index.html" scrolling="NO" style="width: 1920px; height: 1080px;" webkitAllowFullScreen mozallowfullscreen allowFullScreen allowvr allow="autoplay"></iframe>
+						
+                                <script type="text/javascript">
+                                    // remove parameter from address bar immediately if no changes
+                                    let url = new URL(window.location.href);
+                                    url.searchParams.delete('hc');
+									url.searchParams.delete('ap');
+                                    window.history.replaceState({}, document.title, url.toString());
+                                </script>
+                            
+					</div>
+
+					<div class="buttons right"></div>
+					<div class="detail-bottom"></div>
+				</div>
+				
+			</div>
+		
+    </div>
+
+    
+
+    
+            <div id="branding"></div>
+        
+</body>
+
+
+<script type="text/javascript">
+    
+</script>
+</html>
