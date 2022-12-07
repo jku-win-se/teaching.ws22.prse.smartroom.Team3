@@ -22,12 +22,14 @@ public class App {
 
         Client client = new Client();
 
-        System.out.println(client.addRoom("room1", 5.12, "m2").body());
+        System.out.println(client.addRoom("room1", 5, "m2").body());
+        System.out.println(client.addRoom("room2", 6, "m2").body());
         System.out.println(client.getRooms().body());
-        System.out.println(client.updateRoom("room1", 10.00, "m2").body());
-        System.out.println(client.getRoomID("room1").body());
+        System.out.println(client.updateRoom("room1", 10, "m2").body());
+        System.out.println(client.getRoomID("room2").body());
+        System.out.println(client.getRooms().body());
         System.out.println(client.deleteRoom("room1"));
-
-
+        System.out.println(client.getRoomID("room1").body());
+        System.out.println(client.getRoomID("room2").body());
     }
 }

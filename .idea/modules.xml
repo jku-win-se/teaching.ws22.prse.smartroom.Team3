@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/parent-project-skeleton/client/client.iml" filepath="$PROJECT_DIR$/parent-project-skeleton/client/client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parent-project-skeleton/parent-project.iml" filepath="$PROJECT_DIR$/parent-project-skeleton/parent-project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parent-project-skeleton/server/server.iml" filepath="$PROJECT_DIR$/parent-project-skeleton/server/server.iml" />
+    </modules>
+  </component>
+</project>

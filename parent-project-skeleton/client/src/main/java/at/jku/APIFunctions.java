@@ -6,9 +6,9 @@ public interface APIFunctions {
 
     //Rooms
     public HttpResponse getRooms();
-    public HttpResponse addRoom(String room_id, double room_size, String measurment_unit);
+    public HttpResponse addRoom(String room_id, int room_size, String measurment_unit);
     public HttpResponse getRoomID (String id);
-    public HttpResponse updateRoom (String id, double room_size, String measurment_unit);
+    public HttpResponse updateRoom (String id, int room_size, String measurment_unit);
     public HttpResponse deleteRoom (String id);
 //    public HttpResponse getPeopleCount (String id);
 //    public HttpResponse addPeopleRoom (String id);
