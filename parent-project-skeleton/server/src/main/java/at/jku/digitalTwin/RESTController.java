@@ -47,10 +47,15 @@ public class RESTController {
         roomRepository.deleteById(room_id);
         return ResponseEntity.ok(null);
     }
-    @GetMapping("/Rooms/{room_id}/PeopleInRoom ")
+    @GetMapping("/Rooms/{room_id}/PeopleInRoom")
     ResponseEntity<PeopleInRoomObject> getPeopleInRoom (@PathVariable String room_id){
         //search for room_id in DB and return People
         PeopleInRoomObject peopleInRoomObject = new PeopleInRoomObject(room_id,22);
+        return ResponseEntity.ok(peopleInRoomObject);
+    }
+    @PostMapping("/Rooms/{room_id}/PeopleInRoom")
+    ResponseEntity<PeopleInRoomObject> addRoom(@RequestBody PeopleInRoomObject peopleInRoomObject){
+        //set people count to db
         return ResponseEntity.ok(peopleInRoomObject);
     }
 }

@@ -11,7 +11,7 @@ public interface APIFunctions {
     public HttpResponse updateRoom (String id, int room_size, String measurment_unit);
     public HttpResponse deleteRoom (String id);
     public HttpResponse getPeopleCount (String id);
-//    public HttpResponse addPeopleRoom (String id);
+    public HttpResponse addPeopleRoom (String id,int peopleCount);
 //
 //
 //    //Lights

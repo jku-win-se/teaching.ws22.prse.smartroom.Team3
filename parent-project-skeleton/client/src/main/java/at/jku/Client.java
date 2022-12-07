@@ -1,5 +1,6 @@
 package at.jku;
 
+import at.jku.objects.PeopleInRoomObject;
 import at.jku.objects.Room_Object;
 import at.jku.objects.Update_RoomObject;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -106,7 +107,7 @@ public class Client implements APIFunctions{
     @Override
     public HttpResponse getPeopleCount(String room_id) {
         HttpRequest request =
-                HttpRequest.newBuilder().uri(URI.create(startURI + "/Rooms/" + room_id + "/PeopleInRoom/")).GET().build();
+                HttpRequest.newBuilder().uri(URI.create(startURI + "/Rooms/" + room_id + "/PeopleInRoom")).GET().build();
 
         try {
             return client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -115,5 +116,29 @@ public class Client implements APIFunctions{
         }
         return null;
     }
+
+    @Override
+    public HttpResponse addPeopleRoom(String room_id, int peopleCount) {
+        PeopleInRoomObject peopleInRoomObject = new PeopleInRoomObject(room_id,peopleCount);
+        String body = "";
+        try {
+            body = objectMapper.writeValueAsString(peopleInRoomObject);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        HttpRequest request =
+                HttpRequest.newBuilder().uri(URI.create(startURI + "/Rooms/" + room_id + "/PeopleInRoom")).
+                        header("Content-Type", "application/json").
+                        POST(HttpRequest.BodyPublishers.ofString(body)).build();
+
+        try {
+            return client.send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
 
 }
