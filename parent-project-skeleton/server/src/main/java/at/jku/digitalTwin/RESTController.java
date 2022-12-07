@@ -1,7 +1,6 @@
 package at.jku.digitalTwin;
 
-import at.jku.digitalTwin.objects.Room_Object;
-import at.jku.digitalTwin.objects.Update_RoomObject;
+import at.jku.digitalTwin.objects.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +25,7 @@ public class RESTController {
     }
 
 
-    @GetMapping(value = "/Rooms/{room_id}")
+    @GetMapping("/Rooms/{room_id}")
     ResponseEntity<Room_Object> getRoomId (@PathVariable String room_id){
         return ResponseEntity.ok(roomRepository.findById(room_id).orElse(null));
     }
@@ -43,9 +42,15 @@ public class RESTController {
         return ResponseEntity.ok(room);
     }
 
-    @DeleteMapping(value = "/Rooms/{room_id}")
+    @DeleteMapping("/Rooms/{room_id}")
     ResponseEntity<Room_Object> deleteRoom (@PathVariable String room_id){
         roomRepository.deleteById(room_id);
         return ResponseEntity.ok(null);
+    }
+    @GetMapping("/Rooms/{room_id}/PeopleInRoom ")
+    ResponseEntity<PeopleInRoomObject> getPeopleInRoom (@PathVariable String room_id){
+        //search for room_id in DB and return People
+        PeopleInRoomObject peopleInRoomObject = new PeopleInRoomObject(room_id,22);
+        return ResponseEntity.ok(peopleInRoomObject);
     }
 }

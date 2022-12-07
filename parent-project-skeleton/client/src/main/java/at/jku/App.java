@@ -31,5 +31,6 @@ public class App {
         System.out.println(client.deleteRoom("room1"));
         System.out.println(client.getRoomID("room1").body());
         System.out.println(client.getRoomID("room2").body());
+        System.out.println(client.getPeopleCount("room2").body());
     }
 }

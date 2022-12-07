@@ -102,4 +102,18 @@ public class Client implements APIFunctions{
         }
         return null;
     }
+
+    @Override
+    public HttpResponse getPeopleCount(String room_id) {
+        HttpRequest request =
+                HttpRequest.newBuilder().uri(URI.create(startURI + "/Rooms/" + room_id + "/PeopleInRoom/")).GET().build();
+
+        try {
+            return client.send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
