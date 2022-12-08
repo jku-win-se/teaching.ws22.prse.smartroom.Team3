@@ -55,7 +55,7 @@ public class RESTController {
         return ResponseEntity.ok(peopleInRoomObject);
     }
     @PostMapping("/Rooms/{room_id}/PeopleInRoom")
-    ResponseEntity<PeopleInRoomObject> addRoom(@PathVariable String room_id, @RequestBody PeopleInRoomObject peopleInRoomObject){
+    ResponseEntity<PeopleInRoomObject> addPeopleInRoom(@PathVariable String room_id, @RequestBody PeopleInRoomObject peopleInRoomObject){
         //set people count to db
         return ResponseEntity.ok(peopleInRoomObject);
     }
