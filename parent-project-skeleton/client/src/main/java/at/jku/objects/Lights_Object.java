@@ -1,4 +1,4 @@
-package at.jku.digitalTwin.objects;
+package at.jku.objects;
 
 public class Lights_Object {
     String light_id;
