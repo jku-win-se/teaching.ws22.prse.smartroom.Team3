@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.jku.Controller">
+    <children>
+        <MenuBar layoutY="1.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Load Data From CSV-FileAction" />
+                        <MenuItem mnemonicParsing="false" text="Save to CSV-Data" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Automation">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Enable Auto Rules" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <HBox alignment="CENTER" layoutX="8.0" layoutY="172.0" />
+        <Label fx:id="label" layoutX="182.0" layoutY="43.0" text="Smart Rooms App">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Button fx:id="wohnzimmer" layoutX="-2.0" layoutY="44.0" mnemonicParsing="false" onAction="#switchToRoomScene" prefWidth="90.0" text="Beispiel Raum" />
+        <Button fx:id="createRoom" layoutX="-3.0" layoutY="124.0" mnemonicParsing="false" onAction="#switchToCreateRoomScene" prefWidth="90.0" text="Create Room" />
+        <Button fx:id="getRooms" layoutX="18.0" layoutY="266.0" mnemonicParsing="false" onAction="#getRooms" text="Alle Räume zeigen" />
+        <Label fx:id="rooms" layoutX="35.0" layoutY="305.0" text="..." />
+        <Button fx:id="deleteRoom" layoutY="159.0" mnemonicParsing="false" onAction="#switchToDeleteRoomScene" text="Delete Room" />
+    </children>
+</AnchorPane>
