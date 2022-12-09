@@ -1,20 +1,25 @@
 package at.jku;
 
+import at.jku.objects.Lights_Object;
+import at.jku.objects.Room_Object;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class Controller {
+public class Controller implements Initializable {
 
     private Stage stage;
     private Scene scene;
@@ -23,8 +28,6 @@ public class Controller {
 
     //Views
 
-    @FXML
-    private ListView<String> roomsListView;
     @FXML
     private Label label;
     @FXML
@@ -39,8 +42,7 @@ public class Controller {
     private Label deletedRoom;
     @FXML
     private Label createdRoom;
-    @FXML
-    private Label rooms;
+
     @FXML
     private TextField roomName;
     @FXML
@@ -59,85 +61,123 @@ public class Controller {
     private TextArea lights;
     @FXML
     private Label fans;
+    @FXML
+    private ListView<Room_Object> roomListView = new ListView<>();
+    @FXML
+    private TableView<Room_Object> roomTableView = new TableView<>();
+    @FXML
+    private TableView<Lights_Object> detailTableView = new TableView<Lights_Object>();
+    @FXML
+    private TableColumn<Lights_Object, Integer> device;
+    @FXML
+    private TableColumn<Lights_Object, Integer> status;
+    @FXML
+    private TableColumn<Room_Object, Integer> size = new TableColumn<>();
+    @FXML
+    private TableColumn<Room_Object, Integer> name = new TableColumn<>();
+    @FXML
+    private TableColumn<Room_Object, Integer> unit;
 
 
     Client client = new Client();
 
+    ObservableList<Room_Object> rooms = FXCollections.observableArrayList(client.getRooms());
+    ObservableList<Lights_Object> details = FXCollections.observableArrayList();
 
     @FXML
     public void switchToStartScene(ActionEvent event) throws IOException {
-
         root = FXMLLoader.load(getClass().getClassLoader().getResource("StartScene.fxml"));
-
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-
         scene = new Scene(root);
-
         stage.setScene(scene);
         stage.show();
-
     }
 
 
     @FXML
     public void switchToRoomScene(ActionEvent event) throws IOException {
-
         root = FXMLLoader.load(getClass().getClassLoader().getResource("RoomScene.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-
         scene = new Scene(root);
-
         stage.setScene(scene);
         stage.show();
-
     }
 
 
     @FXML
     public void switchToCreateRoomScene(ActionEvent event) throws IOException {
-
         root = FXMLLoader.load(getClass().getClassLoader().getResource("CreateRoomScene.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-
         scene = new Scene(root);
-
         stage.setScene(scene);
         stage.show();
-
     }
 
-    @FXML
-    public void switchToDeleteRoomScene(ActionEvent event) throws IOException {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        root = FXMLLoader.load(getClass().getClassLoader().getResource("DeleteRoomScene.fxml"));
+        name.setCellValueFactory(new PropertyValueFactory<Room_Object, Integer>("room_id"));
+        size.setCellValueFactory(new PropertyValueFactory<Room_Object, Integer>("room_size"));
+        //size.setCellValueFactory(new PropertyValueFactory<Room_Object, Integer>("measurement_unit"));
 
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        //device.setCellValueFactory(new PropertyValueFactory<Lights_Object, Integer>("light_id"));
+        //status.setCellValueFactory(new PropertyValueFactory<Lights_Object, Integer>("name"));
 
-        scene = new Scene(root);
+        detailTableView.setItems(details);
 
-        stage.setScene(scene);
-        stage.show();
 
+        getRooms();
     }
 
+
     @FXML
-    public void getRooms() throws IOException {
+    public void showDetails(){
 
-        //System.out.println(client.getRooms().body());
+        Room_Object room = roomTableView.getSelectionModel().getSelectedItem();
+        String roomId = room.getRoom_id();
+        //ObservableList<Room_Object> rooms = FXCollections.observableArrayList(client.getAllLights(roomId));
 
-/*
-        final JSONArray jsonArray = new JSONArray((String ) (client.getRooms().body()));
+        for ( int i = 0; i < details.size(); i++ ) {
+            details.add(new Lights_Object());
 
-        for ( int i = 0; i < jsonArray.length(); i++ ) {
-            rooms[i].setText(
-                    "\nRaumname: " + jsonArray.getJSONObject(i).get("room_id")
-                            + "\nRaum ID: " + jsonArray.getJSONObject(i).get("id")
-                            +"\nRaumgroesse: " + jsonArray.getJSONObject(i).get("room_size")
-                            + "\nEinheit: " + jsonArray.getJSONObject(i).get("measurement_unit"));
         }
-*/
 
-        rooms.setText((String ) client.getRooms().body());
+        for ( int i = 0; i < details.size(); i++ ) {
+            detailTableView.setItems(details);
+        }
+    }
+
+
+
+    public void getRooms() {
+
+        ObservableList<Room_Object> rooms = FXCollections.observableArrayList(client.getRooms());
+
+        for ( int i = 0; i < rooms.size(); i++ ) {
+            roomTableView.setItems(rooms);
+        }
+
+        /*
+        System.out.println(rooms);
+        for ( int i = 0; i < rooms.size(); i++ ) {
+            roomListView.setItems(rooms);
+        }
+        */
+    }
+
+    @FXML
+    public void deleteRoom() throws IOException {
+
+        Room_Object room_object = roomTableView.getSelectionModel().getSelectedItem();
+
+        String room = room_object.getRoom_id();
+        System.out.println(room);
+        client.deleteRoom(room);
+
+        rooms.clear();
+
+        getRooms();
+
 
     }
 
@@ -207,14 +247,7 @@ public class Controller {
 
     } */
 
-    @FXML
-    public String getRoomName() throws IOException {
 
-        String name = roomName.getText();
-        //System.out.println(name);
-
-        return name;
-    }
 
 
 
@@ -230,7 +263,7 @@ public class Controller {
         String fan = getFans();
          */
 
-        client.addRoom(getRoomId(), getRoomSize(), getMeasurementUnit()).body();
+        client.addRoom(getRoomId(), getRoomSize(), getMeasurementUnit());
 
         createdRoom.setText(getRoomId() + " wurde erstellt.");
 
@@ -242,23 +275,11 @@ public class Controller {
         */
     }
 
-    @FXML
-    public void deleteRoom() throws IOException {
-
-        String room = roomIdForDeleting.getText();
-        deletedRoom.setText(room + " wurde geloescht!");
-        System.out.println(room);
-        client.deleteRoom(room);
-
-
-
-
-    }
 
     @FXML
-    public double getRoomSize() throws IOException {
+    public int getRoomSize() throws IOException {
 
-        double size = Double.parseDouble(roomSize.getText());
+        int size = Integer.parseInt(roomSize.getText());
         //System.out.println(size);
 
         return size;
@@ -278,22 +299,15 @@ public class Controller {
         return unit;
     }
 
-    /*
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        roomsListView.getItems().addAll(allRooms);
 
-        roomsListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
 
-                currentRoom = roomsListView.getSelectionModel().getSelectedItem();
 
-            }
-        });
-    }
-    */
+
+
+
+
+
 }
 
 /*
