@@ -1,23 +1,26 @@
 package at.jku;
 
+import at.jku.objects.Room_Object;
+
 import java.net.http.HttpResponse;
+import java.util.List;
 
 public interface APIFunctions {
 
     //Rooms
-    public HttpResponse getRooms();
-    public HttpResponse addRoom(String room_id, double room_size, String measurment_unit);
+    public List<Room_Object> getRooms();
+    public Room_Object addRoom(String room_id, int room_size, String measurment_unit);
     public HttpResponse getRoomID (String id);
-    public HttpResponse updateRoom (String id, double room_size, String measurment_unit);
+    public HttpResponse updateRoom (String id, int room_size, String measurment_unit);
     public HttpResponse deleteRoom (String id);
-//    public HttpResponse getPeopleCount (String id);
-//    public HttpResponse addPeopleRoom (String id);
+    public HttpResponse getPeopleCount (String id);
+    public HttpResponse addPeopleRoom (String id,int peopleCount);
 //
 //
 //    //Lights
-//    public HttpResponse getAllLights (String roomId);
-//    public HttpResponse addLight (String roomId);
-//    public HttpResponse getRoomLight (String roomId, String lightId);
+    public HttpResponse getAllLights (String roomId);
+    public HttpResponse addLight (String roomId, String light_id, String name);
+    public HttpResponse getRoomLight (String roomId, String lightId);
 //    public HttpResponse updateRoomLight (String roomId, String lightId);
 //    public HttpResponse deleteRoomLight (String roomId, String lightId);
 //    public HttpResponse getRoomLightStatus (String roomId, String lightId);
