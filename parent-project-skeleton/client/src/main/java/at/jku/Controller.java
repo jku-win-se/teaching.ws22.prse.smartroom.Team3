@@ -68,9 +68,9 @@ public class Controller implements Initializable {
     @FXML
     private TableView<Lights_Object> detailTableView = new TableView<Lights_Object>();
     @FXML
-    private TableColumn<Lights_Object, Integer> device;
+    private TableColumn<Lights_Object, Integer> device = new TableColumn<>();;
     @FXML
-    private TableColumn<Lights_Object, Integer> status;
+    private TableColumn<Lights_Object, Integer> device_id = new TableColumn<>();;
     @FXML
     private TableColumn<Room_Object, Integer> size = new TableColumn<>();
     @FXML
@@ -79,7 +79,7 @@ public class Controller implements Initializable {
     private TableColumn<Room_Object, Integer> unit;
 
 
-    Client client = new Client();
+    public Client client = new Client();
 
     ObservableList<Room_Object> rooms = FXCollections.observableArrayList(client.getRooms());
     ObservableList<Lights_Object> details = FXCollections.observableArrayList();
@@ -120,8 +120,8 @@ public class Controller implements Initializable {
         size.setCellValueFactory(new PropertyValueFactory<Room_Object, Integer>("room_size"));
         //size.setCellValueFactory(new PropertyValueFactory<Room_Object, Integer>("measurement_unit"));
 
-        //device.setCellValueFactory(new PropertyValueFactory<Lights_Object, Integer>("light_id"));
-        //status.setCellValueFactory(new PropertyValueFactory<Lights_Object, Integer>("name"));
+        device.setCellValueFactory(new PropertyValueFactory<Lights_Object, Integer>("name"));
+        device_id.setCellValueFactory(new PropertyValueFactory<Lights_Object, Integer>("light_id"));
 
         detailTableView.setItems(details);
 
@@ -135,12 +135,17 @@ public class Controller implements Initializable {
 
         Room_Object room = roomTableView.getSelectionModel().getSelectedItem();
         String roomId = room.getRoom_id();
+        System.out.println(roomId);
         //ObservableList<Room_Object> rooms = FXCollections.observableArrayList(client.getAllLights(roomId));
 
-        for ( int i = 0; i < details.size(); i++ ) {
-            details.add(new Lights_Object());
+    //    for ( int i = 0; i < details.size(); i++ ) {
+            details.addAll(client.getRoomLight(roomId, "Light10"));
 
-        }
+        System.out.println(client.getRoomLight(roomId, "Light10"));
+        System.out.println(client.getPeopleCount(roomId));
+        //client.getRoomLight(roomId, "Light10");
+
+     //   }
 
         for ( int i = 0; i < details.size(); i++ ) {
             detailTableView.setItems(details);
