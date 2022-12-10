@@ -147,6 +147,7 @@ public class Controller implements Initializable {
     public void showDetails(){
 
 
+        details.clear();
 
         Room_Object room = roomTableView.getSelectionModel().getSelectedItem();
         String roomId = room.getRoom_id();
@@ -263,8 +264,8 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    public int getRoomSize() throws IOException {
-        int size = Integer.parseInt(roomSize.getText());
+    public double getRoomSize() throws IOException {
+        double size = Double.parseDouble(roomSize.getText());
 
         return size;
     }

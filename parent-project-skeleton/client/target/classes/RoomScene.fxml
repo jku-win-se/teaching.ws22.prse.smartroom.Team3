@@ -5,9 +5,6 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.ToggleButton?>
@@ -17,29 +14,14 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.jku.Controller">
     <children>
-        <MenuBar layoutY="1.0">
-            <menus>
-                <Menu mnemonicParsing="false" text="File">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Load Data From CSV-Data" />
-                        <MenuItem mnemonicParsing="false" text="Save to CSV-Data" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Automation">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Enable Auto Rules" />
-                    </items>
-                </Menu>
-            </menus>
-        </MenuBar>
         <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" />
-        <Label fx:id="label" layoutX="186.0" layoutY="23.0" text="Wohnzimmer">
+        <Label fx:id="label" layoutX="148.0" layoutY="23.0" text="Wohnzimmer">
             <font>
                 <Font size="18.0" />
             </font>
         </Label>
         <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" spacing="20.0" />
-        <Button fx:id="backToRoomOverview" alignment="CENTER" layoutX="310.0" layoutY="26.0" mnemonicParsing="false" onAction="#switchToStartScene" prefHeight="26.0" prefWidth="142.0" text="Back to Room Overview" />
+        <Button fx:id="backToRoomOverview" alignment="CENTER" layoutX="323.0" layoutY="24.0" mnemonicParsing="false" onAction="#switchToStartScene" prefHeight="26.0" prefWidth="142.0" text="Back to Room Overview" />
         <ToggleButton fx:id="fanButton" layoutX="253.0" layoutY="75.0" minWidth="70.0" mnemonicParsing="false" text="Ventilator" />
         <ToggleButton fx:id="windowButton" layoutX="142.0" layoutY="75.0" minWidth="70.0" mnemonicParsing="false" text="Fenster" />
         <ToggleButton fx:id="doorButton" layoutX="20.0" layoutY="75.0" minWidth="70.0" mnemonicParsing="false" text="Tür" />

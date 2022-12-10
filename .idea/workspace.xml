@@ -4,24 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="feb1e5aa-cf87-42a9-8180-1301f8cbca17" name="Changes" comment="getPeopleInRoom added">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="feb1e5aa-cf87-42a9-8180-1301f8cbca17" name="Changes" comment="gui updated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/Client.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/Lights_Object.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/PeopleInRoomObject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/Room_Object.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/Update_RoomObject.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/resources/CreateRoomScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/resources/CreateRoomScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/resources/DeleteRoomScene.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/resources/RoomScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/resources/RoomScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/resources/StartScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/resources/StartScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/resources/UpdateRoomScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/resources/UpdateRoomScene.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/RoomScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/RoomScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/StartScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/StartScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/UpdateRoomScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/UpdateRoomScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/App.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Controller.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -166,8 +152,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.App" />
         <item itemvalue="Spring Boot.RestApplication" />
+        <item itemvalue="Application.App" />
         <item itemvalue="JUnit.RestApplicationTests" />
         <item itemvalue="JUnit.RestApplicationTests.deleteRoom" />
       </list>
@@ -193,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670446267606</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="gui updated">
+      <created>1670687500486</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1670687500486</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,6 +205,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="getPeopleInRoom added" />
-    <option name="LAST_COMMIT_MESSAGE" value="getPeopleInRoom added" />
+    <MESSAGE value="gui updadet" />
+    <MESSAGE value="gui updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="gui updated" />
   </component>
 </project>
