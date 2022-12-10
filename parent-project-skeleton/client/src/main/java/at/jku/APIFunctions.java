@@ -12,7 +12,7 @@ public interface APIFunctions {
 
     //Rooms
     public List<Room_Object> getRooms();
-    public Room_Object addRoom(String room_id, int room_size, String measurment_unit);
+    public Room_Object addRoom(String room_id, double room_size, String measurment_unit);
     public Room_Object getRoomID (String id);
     public Update_RoomObject updateRoom (String id, double room_size, String measurment_unit);
     public HttpResponse deleteRoom (String id);

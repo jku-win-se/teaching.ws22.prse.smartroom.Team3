@@ -36,11 +36,8 @@ public class Client implements APIFunctions{
     }
 
     @Override
-    public Room_Object addRoom(String room_id, int room_size, String measurement_unit) {
-//        Room_Object room = new Room_Object();
-//        room.setRoom_id(room_id);
-//        room.setRoom_size(room_size);
-//        room.setMeasurement_unit(measurement_unit);
+    public Room_Object addRoom(String room_id, double room_size, String measurement_unit) {
+
         Room_Object room = new Room_Object(room_id, room_size, measurement_unit);
         String body = "";
         try {
@@ -79,7 +76,7 @@ public class Client implements APIFunctions{
     }
 
     @Override
-    public Update_RoomObject updateRoom (String room_id, double room_size, String measurement_unit) {
+    public Update_RoomObject updateRoom(String room_id, double room_size, String measurement_unit) {
         Update_RoomObject update_roomObject = new Update_RoomObject(room_size,measurement_unit);
         String body="";
         try {
