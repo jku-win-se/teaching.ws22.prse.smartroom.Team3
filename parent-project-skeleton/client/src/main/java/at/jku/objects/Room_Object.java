@@ -2,12 +2,12 @@ package at.jku.objects;
 
     public class Room_Object {
 
-        private int room_size;
+        private double room_size;
         private String measurement_unit;
         private String room_id;
 
 
-        public Room_Object(String room_id, int room_size, String measurement_unit) {
+        public Room_Object(String room_id, double room_size, String measurement_unit) {
             this.room_id = room_id;
             this.room_size = room_size;
             this.measurement_unit = measurement_unit;
@@ -16,11 +16,11 @@ package at.jku.objects;
         public Room_Object() {
         }
 
-        public int getRoom_size() {
+        public double getRoom_size() {
             return room_size;
         }
 
-        public void setRoom_size(int room_size) {
+        public void setRoom_size(double room_size) {
             this.room_size = room_size;
         }
 

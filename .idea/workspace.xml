@@ -5,10 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="feb1e5aa-cf87-42a9-8180-1301f8cbca17" name="Changes" comment="getPeopleInRoom added">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_13_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_vintage_junit_vintage_engine_5_8_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/APIFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/APIFunctions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/objects/Room_Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/objects/Room_Object.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/objects/Update_RoomObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/objects/Update_RoomObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/APIFunctions.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/APIFunctions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Client$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Client$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/objects/Room_Object.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/objects/Room_Object.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/objects/Update_RoomObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/objects/Update_RoomObject.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/server.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/RESTController.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/RESTController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/objects/Room_Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/objects/Room_Object.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/objects/Update_RoomObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/objects/Update_RoomObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/src/test/java/at/jku/digitalTwin/RestApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/src/test/java/at/jku/digitalTwin/RestApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/ErrorControllerHandler.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/RESTController.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/RESTController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/objects/Room_Object.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/objects/Room_Object.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/objects/Update_RoomObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/objects/Update_RoomObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/pps/Orders.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/pps/OrdersRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/pps/RestApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/pps/SecurityConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/pps/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/test-classes/at/jku/digitalTwin/RestApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/target/test-classes/at/jku/digitalTwin/RestApplicationTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/test-classes/at/jku/pps/RestApplicationTests.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +87,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Soft 2/alt/09/UE09_Training_Solution" />
   </component>
   <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -63,10 +96,68 @@
       <module name="client" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="at.jku.objects.*" />
+          <option name="PATTERN" value="at.jku.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RestApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="at.jku.digitalTwin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="at.jku.digitalTwin" />
+      <option name="MAIN_CLASS_NAME" value="at.jku.digitalTwin.RestApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RestApplicationTests.deleteRoom" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="at.jku.digitalTwin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="at.jku.digitalTwin" />
+      <option name="MAIN_CLASS_NAME" value="at.jku.digitalTwin.RestApplicationTests" />
+      <option name="METHOD_NAME" value="deleteRoom" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RestApplicationTests.getRoom" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="at.jku.digitalTwin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="at.jku.digitalTwin" />
+      <option name="MAIN_CLASS_NAME" value="at.jku.digitalTwin.RestApplicationTests" />
+      <option name="METHOD_NAME" value="getRoom" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -86,8 +177,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.RestApplication" />
         <item itemvalue="Application.App" />
+        <item itemvalue="Spring Boot.RestApplication" />
+        <item itemvalue="JUnit.RestApplicationTests" />
+        <item itemvalue="JUnit.RestApplicationTests.deleteRoom" />
+        <item itemvalue="JUnit.RestApplicationTests.getRoom" />
       </list>
     </recent_temporary>
   </component>
@@ -102,6 +196,7 @@
       <workItem from="1670429135421" duration="8218000" />
       <workItem from="1670445716360" duration="1990000" />
       <workItem from="1670495051318" duration="8890000" />
+      <workItem from="1670592956948" duration="21211000" />
     </task>
     <task id="LOCAL-00001" summary="getPeopleInRoom added">
       <created>1670446267606</created>
