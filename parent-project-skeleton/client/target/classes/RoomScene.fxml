@@ -8,6 +8,8 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -37,23 +39,7 @@
             </font>
         </Label>
         <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" spacing="20.0" />
-        <Button fx:id="backToRoomOverview" alignment="CENTER" layoutX="336.0" layoutY="330.0" mnemonicParsing="false" onAction="#switchToStartScene" prefHeight="26.0" prefWidth="142.0" text="Back to Room Overview" />
-        <LineChart layoutX="55.0" layoutY="143.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" title="Temperatur">
-            <xAxis>
-                <CategoryAxis side="BOTTOM" />
-            </xAxis>
-            <yAxis>
-                <NumberAxis side="LEFT" />
-            </yAxis>
-        </LineChart>
-        <LineChart layoutX="288.0" layoutY="143.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" title="Ventilator">
-            <xAxis>
-                <CategoryAxis side="BOTTOM" />
-            </xAxis>
-            <yAxis>
-                <NumberAxis side="LEFT" />
-            </yAxis>
-        </LineChart>
+        <Button fx:id="backToRoomOverview" alignment="CENTER" layoutX="310.0" layoutY="26.0" mnemonicParsing="false" onAction="#switchToStartScene" prefHeight="26.0" prefWidth="142.0" text="Back to Room Overview" />
         <ToggleButton fx:id="fanButton" layoutX="253.0" layoutY="75.0" minWidth="70.0" mnemonicParsing="false" text="Ventilator" />
         <ToggleButton fx:id="windowButton" layoutX="142.0" layoutY="75.0" minWidth="70.0" mnemonicParsing="false" text="Fenster" />
         <ToggleButton fx:id="doorButton" layoutX="20.0" layoutY="75.0" minWidth="70.0" mnemonicParsing="false" text="Tür" />
@@ -62,5 +48,29 @@
         <Label fx:id="windowLabel" layoutX="163.0" layoutY="113.0" text="Zu" />
         <Label fx:id="fanLabel" layoutX="274.0" layoutY="113.0" text="Aus" />
         <Label fx:id="lightLabel" layoutX="402.0" layoutY="113.0" text="Aus" />
+      <Button fx:id="showDetailsButton" layoutX="20.0" layoutY="147.0" mnemonicParsing="false" onAction="#showDetails" prefWidth="110.0" text="Show Information" />
+      <TableView fx:id="detailTableView" layoutX="20.0" layoutY="179.0" prefHeight="107.0" prefWidth="413.0">
+         <columns>
+            <TableColumn fx:id="device" prefWidth="156.79998779296875" text="Gerät" />
+            <TableColumn fx:id="device_id" prefWidth="92.800048828125" text="ID" />
+            <TableColumn prefWidth="163.199951171875" text="Status" />
+         </columns>
+      </TableView>
+      <LineChart layoutX="31.0" layoutY="300.0" prefHeight="168.0" prefWidth="131.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </LineChart>
+      <LineChart layoutX="281.0" layoutY="300.0" prefHeight="168.0" prefWidth="131.0">
+         <xAxis>
+            <CategoryAxis side="BOTTOM" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis side="LEFT" />
+         </yAxis>
+      </LineChart>
     </children>
 </AnchorPane>

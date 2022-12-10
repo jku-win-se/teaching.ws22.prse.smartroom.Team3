@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -8,40 +9,55 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.jku.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="494.0" prefWidth="447.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.jku.Controller">
     <children>
-        <MenuBar layoutY="1.0">
-            <menus>
-                <Menu mnemonicParsing="false" text="File">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Load Data From CSV-FileAction" />
-                        <MenuItem mnemonicParsing="false" text="Save to CSV-Data" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Automation">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Enable Auto Rules" />
-                    </items>
-                </Menu>
-            </menus>
-        </MenuBar>
-        <HBox alignment="CENTER" layoutX="8.0" layoutY="172.0" />
-        <Button fx:id="wohnzimmer" layoutX="38.0" layoutY="499.0" mnemonicParsing="false" onAction="#switchToRoomScene" prefWidth="90.0" text="Beispiel Raum" />
-        <Button fx:id="createRoom" layoutX="158.0" layoutY="139.0" mnemonicParsing="false" onAction="#switchToCreateRoomScene" prefWidth="100.0" text="Create Room" />
-        <Button fx:id="deleteRoom" layoutX="158.0" layoutY="102.0" mnemonicParsing="false" onAction="#deleteRoom" prefWidth="100.0" text="Delete Room" />
-      <Button fx:id="showDetailsButton" layoutX="158.0" layoutY="65.0" mnemonicParsing="false" onAction="#showDetails" prefWidth="100.0" text="Geräte zeigen" />
-      <TableView fx:id="roomTableView" layoutY="65.0" prefHeight="200.0" prefWidth="164.0">
-        <columns>
-          <TableColumn fx:id="name" prefWidth="99.20001220703125" text="Räume" />
+      <HBox layoutY="1.0">
+         <children>
+              <MenuBar>
+                  <menus>
+                      <Menu mnemonicParsing="false" text="File">
+                          <items>
+                              <MenuItem mnemonicParsing="false" text="Load Data From CSV-FileAction" />
+                              <MenuItem mnemonicParsing="false" text="Save to CSV-Data" />
+                          </items>
+                      </Menu>
+                      <Menu mnemonicParsing="false" text="Automation">
+                          <items>
+                              <MenuItem mnemonicParsing="false" text="Enable Auto Rules" />
+                          </items>
+                      </Menu>
+                  </menus>
+              </MenuBar>
+         </children>
+      </HBox>
+      <Button fx:id="showDetailsButton" layoutX="10.0" layoutY="274.0" mnemonicParsing="false" onAction="#showDetails" prefWidth="110.0" text="Show Information" />
+      <Button fx:id="wohnzimmer" layoutX="316.0" layoutY="459.0" mnemonicParsing="false" onAction="#switchToRoomScene" prefWidth="90.0" text="Beispiel Raum" />
+      <TableView fx:id="detailTableView" layoutX="13.0" layoutY="324.0" prefHeight="107.0" prefWidth="250.0">
+         <columns>
+            <TableColumn fx:id="device" prefWidth="156.79998779296875" text="Gerät" />
+            <TableColumn fx:id="device_id" prefWidth="92.800048828125" text="ID" />
+         </columns>
+      </TableView>
+      <Label fx:id="peopleInRoomLabel" layoutX="15.0" layoutY="439.0" text="People in Room:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TableView fx:id="roomTableView" layoutY="61.0" prefHeight="200.0" prefWidth="164.0">
+         <columns>
+            <TableColumn fx:id="name" prefWidth="99.20001220703125" text="Räume" />
             <TableColumn fx:id="size" prefWidth="63.20001220703125" text="m^2" />
-        </columns>
+         </columns>
       </TableView>
-      <TableView fx:id="detailTableView" layoutX="1.0" layoutY="324.0" prefHeight="107.0" prefWidth="314.0">
-        <columns>
-          <TableColumn fx:id="device" prefWidth="156.79998779296875" text="Gerät" />
-          <TableColumn fx:id="device_id" prefWidth="157.5999755859375" text="ID" />
-        </columns>
-      </TableView>
+      <VBox alignment="CENTER" layoutX="157.0" layoutY="65.0" prefHeight="191.0" prefWidth="126.0">
+         <children>
+            <Button fx:id="createRoom" mnemonicParsing="false" onAction="#switchToCreateRoomScene" prefWidth="100.0" text="Create Room" />
+            <Button fx:id="deleteRoom" mnemonicParsing="false" onAction="#deleteRoom" prefWidth="100.0" text="Delete Room" />
+            <Button fx:id="createRoom1" mnemonicParsing="false" onAction="#switchToUpdateRoomScene" prefWidth="100.0" text="Update Room" />
+         </children>
+      </VBox>
     </children>
 </AnchorPane>
