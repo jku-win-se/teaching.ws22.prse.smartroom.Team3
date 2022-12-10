@@ -33,7 +33,7 @@
         </Label>
         <Label layoutX="168.0" layoutY="208.0" text="Größe" />
         <TextField fx:id="roomSize" layoutX="209.0" layoutY="208.0" onAction="#getRoomSize" />
-        <Button fx:id="bestätigenButton" layoutX="287.0" layoutY="256.0" mnemonicParsing="false" onAction="#updateRoom" text="Bestätigen" />
+        <Button fx:id="bestätigenButton" layoutX="287.0" layoutY="256.0" mnemonicParsing="false" text="Bestätigen" />
         <Button fx:id="backToRoomOverviewButton" layoutX="79.0" layoutY="347.0" mnemonicParsing="false" onAction="#switchToStartScene" text="Zurück zur Room Overview" />
         <TextField fx:id="roomId" layoutX="209.0" layoutY="177.0" onAction="#getRoomId" />
         <Label layoutX="152.0" layoutY="181.0" text="Room ID" />
