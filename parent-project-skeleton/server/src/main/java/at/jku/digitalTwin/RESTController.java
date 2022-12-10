@@ -15,6 +15,9 @@ public class RESTController {
         this.roomRepository = roomRepository;
     }
 
+
+    //#########Rooms
+
     @GetMapping("/Rooms")
     ResponseEntity<List<Room_Object>> getRooms(){ return ResponseEntity.ok(roomRepository.findAll());}
 
@@ -59,6 +62,10 @@ public class RESTController {
         //set people count to db
         return ResponseEntity.ok(peopleInRoomObject);
     }
+
+
+    //#########Lights
+
     @GetMapping("/Rooms/{room_id}/Lights")
     ResponseEntity<List<Lights_Object>> getLights(@PathVariable String room_id){
         //db lights with room_id
@@ -78,4 +85,44 @@ public class RESTController {
         Lights_Object lights_object = new Lights_Object(light_id ,"LampeFROMSERVER");
         return ResponseEntity.ok(lights_object);
     }
+    @DeleteMapping("/Rooms/{room_id}/Lights/{light_id}")
+    ResponseEntity<String> deleteLight(@PathVariable String room_id,@PathVariable String light_id) {
+        //db call to delete light
+        return ResponseEntity.ok("Success");
+    }
+    @PutMapping("/Rooms/{room_id}/Lights/{light_id}")
+    ResponseEntity<Update_LightObject> updateLight(@PathVariable String room_id,@PathVariable String light_id, @RequestBody Update_LightObject update_LightObject)
+    {
+        //update db
+        update_LightObject.setName("FROMSERVER");
+        return ResponseEntity.ok(update_LightObject);
+    }
+    @GetMapping("/Rooms/{room_id}/Lights/{light_id}/Activation")
+    ResponseEntity<Light_Operation_Return_Object> activateLight(@PathVariable String room_id,@PathVariable String light_id){
+        //db light with id with room_id
+        Light_Operation_Return_Object light_operation_return_object = new Light_Operation_Return_Object();
+        return ResponseEntity.ok(light_operation_return_object);
+    }
+    @PostMapping("/Rooms/{room_id}/Lights/{light_id}/Activation")
+    ResponseEntity<String> activateLightPost(@PathVariable String room_id,@PathVariable String light_id, @RequestBody Light_Activation_Object light_activation_object) {
+        //change in db
+        return ResponseEntity.ok("Success");
+    }
+    @PostMapping("/Rooms/{room_id}/Lights/{light_id}/SetColor")
+    ResponseEntity<String> ComplexactivateLight(@PathVariable String room_id,@PathVariable String light_id,@RequestBody Light_Operation_Object light_operation_object) {
+        //db
+        return ResponseEntity.ok("Success");
+    }
+
+
+    //#########Ventilator
+
+    @GetMapping("Rooms/{room_id}/Ventilators")
+    ResponseEntity<List<Power_Plug_Object>> getVentilators(@PathVariable String room_id){
+        //db
+        List<Power_Plug_Object> list = new ArrayList<>();
+        list.add(new Power_Plug_Object("plug1","Deckenvent"));
+        return ResponseEntity.ok(list);
+    }
+
 }

@@ -5,10 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="feb1e5aa-cf87-42a9-8180-1301f8cbca17" name="Changes" comment="getPeopleInRoom added">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/objects/Light_Activation_Object.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/objects/Light_Operation_Object.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/objects/Light_Operation_Return_Object.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/objects/Update_LightObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/objects/Light_Activation_Object.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/objects/Light_Operation_Object.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/objects/Light_Operation_Return_Object.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/objects/Update_LightObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/RESTController.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/RESTController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/RESTController.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/RESTController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/objects/Power_Plug_Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/objects/Power_Plug_Object.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +44,7 @@
     <option name="myId2Visible">
       <map>
         <entry key="com.haulmont.jpb.jpaInspector" value="true" />
-        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
         <entry key="com.haulmont.jpb.jpaStructure" value="false" />
       </map>
     </option>
@@ -57,7 +65,12 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="at.jku.objects" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.RestApplication">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="at.jku.App" />
       <module name="client" />
@@ -102,6 +115,7 @@
       <workItem from="1670429135421" duration="8218000" />
       <workItem from="1670445716360" duration="1990000" />
       <workItem from="1670495051318" duration="8890000" />
+      <workItem from="1670670771857" duration="7278000" />
     </task>
     <task id="LOCAL-00001" summary="getPeopleInRoom added">
       <created>1670446267606</created>
