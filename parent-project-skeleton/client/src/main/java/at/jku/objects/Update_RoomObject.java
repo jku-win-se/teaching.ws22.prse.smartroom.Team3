@@ -1,21 +1,21 @@
 package at.jku.objects;
 
 public class Update_RoomObject {
-    int room_size;
+    double room_size;
     String measurement_unit;
 
-    public Update_RoomObject(int room_size, String measurement_unit) {
+    public Update_RoomObject(double room_size, String measurement_unit) {
         this.room_size = room_size;
         this.measurement_unit = measurement_unit;
     }
     public Update_RoomObject(){
     }
 
-    public int getRoom_size() {
+    public double getRoom_size() {
         return room_size;
     }
 
-    public void setRoom_size(int room_size) {
+    public void setRoom_size(double room_size) {
         this.room_size = room_size;
     }
 

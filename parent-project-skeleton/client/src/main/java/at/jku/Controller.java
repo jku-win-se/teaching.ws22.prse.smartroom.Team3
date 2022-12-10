@@ -137,7 +137,7 @@ public class Controller {
         }
 */
 
-        rooms.setText((String ) client.getRooms().body());
+        rooms.setText(String.valueOf(client.getRooms()));
 
     }
 
@@ -230,7 +230,7 @@ public class Controller {
         String fan = getFans();
          */
 
-        client.addRoom(getRoomId(), getRoomSize(), getMeasurementUnit()).body();
+        client.addRoom(getRoomId(), getRoomSize(), getMeasurementUnit());
 
         createdRoom.setText(getRoomId() + " wurde erstellt.");
 
