@@ -4,38 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< Updated upstream
-
-    <list default="true" id="feb1e5aa-cf87-42a9-8180-1301f8cbca17" name="Changes" comment="getPeopleInRoom added">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/objects/Light_Activation_Object.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/objects/Light_Operation_Object.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/objects/Light_Operation_Return_Object.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/objects/Update_LightObject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/objects/Light_Activation_Object.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/objects/Light_Operation_Object.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/objects/Light_Operation_Return_Object.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/objects/Update_LightObject.java" afterDir="false" />
+    <list default="true" id="feb1e5aa-cf87-42a9-8180-1301f8cbca17" name="Changes" comment="workspace.xml updated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/RESTController.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/RESTController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/objects/Power_Plug_Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/objects/Power_Plug_Object.java" afterDir="false" />
-      
-=======
-    <list default="true" id="feb1e5aa-cf87-42a9-8180-1301f8cbca17" name="Changes" comment="null-Rückgabe in getRooms() geaendert">
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
->>>>>>> Stashed changes
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Client$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Client$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Client$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Client$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Client$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Client$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Client$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Client$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Client$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Client$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Client$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Client$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Client$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Client$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Client$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Client$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Client$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Client$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/RoomScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/RoomScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Controller.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,13 +36,13 @@
     <option name="myId2Visible">
       <map>
         <entry key="com.haulmont.jpb.jpaInspector" value="true" />
-        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
         <entry key="com.haulmont.jpb.jpaStructure" value="false" />
       </map>
     </option>
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="2IaobuTF4rO3Pi5282Mq0wFoFDI" />
   <component name="ProjectViewState">
@@ -89,11 +62,6 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Soft 2/alt/09/UE09_Training_Solution" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="at.jku.objects" />
-    </key>
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
@@ -207,7 +175,6 @@
       <workItem from="1670445716360" duration="1990000" />
       <workItem from="1670495051318" duration="8890000" />
       <workItem from="1670592956948" duration="21211000" />
-      <workItem from="1670750571738" duration="708000" />
     </task>
     <task id="LOCAL-00001" summary="getPeopleInRoom added">
       <created>1670446267606</created>
@@ -244,8 +211,7 @@
     <MESSAGE value="getPeopleInRoom added" />
     <MESSAGE value="gui updadet" />
     <MESSAGE value="gui updated" />
-    <MESSAGE value="null-Rückgabe in getRooms() geaen" />
-    <MESSAGE value="null-Rückgabe in getRooms() geaendert" />
-    <option name="LAST_COMMIT_MESSAGE" value="null-Rückgabe in getRooms() geaendert" />
+    <MESSAGE value="workspace.xml updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="workspace.xml updated" />
   </component>
 </project>
