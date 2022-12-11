@@ -11,9 +11,10 @@ import java.util.List;
 public class RESTController {
     private final RoomRepository roomRepository;
 
-    public RESTController(final RoomRepository roomRepository) {
+    public RESTController(RoomRepository roomRepository) {
         this.roomRepository = roomRepository;
     }
+
 
 
     //#########Rooms
@@ -36,14 +37,14 @@ public class RESTController {
 
 
     @PutMapping("Rooms/{room_id}")
-    ResponseEntity<Room_Object> updateRoom(@PathVariable String room_id, @RequestBody Update_RoomObject update_roomObject){
+    ResponseEntity<Update_RoomObject> updateRoom(@PathVariable String room_id, @RequestBody Update_RoomObject update_roomObject){
 
         Room_Object room = roomRepository.findById(room_id).orElse(null);
         room.setRoom_size(update_roomObject.getRoom_size());
         room.setMeasurement_unit(update_roomObject.getMeasurement_unit());
 
         roomRepository.save(room);
-        return ResponseEntity.ok(room);
+        return ResponseEntity.ok(update_roomObject);
     }
 
     @DeleteMapping("/Rooms/{room_id}")
@@ -67,20 +68,20 @@ public class RESTController {
     //#########Lights
 
     @GetMapping("/Rooms/{room_id}/Lights")
-    ResponseEntity<List<Lights_Object>> getLights(@PathVariable String room_id){
+    ResponseEntity<List<Lights_Object>> getAllLights(@PathVariable String room_id){
         //db lights with room_id
         List<Lights_Object> lights = new ArrayList<>();
         lights.add(new Lights_Object("Light1","TischlampeFROMSERVER"));
         return ResponseEntity.ok(lights);
     }
     @PostMapping("/Rooms/{room_id}/Lights")
-    ResponseEntity<Lights_Object> getLights(@PathVariable String room_id,@RequestBody Lights_Object lights_object){
+    ResponseEntity<Lights_Object> addLights(@PathVariable String room_id,@RequestBody Lights_Object lights_object){
         //add light to db
         lights_object.setName("TischlampeFROMSERVER");
         return ResponseEntity.ok(lights_object);
     }
     @GetMapping("/Rooms/{room_id}/Lights/{light_id}")
-    ResponseEntity<Lights_Object> getLight(@PathVariable String room_id,@PathVariable String light_id){
+    ResponseEntity<Lights_Object> getRoomLight(@PathVariable String room_id,@PathVariable String light_id){
         //db light with id with room_id
         Lights_Object lights_object = new Lights_Object(light_id ,"LampeFROMSERVER");
         return ResponseEntity.ok(lights_object);
