@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="feb1e5aa-cf87-42a9-8180-1301f8cbca17" name="Changes" comment="gui updated">
+    <list default="true" id="feb1e5aa-cf87-42a9-8180-1301f8cbca17" name="Changes" comment="workspace.xml updated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/RoomScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/RoomScene.fxml" afterDir="false" />
@@ -41,6 +41,9 @@
       </map>
     </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectId" id="2IaobuTF4rO3Pi5282Mq0wFoFDI" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -55,6 +58,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Soft 2/alt/09/UE09_Training_Solution" />
@@ -207,6 +211,7 @@
     <MESSAGE value="getPeopleInRoom added" />
     <MESSAGE value="gui updadet" />
     <MESSAGE value="gui updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="gui updated" />
+    <MESSAGE value="workspace.xml updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="workspace.xml updated" />
   </component>
 </project>
