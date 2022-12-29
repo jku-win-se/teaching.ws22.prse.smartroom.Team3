@@ -2,6 +2,7 @@ package at.jku;
 
 import at.jku.objects.Lights_Object;
 import at.jku.objects.Room_Object;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -39,11 +40,17 @@ public class Controller implements Initializable {
     @FXML
     private Label lightLabel;
     @FXML
-    private Label deletedRoom;
+    private Label roomNameLabel;
+    @FXML
+    private Label roomSizeLabel;
+    @FXML
+    private Label deviceLabel1;
     @FXML
     private Label createdRoom;
     @FXML
     private Label peopleInRoomLabel;
+    @FXML
+    private Label roomIdLabelInUpdateRoom;
 
     @FXML
     private TextField roomName;
@@ -142,6 +149,26 @@ public class Controller implements Initializable {
         getRooms();
     }
 
+    public void showRoom(){
+
+        details.clear();
+
+        Room_Object room = roomTableView.getSelectionModel().getSelectedItem();
+        String roomId = room.getRoom_id();
+
+
+        roomNameLabel.setText(room.getRoom_id());
+        roomSizeLabel.setText("Size: " + room.getRoom_size() + " " + room.getMeasurement_unit());
+        peopleInRoomLabel.setText("People in Room: " + client.getPeopleCount(roomId).getPeople_count());
+        //deviceLabel1.setText(details.);
+
+        details.addAll(client.getRoomLight(roomId, "Light10"));
+
+        for ( int i = 0; i < details.size(); i++ ) {
+            detailTableView.setItems(details);
+        }
+
+    }
 
     @FXML
     public void showDetails(){
@@ -229,9 +256,11 @@ public class Controller implements Initializable {
     @FXML
     public void addLight(ActionEvent event) throws IOException {
 
-        String light1 = getLightName();
+        String lightName = getNameOfLight();
+        String lightId = getLightId();
 
-        lights.setText(light1);
+        client.addLight(getRoomId(),lightId,lightName);
+
     }
 
     @FXML
@@ -274,6 +303,7 @@ public class Controller implements Initializable {
     public String getRoomId () {
         String room = roomId.getText();
 
+        //Room_Object room = roomTableView.getSelectionModel().getSelectedItem();
         return room;
     }
 
@@ -298,7 +328,10 @@ public class Controller implements Initializable {
         return unit;
     }
 
+    @FXML
+    public void changeStatus () {
 
+    }
 
 
 
