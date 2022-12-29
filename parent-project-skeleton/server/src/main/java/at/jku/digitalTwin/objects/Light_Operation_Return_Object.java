@@ -1,19 +1,45 @@
 package at.jku.digitalTwin.objects;
 
+import javax.persistence.*;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "lights_Operation")
 public class Light_Operation_Return_Object {
+
     boolean turnon;
     int brightness;
     String hex;
-    String time;
 
-    public Light_Operation_Return_Object(boolean turnon, int brightness, String hex, String time) {
+    LocalDateTime time;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    public Light_Operation_Return_Object(boolean turnon, int brightness, String hex, LocalDateTime time) {
         this.turnon = turnon;
         this.brightness = brightness;
         this.hex = hex;
         this.time = time;
     }
 
+    public Light_Operation_Return_Object(Light_Operation_Object operation, LocalDateTime time) {
+        this.turnon = operation.isTurnon();
+        this.brightness = operation.getBrightness();
+        this.hex = operation.getHex();
+        this.time = time;
+    }
+
     public Light_Operation_Return_Object() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public boolean isTurnon() {
@@ -40,11 +66,11 @@ public class Light_Operation_Return_Object {
         this.hex = hex;
     }
 
-    public String getTime() {
+    public LocalDateTime getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(LocalDateTime time) {
         this.time = time;
     }
 
@@ -57,4 +83,6 @@ public class Light_Operation_Return_Object {
                 ", time='" + time + '\'' +
                 '}';
     }
+
+
 }

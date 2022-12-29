@@ -1,18 +1,26 @@
 package at.jku.digitalTwin;
 
+import at.jku.digitalTwin.Repositories.LightRepository;
+import at.jku.digitalTwin.Repositories.RoomRepository;
 import at.jku.digitalTwin.objects.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class RESTController {
     private final RoomRepository roomRepository;
+    private final LightRepository lightRepository;
 
-    public RESTController(RoomRepository roomRepository) {
+    @Autowired
+    public RESTController(RoomRepository roomRepository, LightRepository lightRepository) {
         this.roomRepository = roomRepository;
+        this.lightRepository = lightRepository;
     }
 
 
@@ -25,19 +33,28 @@ public class RESTController {
 
     @PostMapping("/Rooms")
     ResponseEntity<Room_Object> addRoom(@RequestBody Room_Object room){
-        roomRepository.save(room);
+        Room_Object room_object = new Room_Object(room.getRoom_id(), room.getRoom_size(), room.getMeasurement_unit());
+//        room_object.setRoom_id(room.getRoom_id());
+//        room_object.setRoom_size(room.getRoom_size());
+//        room_object.setMeasurement_unit(room.getMeasurement_unit());
+        roomRepository.save(room_object);
         return ResponseEntity.ok(room);
     }
 
 
     @GetMapping("/Rooms/{room_id}")
     ResponseEntity<Room_Object> getRoomId (@PathVariable String room_id){
+        if (roomRepository.findById(room_id).isEmpty())
+            return ResponseEntity.notFound().build();
         return ResponseEntity.ok(roomRepository.findById(room_id).orElse(null));
     }
 
 
     @PutMapping("Rooms/{room_id}")
     ResponseEntity<Update_RoomObject> updateRoom(@PathVariable String room_id, @RequestBody Update_RoomObject update_roomObject){
+
+        if (roomRepository.findById(room_id).isEmpty())
+            return ResponseEntity.notFound().build();
 
         Room_Object room = roomRepository.findById(room_id).orElse(null);
         room.setRoom_size(update_roomObject.getRoom_size());
@@ -49,70 +66,151 @@ public class RESTController {
 
     @DeleteMapping("/Rooms/{room_id}")
     ResponseEntity<Room_Object> deleteRoom (@PathVariable String room_id){
+        if (roomRepository.findById(room_id).isEmpty())
+            return ResponseEntity.notFound().build();
+
         roomRepository.deleteById(room_id);
         return ResponseEntity.ok(null);
     }
     @GetMapping("/Rooms/{room_id}/PeopleInRoom")
     ResponseEntity<PeopleInRoomObject> getPeopleInRoom (@PathVariable String room_id){
-        //search for room_id in DB and return People
-        PeopleInRoomObject peopleInRoomObject = new PeopleInRoomObject(room_id,22);
-        return ResponseEntity.ok(peopleInRoomObject);
+        if (roomRepository.findById(room_id).isEmpty())
+            return ResponseEntity.notFound().build();
+
+        Room_Object room = roomRepository.findById(room_id).orElse(null);
+
+        return ResponseEntity.ok(new PeopleInRoomObject(room.getRoom_id(), room.getPeople()));
     }
+
     @PostMapping("/Rooms/{room_id}/PeopleInRoom")
     ResponseEntity<PeopleInRoomObject> addPeopleInRoom(@PathVariable String room_id, @RequestBody PeopleInRoomObject peopleInRoomObject){
-        //set people count to db
+        if (roomRepository.findById(room_id).isEmpty())
+            return ResponseEntity.notFound().build();
+
+        Room_Object room = roomRepository.findById(room_id).orElse(null);
+        room.setPeople(peopleInRoomObject.getPeople_count());
+        roomRepository.save(room);
+
         return ResponseEntity.ok(peopleInRoomObject);
     }
 
 
     //#########Lights
+    //noch keine Überprüfung der Werte, ob valide oder Room/Light vorhanden
 
     @GetMapping("/Rooms/{room_id}/Lights")
     ResponseEntity<List<Lights_Object>> getAllLights(@PathVariable String room_id){
-        //db lights with room_id
-        List<Lights_Object> lights = new ArrayList<>();
-        lights.add(new Lights_Object("Light1","TischlampeFROMSERVER"));
-        return ResponseEntity.ok(lights);
+
+
+        Room_Object room = roomRepository.findById(room_id).orElse(null);
+
+        List<Lights_Object> lights = lightRepository.findByRoom(room);
+        System.out.println("getAllLights: " + lights);
+
+        //return ResponseEntity.ok(lights); //wirft Fehler: chunked transfer encoding, state: READING_LENGTH
+
+        //Debuggen
+        List<Lights_Object> lights1 = new ArrayList<>();
+        lights1.add(new Lights_Object("Light2","Debug"));
+        return ResponseEntity.ok(lights1);
     }
     @PostMapping("/Rooms/{room_id}/Lights")
     ResponseEntity<Lights_Object> addLights(@PathVariable String room_id,@RequestBody Lights_Object lights_object){
-        //add light to db
-        lights_object.setName("TischlampeFROMSERVER");
-        return ResponseEntity.ok(lights_object);
+
+        Room_Object room = roomRepository.findById(room_id).orElse(null);
+
+        lights_object.setRoom(room);
+
+        System.out.println("lights_object: " + lights_object);
+        lightRepository.save(lights_object);
+
+        //return ResponseEntity.ok(lights_object);
+
+        //debuggen
+        System.out.println("Addall " + lightRepository.findAll());
+        System.out.println("Addroom" + lightRepository.findById("Light2").orElse(null).getRoom());
+
+        return ResponseEntity.ok(new Lights_Object(lights_object.getLight_id(), "Debug"));
     }
+
     @GetMapping("/Rooms/{room_id}/Lights/{light_id}")
     ResponseEntity<Lights_Object> getRoomLight(@PathVariable String room_id,@PathVariable String light_id){
         //db light with id with room_id
-        Lights_Object lights_object = new Lights_Object(light_id ,"LampeFROMSERVER");
-        return ResponseEntity.ok(lights_object);
+
+        Room_Object room = roomRepository.findById(room_id).orElse(null);
+        Lights_Object light = lightRepository.findByIdAndRoom(light_id, room);
+
+        System.out.println("getRoomLight: " + light);
+        //return ResponseEntity.ok(light);
+
+        //Debuggen
+        Lights_Object light1 = new Lights_Object(light_id, "Debug");
+        return ResponseEntity.ok(light1);
     }
+
+
+
+    @Transactional
     @DeleteMapping("/Rooms/{room_id}/Lights/{light_id}")
     ResponseEntity<String> deleteLight(@PathVariable String room_id,@PathVariable String light_id) {
-        //db call to delete light
+
+        Room_Object room = roomRepository.findById(room_id).orElse(null);
+        lightRepository.deleteByIdAndRoom(light_id, room);
+
         return ResponseEntity.ok("Success");
     }
+
+
     @PutMapping("/Rooms/{room_id}/Lights/{light_id}")
     ResponseEntity<Update_LightObject> updateLight(@PathVariable String room_id,@PathVariable String light_id, @RequestBody Update_LightObject update_LightObject)
     {
-        //update db
-        update_LightObject.setName("FROMSERVER");
-        return ResponseEntity.ok(update_LightObject);
+        Room_Object room = roomRepository.findById(room_id).orElse(null);
+        Lights_Object light = lightRepository.findByIdAndRoom(light_id, room);
+
+        light.setName(update_LightObject.getName());
+        lightRepository.save(light);
+        System.out.println(light); //debug
+
+        return ResponseEntity.ok(new Update_LightObject(light.getName()));
     }
-    @GetMapping("/Rooms/{room_id}/Lights/{light_id}/Activation")
-    ResponseEntity<Light_Operation_Return_Object> activateLight(@PathVariable String room_id,@PathVariable String light_id){
-        //db light with id with room_id
-        Light_Operation_Return_Object light_operation_return_object = new Light_Operation_Return_Object();
-        return ResponseEntity.ok(light_operation_return_object);
-    }
+
     @PostMapping("/Rooms/{room_id}/Lights/{light_id}/Activation")
-    ResponseEntity<String> activateLightPost(@PathVariable String room_id,@PathVariable String light_id, @RequestBody Light_Activation_Object light_activation_object) {
-        //change in db
-        return ResponseEntity.ok("Success");
+    ResponseEntity<Light_Activation_Object> activateLight(@PathVariable String room_id,@PathVariable String light_id, @RequestBody Light_Activation_Object light_activation_object) {
+
+        Room_Object room = roomRepository.findById(room_id).orElse(null);
+        Lights_Object light = lightRepository.findByIdAndRoom(light_id, room);
+
+        light.setActive(light_activation_object.isTurnon());
+
+        lightRepository.save(light);
+        System.out.println("act " + light.isActive()); //debug
+        return ResponseEntity.ok(new Light_Activation_Object(light.isActive()));
     }
+
+
     @PostMapping("/Rooms/{room_id}/Lights/{light_id}/SetColor")
-    ResponseEntity<String> ComplexactivateLight(@PathVariable String room_id,@PathVariable String light_id,@RequestBody Light_Operation_Object light_operation_object) {
-        //db
-        return ResponseEntity.ok("Success");
+    ResponseEntity<Light_Operation_Object> SetColor(@PathVariable String room_id,@PathVariable String light_id,@RequestBody Light_Operation_Object light_operation_object) {
+
+        Room_Object room = roomRepository.findById(room_id).orElse(null);
+        Lights_Object light = lightRepository.findByIdAndRoom(light_id, room);
+        light.setActive(light_operation_object.isTurnon());
+
+        light.addLightOperation(light_operation_object, LocalDateTime.now());
+
+        lightRepository.save(light);
+        System.out.println("actComp " + light.getLight_operations());//debug, gilt auch für getLightOperations
+        return ResponseEntity.ok(light_operation_object);
+    }
+
+    @GetMapping("/Rooms/{room_id}/Lights/{light_id}/Activation")
+    ResponseEntity<List<Light_Operation_Return_Object>> getLightOperatios(@PathVariable String room_id,@PathVariable String light_id){
+
+        Room_Object room = roomRepository.findById(room_id).orElse(null);
+        Lights_Object light = lightRepository.findByIdAndRoom(light_id, room);
+
+        System.out.println(light.getLight_operations());
+
+        return ResponseEntity.ok(light.getLight_operations());
     }
 
 
