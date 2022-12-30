@@ -107,12 +107,7 @@ public class RESTController {
         List<Lights_Object> lights = lightRepository.findByRoom(room);
         System.out.println("getAllLights: " + lights);
 
-        //return ResponseEntity.ok(lights); //wirft Fehler: chunked transfer encoding, state: READING_LENGTH
-
-        //Debuggen
-        List<Lights_Object> lights1 = new ArrayList<>();
-        lights1.add(new Lights_Object("Light2","Debug"));
-        return ResponseEntity.ok(lights1);
+        return ResponseEntity.ok(lights);
     }
     @PostMapping("/Rooms/{room_id}/Lights")
     ResponseEntity<Lights_Object> addLights(@PathVariable String room_id,@RequestBody Lights_Object lights_object){
@@ -124,28 +119,17 @@ public class RESTController {
         System.out.println("lights_object: " + lights_object);
         lightRepository.save(lights_object);
 
-        //return ResponseEntity.ok(lights_object);
-
-        //debuggen
-        System.out.println("Addall " + lightRepository.findAll());
-        System.out.println("Addroom" + lightRepository.findById("Light2").orElse(null).getRoom());
-
-        return ResponseEntity.ok(new Lights_Object(lights_object.getLight_id(), "Debug"));
+        return ResponseEntity.ok(lights_object);
     }
 
     @GetMapping("/Rooms/{room_id}/Lights/{light_id}")
     ResponseEntity<Lights_Object> getRoomLight(@PathVariable String room_id,@PathVariable String light_id){
-        //db light with id with room_id
 
         Room_Object room = roomRepository.findById(room_id).orElse(null);
         Lights_Object light = lightRepository.findByIdAndRoom(light_id, room);
 
         System.out.println("getRoomLight: " + light);
-        //return ResponseEntity.ok(light);
-
-        //Debuggen
-        Lights_Object light1 = new Lights_Object(light_id, "Debug");
-        return ResponseEntity.ok(light1);
+        return ResponseEntity.ok(light);
     }
 
 
@@ -169,7 +153,6 @@ public class RESTController {
 
         light.setName(update_LightObject.getName());
         lightRepository.save(light);
-        System.out.println(light); //debug
 
         return ResponseEntity.ok(new Update_LightObject(light.getName()));
     }
@@ -183,7 +166,6 @@ public class RESTController {
         light.setActive(light_activation_object.isTurnon());
 
         lightRepository.save(light);
-        System.out.println("act " + light.isActive()); //debug
         return ResponseEntity.ok(new Light_Activation_Object(light.isActive()));
     }
 
@@ -198,12 +180,11 @@ public class RESTController {
         light.addLightOperation(light_operation_object, LocalDateTime.now());
 
         lightRepository.save(light);
-        System.out.println("actComp " + light.getLight_operations());//debug, gilt auch für getLightOperations
         return ResponseEntity.ok(light_operation_object);
     }
 
     @GetMapping("/Rooms/{room_id}/Lights/{light_id}/Activation")
-    ResponseEntity<List<Light_Operation_Return_Object>> getLightOperatios(@PathVariable String room_id,@PathVariable String light_id){
+    ResponseEntity<List<Light_Operation_Return_Object>> getLightOperations(@PathVariable String room_id,@PathVariable String light_id){
 
         Room_Object room = roomRepository.findById(room_id).orElse(null);
         Lights_Object light = lightRepository.findByIdAndRoom(light_id, room);

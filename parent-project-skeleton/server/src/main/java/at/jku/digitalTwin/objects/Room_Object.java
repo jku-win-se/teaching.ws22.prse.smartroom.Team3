@@ -13,14 +13,15 @@ public class Room_Object {
     private int people;
 
     @Id
-    @JoinColumn(name = "room_id")
+    //@JoinColumn(name = "room_id")
     private String room_id;
 
 //    @OneToOne
 //    @JoinColumn(name = "room_id")
 //    private PeopleInRoomObject peopleInRoomObject;
 
-    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    //@OneToMany(mappedBy = "room", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Lights_Object> lights_object;
 
 

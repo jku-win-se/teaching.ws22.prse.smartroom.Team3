@@ -14,7 +14,7 @@ public class Lights_Object {
     String name;
 
     @ManyToOne
-    @JoinColumn(name = "roomId")
+//    @JoinColumn(name = "roomId")
     private Room_Object room;
 
     private boolean active;
