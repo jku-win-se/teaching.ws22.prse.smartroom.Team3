@@ -161,8 +161,8 @@ public class Controller implements Initializable {
         roomSizeLabel.setText("Size: " + room.getRoom_size() + " " + room.getMeasurement_unit());
         peopleInRoomLabel.setText("People in Room: " + client.getPeopleCount(roomId).getPeople_count());
         //deviceLabel1.setText(details.);
-
-        details.addAll(client.getRoomLight(roomId, "Light10"));
+        //Test
+        details.addAll(client.getAllLights(roomId));
 
         for ( int i = 0; i < details.size(); i++ ) {
             detailTableView.setItems(details);

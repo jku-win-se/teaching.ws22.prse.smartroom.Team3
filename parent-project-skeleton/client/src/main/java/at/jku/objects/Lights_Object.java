@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Lights_Object {
     String id;
     String name;
-    private Room_Object room;
+
 
 
     public Lights_Object(String light_id, String name) {
@@ -19,13 +19,6 @@ public class Lights_Object {
 
 
 
-    public Room_Object getRoom() {
-        return room;
-    }
-
-    public void setRoom(Room_Object room) {
-        this.room = room;
-    }
 
     public String getLight_id() {
         return id;
