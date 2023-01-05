@@ -5,22 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="feb1e5aa-cf87-42a9-8180-1301f8cbca17" name="Changes" comment="workspace.xml updated">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_h2database_h2_1_4_200.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_checkerframework_checker_qual_3_5_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_postgresql_postgresql_42_5_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_h2database_h2_2_1_214.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/clientObjects/Airquality.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/clientObjects/Component.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/clientObjects/ComponentType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/clientObjects/Room.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/objects/Lights_Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/objects/Lights_Object.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/server.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/RestApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/RestApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/RoomRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/RESTController.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/RESTController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/RestApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/RestApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/RoomRepository.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +22,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -71,6 +63,11 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="at.jku.clientObjects" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
@@ -165,8 +162,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.App" />
         <item itemvalue="Spring Boot.RestApplication" />
+        <item itemvalue="Application.App" />
         <item itemvalue="Spring Boot.RestApplication" />
         <item itemvalue="JUnit.RestApplicationTests" />
       </list>
@@ -187,6 +184,8 @@
       <workItem from="1672244826917" duration="11824000" />
       <workItem from="1672901757968" duration="4307000" />
       <workItem from="1672914445883" duration="1640000" />
+      <workItem from="1672919384872" duration="4797000" />
+      <workItem from="1672924821947" duration="3173000" />
     </task>
     <task id="LOCAL-00001" summary="getPeopleInRoom added">
       <created>1670446267606</created>
@@ -213,7 +212,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/frontend" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>

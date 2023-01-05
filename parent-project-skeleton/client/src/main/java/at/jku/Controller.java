@@ -15,9 +15,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
+import at.jku.clientObjects.*;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -91,10 +92,27 @@ public class Controller implements Initializable {
 
 
     public Client client = new Client();
-
+    Room currentRoom = new Room();
+    String globalMeasurementUnit = "m2";
     ObservableList<Room_Object> rooms = FXCollections.observableArrayList(client.getRooms());
     ObservableList<Lights_Object> details = FXCollections.observableArrayList();
 
+    public Room getCompleteRoom(String room_id){
+        Room room = new Room();
+        Room_Object r = client.getRoomID(room_id);
+        room.setRoom_id(room_id);
+        room.setName(room_id);
+        room.setSize((int)r.getRoom_size());
+        //room.setNoPeopleInRoom(##airquality##);
+        List<Lights_Object> lights = client.getAllLights(room_id);
+        for(Lights_Object l : lights)
+        {
+            room.addLight(l.getLight_id(),l.getName(),client.getCurrentLightStatus(room_id,l.getLight_id()).isTurnon());
+        }
+        //alle Windows fans und doors abfragen
+        //alle airquality abfragen
+        return room;
+    }
     @FXML
     public void switchToStartScene(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getClassLoader().getResource("StartScene.fxml"));
@@ -155,7 +173,7 @@ public class Controller implements Initializable {
 
         Room_Object room = roomTableView.getSelectionModel().getSelectedItem();
         String roomId = room.getRoom_id();
-
+        currentRoom = getCompleteRoom(roomId);
 
         roomNameLabel.setText(room.getRoom_id());
         roomSizeLabel.setText("Size: " + room.getRoom_size() + " " + room.getMeasurement_unit());

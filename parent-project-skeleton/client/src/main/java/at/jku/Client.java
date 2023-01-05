@@ -1,5 +1,6 @@
 package at.jku;
 
+import at.jku.clientObjects.*;
 import at.jku.objects.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -17,6 +18,8 @@ public class Client implements APIFunctions{
     static final String startURI = "http://localhost:8080";
     HttpClient client = HttpClient.newHttpClient();
     ObjectMapper objectMapper = new ObjectMapper();
+
+
 
     @Override
     public List<Room_Object> getRooms() {
@@ -272,6 +275,19 @@ public class Client implements APIFunctions{
             e.printStackTrace();
         }
 
+        return null;
+    }
+    public Light_Operation_Object getCurrentLightStatus(String roomId,String lightId){
+        HttpRequest request =
+                HttpRequest.newBuilder().uri(URI.create(startURI + "/Rooms/" + roomId+"/Lights/"+lightId+"/Activation")).GET().build();
+
+        try {
+            HttpResponse<String> response =  client.send(request, HttpResponse.BodyHandlers.ofString());
+            List<Light_Operation_Object> l= objectMapper.readValue(response.body(), new TypeReference<>() {});
+            return l.get(l.size());
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
