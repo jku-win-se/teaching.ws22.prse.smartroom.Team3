@@ -1,10 +1,6 @@
 package at.jku;
 
-import at.jku.objects.Lights_Object;
-import at.jku.objects.PeopleInRoomObject;
-import at.jku.objects.Room_Object;
-import at.jku.objects.Update_RoomObject;
-import com.fasterxml.jackson.core.JsonParser;
+import at.jku.objects.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -152,16 +148,25 @@ public class Client implements APIFunctions{
     }
 
     @Override
-    public Lights_Object getAllLights(String roomId) {
-//        HttpRequest request =
-//                HttpRequest.newBuilder().uri(URI.create(startURI + "/Rooms/"+roomId+"/Lights")). header("Content-Type", "application/json").GET().build();
-
+    public List<Lights_Object> getAllLights(String roomId) {
         HttpRequest request =
-                HttpRequest.newBuilder().uri(URI.create(startURI + "/Rooms/"+roomId+"/Lights")).GET().build();
+                HttpRequest.newBuilder()
+                        .uri(URI.create(startURI + "/Rooms/"+roomId+"/Lights"))
+                        .header("Content-Type", "application/json")
+                        .GET()
+                        .build();
+
+//        HttpRequest request =
+//                HttpRequest.newBuilder().uri(URI.create(startURI + "/Rooms/"+roomId+"/Lights")).GET().build();
         try {
             HttpResponse<String> response =  client.send(request, HttpResponse.BodyHandlers.ofString());
-            Lights_Object lights_object = objectMapper.readValue(response.body(), new TypeReference<Lights_Object>(){});
-            return lights_object;
+
+            String body = response.body();
+            ObjectMapper mapper = new ObjectMapper();
+            List<Lights_Object> lights = mapper.readValue(body, new TypeReference<List<Lights_Object>>()
+            {});
+            return lights;
+            //return objectMapper.readValue(response.body(), new TypeReference<List<Lights_Object>>() {});
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
@@ -184,7 +189,8 @@ public class Client implements APIFunctions{
 
         try {
             HttpResponse<String> response =  client.send(request, HttpResponse.BodyHandlers.ofString());
-            return objectMapper.readValue(response.body(), new TypeReference<Lights_Object>(){});
+            return objectMapper.readValue(response.body(), new TypeReference<>() {
+            });
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
@@ -206,6 +212,94 @@ public class Client implements APIFunctions{
             }
             return null;
     }
+
+
+    @Override
+    public HttpResponse deleteRoomLight(String roomId, String lightId) {
+        HttpRequest request =
+                HttpRequest.newBuilder().uri(URI.create(startURI + "/Rooms/" + roomId+"/Lights/"+lightId)).DELETE().build();
+
+        try {
+            return client.send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    public Update_LightObject updateLight (String roomId, String lightId, String name) {
+        Update_LightObject update_lightObject = new Update_LightObject(name);
+        String body="";
+        try {
+            body = objectMapper.writeValueAsString(update_lightObject);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        HttpRequest request =
+                HttpRequest.newBuilder().uri(URI.create(startURI + "/Rooms/" + roomId+"/Lights/"+lightId )).
+                        header("Content-Type", "application/json").
+                        PUT(HttpRequest.BodyPublishers.ofString(body)).build();
+
+        try {
+            HttpResponse<String> response =  client.send(request, HttpResponse.BodyHandlers.ofString());
+            Update_LightObject light_object = objectMapper.readValue(response.body(), new TypeReference<>(){});
+            return light_object;
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Light_Activation_Object activateLight(String roomId, String lightId, Boolean turnon) {
+        Light_Activation_Object activation = new Light_Activation_Object(turnon);
+        String body = "";
+        try {
+            body = objectMapper.writeValueAsString(activation);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        HttpRequest request =
+                HttpRequest.newBuilder().uri(URI.create(startURI + "/Rooms/" + roomId+"/Lights/"+lightId + "/Activation")).
+                        header("Content-Type", "application/json").
+                        POST(HttpRequest.BodyPublishers.ofString(body)).build();
+
+        try {
+            HttpResponse<String> response =  client.send(request, HttpResponse.BodyHandlers.ofString());
+            return objectMapper.readValue(response.body(), new TypeReference<>() {
+            });
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public Light_Operation_Object setColor(String roomId, String lightId, Boolean turnon, int bright, String hex) {
+        Light_Operation_Object activation = new Light_Operation_Object(turnon, bright, hex);
+        String body = "";
+        try {
+            body = objectMapper.writeValueAsString(activation);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        HttpRequest request =
+                HttpRequest.newBuilder().uri(URI.create(startURI + "/Rooms/" + roomId+"/Lights/"+lightId + "/SetColor")).
+                        header("Content-Type", "application/json").
+                        POST(HttpRequest.BodyPublishers.ofString(body)).build();
+
+        try {
+            HttpResponse<String> response =  client.send(request, HttpResponse.BodyHandlers.ofString());
+            return objectMapper.readValue(response.body(), new TypeReference<>() {
+            });
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+
 
 
 }
