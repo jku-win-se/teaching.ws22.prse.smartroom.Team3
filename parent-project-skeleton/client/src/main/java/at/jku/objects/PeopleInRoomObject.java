@@ -1,5 +1,8 @@
 package at.jku.objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PeopleInRoomObject {
     String room_id;
     int people_count;

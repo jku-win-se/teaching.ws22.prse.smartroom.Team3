@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="Spring" name="Spring">
+      <configuration />
+    </facet>
+  </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
@@ -23,5 +28,13 @@
     <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:19" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:win:19" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains:annotations:23.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.7.5" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.7.5" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-core:5.3.23" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.3.23" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context:5.3.23" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.3.23" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.3.23" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.3.23" level="project" />
   </component>
 </module>

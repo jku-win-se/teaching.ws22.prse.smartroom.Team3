@@ -1,5 +1,7 @@
 package at.jku.digitalTwin.objects;
 
+import javax.persistence.Entity;
+
 public class Light_Activation_Object {
     boolean turnon;
 

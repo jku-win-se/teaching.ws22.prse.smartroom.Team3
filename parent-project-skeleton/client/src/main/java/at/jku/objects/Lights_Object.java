@@ -1,23 +1,38 @@
 package at.jku.objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Lights_Object {
-    String light_id;
+    String id;
     String name;
+    private Room_Object room;
+
 
     public Lights_Object(String light_id, String name) {
-        this.light_id = light_id;
+        this.id = light_id;
         this.name = name;
     }
 
     public Lights_Object() {
     }
 
+
+
+    public Room_Object getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room_Object room) {
+        this.room = room;
+    }
+
     public String getLight_id() {
-        return light_id;
+        return id;
     }
 
     public void setLight_id(String light_id) {
-        this.light_id = light_id;
+        this.id = light_id;
     }
 
     public String getName() {
@@ -31,7 +46,7 @@ public class Lights_Object {
     @Override
     public String toString() {
         return "{" +
-                "light_id='" + light_id + '\'' +
+                "light_id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 '}';
     }

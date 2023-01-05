@@ -1,10 +1,8 @@
 package at.jku;
 
-import at.jku.objects.Lights_Object;
-import at.jku.objects.PeopleInRoomObject;
-import at.jku.objects.Room_Object;
-import at.jku.objects.Update_RoomObject;
+import at.jku.objects.*;
 
+import java.io.IOException;
 import java.net.http.HttpResponse;
 import java.util.List;
 
@@ -21,11 +19,11 @@ public interface APIFunctions {
 //
 //
 //    //Lights
-    public Lights_Object getAllLights (String roomId);
+    public List<Lights_Object> getAllLights (String roomId) throws IOException, InterruptedException;
     public Lights_Object addLight (String roomId, String light_id, String name);
     public Lights_Object getRoomLight (String roomId, String lightId);
 //    public HttpResponse updateRoomLight (String roomId, String lightId);
-//    public HttpResponse deleteRoomLight (String roomId, String lightId);
+    public HttpResponse deleteRoomLight (String roomId, String lightId);
 //    public HttpResponse getRoomLightStatus (String roomId, String lightId);
 //    public HttpResponse activateRoomLight (String roomId, String lightId);
 //    public HttpResponse setRoomLightColor (String roomId, String lightId);
