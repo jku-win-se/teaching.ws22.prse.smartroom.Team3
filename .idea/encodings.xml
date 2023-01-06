@@ -3,5 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/parent-project-skeleton/client/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/parent-project-skeleton/server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/parent-project-skeleton/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/parent-project-skeleton/src/main/resources" charset="UTF-8" />
   </component>
 </project>

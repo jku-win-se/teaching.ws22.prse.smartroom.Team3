@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="786.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.jku.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="786.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.jku.Controller">
     <children>
       <HBox layoutY="1.0">
          <children>
@@ -40,8 +40,8 @@
       <Button fx:id="wohnzimmer" layoutX="132.0" layoutY="472.0" mnemonicParsing="false" onAction="#switchToRoomScene" prefWidth="90.0" text="Beispiel Raum" />
       <TableView fx:id="detailTableView" layoutX="279.0" layoutY="153.0" prefHeight="138.0" prefWidth="349.0">
          <columns>
-            <TableColumn fx:id="device" prefWidth="156.79998779296875" text="Gerät" />
-            <TableColumn fx:id="device_id" prefWidth="117.59994506835938" text="ID" />
+            <TableColumn fx:id="device" prefWidth="156.79998779296875" text="Component" />
+            <TableColumn fx:id="device_id" prefWidth="117.59994506835938" text="Type" />
             <TableColumn prefWidth="75.20001220703125" text="Status" />
          </columns>
       </TableView>
@@ -89,5 +89,6 @@
             <NumberAxis side="LEFT" />
          </yAxis>
       </LineChart>
+      <Button fx:id="deleteComponentButton" layoutX="659.0" layoutY="260.0" mnemonicParsing="false" onAction="#deleteComponent" text="Delete" />
     </children>
 </AnchorPane>

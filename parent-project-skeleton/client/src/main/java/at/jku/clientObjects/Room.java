@@ -2,6 +2,7 @@ package at.jku.clientObjects;
 
 import at.jku.Client;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -10,7 +11,7 @@ public class Room {
     int size;
     String room_id;
     int noPeopleInRoom;
-    List<Component> components;
+    List<Component> components = new ArrayList<>();
     List<Airquality> airqualities;
     private Client client;
 

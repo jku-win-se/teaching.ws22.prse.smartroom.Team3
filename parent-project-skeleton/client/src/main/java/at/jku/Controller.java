@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import at.jku.clientObjects.*;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -66,6 +67,8 @@ public class Controller implements Initializable {
     @FXML
     private TextField lightId;
     @FXML
+    private TextField people;
+    @FXML
     private TextField fanName;
     @FXML
     private TextField roomIdForDeleting;
@@ -78,11 +81,11 @@ public class Controller implements Initializable {
     @FXML
     private TableView<Room_Object> roomTableView = new TableView<>();
     @FXML
-    private TableView<Lights_Object> detailTableView = new TableView<Lights_Object>();
+    private TableView<Component> detailTableView = new TableView<Component>();
     @FXML
-    private TableColumn<Lights_Object, Integer> device = new TableColumn<>();;
+    private TableColumn<Component, Integer> device = new TableColumn<>();;
     @FXML
-    private TableColumn<Lights_Object, Integer> device_id = new TableColumn<>();;
+    private TableColumn<Component, Integer> device_id = new TableColumn<>();;
     @FXML
     private TableColumn<Room_Object, Integer> size = new TableColumn<>();
     @FXML
@@ -95,7 +98,9 @@ public class Controller implements Initializable {
     Room currentRoom = new Room();
     String globalMeasurementUnit = "m2";
     ObservableList<Room_Object> rooms = FXCollections.observableArrayList(client.getRooms());
-    ObservableList<Lights_Object> details = FXCollections.observableArrayList();
+    ObservableList<Component> details = FXCollections.observableArrayList();
+
+
 
     public Room getCompleteRoom(String room_id){
         Room room = new Room();
@@ -105,10 +110,15 @@ public class Controller implements Initializable {
         room.setSize((int)r.getRoom_size());
         //room.setNoPeopleInRoom(##airquality##);
         List<Lights_Object> lights = client.getAllLights(room_id);
+
+
         for(Lights_Object l : lights)
         {
-            room.addLight(l.getLight_id(),l.getName(),client.getCurrentLightStatus(room_id,l.getLight_id()).isTurnon());
+            room.addLight(l.getLight_id(),l.getName(), false);
         }
+
+        //client.getCurrentLightStatus(room_id,l.getLight_id()).isTurnon()
+
         //alle Windows fans und doors abfragen
         //alle airquality abfragen
         return room;
@@ -158,8 +168,8 @@ public class Controller implements Initializable {
         size.setCellValueFactory(new PropertyValueFactory<Room_Object, Integer>("room_size"));
         //size.setCellValueFactory(new PropertyValueFactory<Room_Object, Integer>("measurement_unit"));
 
-        device.setCellValueFactory(new PropertyValueFactory<Lights_Object, Integer>("name"));
-        device_id.setCellValueFactory(new PropertyValueFactory<Lights_Object, Integer>("light_id"));
+        device.setCellValueFactory(new PropertyValueFactory<Component, Integer>("name"));
+        device_id.setCellValueFactory(new PropertyValueFactory<Component, Integer>("type"));
 
         detailTableView.setItems(details);
 
@@ -175,12 +185,16 @@ public class Controller implements Initializable {
         String roomId = room.getRoom_id();
         currentRoom = getCompleteRoom(roomId);
 
-        roomNameLabel.setText(room.getRoom_id());
-        roomSizeLabel.setText("Size: " + room.getRoom_size() + " " + room.getMeasurement_unit());
+
+        roomNameLabel.setText(currentRoom.getRoom_id());
+        roomSizeLabel.setText("Size: " + currentRoom.getSize() + " " + globalMeasurementUnit);
         peopleInRoomLabel.setText("People in Room: " + client.getPeopleCount(roomId).getPeople_count());
         //deviceLabel1.setText(details.);
         //Test
-        details.addAll(client.getAllLights(roomId));
+
+        details.addAll(currentRoom.getAllComponents());
+
+
 
         for ( int i = 0; i < details.size(); i++ ) {
             detailTableView.setItems(details);
@@ -190,15 +204,13 @@ public class Controller implements Initializable {
 
     @FXML
     public void showDetails(){
-
-
         details.clear();
 
         Room_Object room = roomTableView.getSelectionModel().getSelectedItem();
         String roomId = room.getRoom_id();
         System.out.println(roomId);
 
-        details.addAll(client.getRoomLight(roomId, "Light10"));
+        details.addAll((Collection<? extends Component>) client.getRoomLight(roomId, "Light10"));
 
         System.out.println(client.getRoomLight(roomId, "Light10"));
         System.out.println(client.getPeopleCount(roomId));
@@ -227,12 +239,28 @@ public class Controller implements Initializable {
         Room_Object room_object = roomTableView.getSelectionModel().getSelectedItem();
 
         String room = room_object.getRoom_id();
-        System.out.println(room);
+
         client.deleteRoom(room);
 
         rooms.clear();
 
         getRooms();
+    }
+
+    @FXML
+    public void deleteComponent () {
+
+        Component component = detailTableView.getSelectionModel().getSelectedItem();
+
+        String comp = component.getName();
+
+        System.out.println(comp); //nur zum testen von Button
+
+        client.deleteRoomLight(component.getRoom_id(), component.getId()); ////Muss noch umgeschrieben werden auf deleteComponent
+
+        details.clear();
+
+        showRoom();
     }
 
 
@@ -282,6 +310,15 @@ public class Controller implements Initializable {
     }
 
     @FXML
+    public void addPeople(ActionEvent event) throws IOException {
+
+        int people = getPeople();
+
+        client.addPeopleRoom(getRoomId(),getPeople());
+
+    }
+
+    @FXML
     public void addFan(ActionEvent event) throws IOException {
 
         String fan1 = getFanName();
@@ -293,7 +330,7 @@ public class Controller implements Initializable {
     @FXML
     public void createNewRoom() throws IOException {
 
-        client.addRoom(getRoomId(), getRoomSize(), getMeasurementUnit());
+        client.addRoom(getRoomId(), getRoomSize(), globalMeasurementUnit);
 
         createdRoom.setText(getRoomId() + " wurde erstellt.");
     }
@@ -301,7 +338,7 @@ public class Controller implements Initializable {
     @FXML
     public void updateRoom() throws IOException {
 
-        client.updateRoom(getRoomId(), getRoomSize(), getMeasurementUnit());
+        client.updateRoom(getRoomId(), getRoomSize(), globalMeasurementUnit);
     }
 
     @FXML
@@ -325,6 +362,7 @@ public class Controller implements Initializable {
         return room;
     }
 
+/*
     @FXML
     public String getMeasurementUnit () {
         String unit = measurementUnit.getText();
@@ -332,12 +370,23 @@ public class Controller implements Initializable {
         return unit;
     }
 
+*/
+
     @FXML
     public String getLightId () {
         String unit = lightId.getText();
 
         return unit;
     }
+
+    @FXML
+    public int getPeople () {
+
+        int peoples = Integer.parseInt(people.getText());
+
+        return peoples;
+    }
+
 
     @FXML
     public String getNameOfLight () {
@@ -350,6 +399,7 @@ public class Controller implements Initializable {
     public void changeStatus () {
 
     }
+
 
 
 
