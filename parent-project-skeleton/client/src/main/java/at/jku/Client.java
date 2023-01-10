@@ -176,6 +176,7 @@ public class Client implements APIFunctions{
         return null;
     }
 
+
     @Override
     public Lights_Object addLight(String roomId, String light_id, String name) {
         Lights_Object lights_object = new Lights_Object(light_id,name);
@@ -200,6 +201,8 @@ public class Client implements APIFunctions{
 
         return null;
     }
+
+
 
     @Override
     public Lights_Object getRoomLight(String roomId, String lightId) {
@@ -315,7 +318,149 @@ public class Client implements APIFunctions{
         return null;
     }
 
+/*
+
+Folgende Methoden sind in diesem Kommentarblock:
 
 
+//    public List<Doors_Object> getAllRoomDoor (String roomId) throws IOException, InterruptedException;
+//    public Doors_Object addRoomDoor (String roomId);
+//    public Doors_Object getRoomDoor (String roomId, String doorId);
+//    public List<Windows_Object> getAllRoomWindow (String roomId) throws IOException, InterruptedException;
+//    public Windows_Object addRoomWindow (String roomId);
+//    public Windows_Object getRoomWindow (String roomId, String windowId);
+
+    @Override
+    public List<Doors_Object> getAllRoomDoor(String roomId) {
+        HttpRequest request =
+                HttpRequest.newBuilder()
+                        .uri(URI.create(startURI + "/Rooms/"+roomId+"/Doors"))
+                        .header("Content-Type", "application/json")
+                        .GET()
+                        .build();
+
+//        HttpRequest request =
+//                HttpRequest.newBuilder().uri(URI.create(startURI + "/Rooms/"+roomId+"/Doors")).GET().build();
+        try {
+            HttpResponse<String> response =  client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            String body = response.body();
+            ObjectMapper mapper = new ObjectMapper();
+            List<Doors_Object> doors = mapper.readValue(body, new TypeReference<List<Doors_Object>>()
+            {});
+            return doors;
+            //return objectMapper.readValue(response.body(), new TypeReference<List<Doors_Object>>() {});
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public Doors_Object addRoomDoor(String roomId) {
+        Doors_Object doors_object = new Doors_Object();
+        String body = "";
+        try {
+            body = objectMapper.writeValueAsString(doors_object);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        HttpRequest request =
+                HttpRequest.newBuilder().uri(URI.create(startURI + "/Rooms/"+roomId+"/Doors")).
+                        header("Content-Type", "application/json").
+                        POST(HttpRequest.BodyPublishers.ofString(body)).build();
+
+        try {
+            HttpResponse<String> response =  client.send(request, HttpResponse.BodyHandlers.ofString());
+            return objectMapper.readValue(response.body(), new TypeReference<>() {
+            });
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    @Override
+    public Doors_Object getRoomDoor(String roomId, String doorId) {
+
+        HttpRequest request =
+                HttpRequest.newBuilder().uri(URI.create(startURI + "/Rooms/" + roomId+"/Doors/"+doorId)).header("Content-Type", "application/json").GET().build();
+
+        try {
+            HttpResponse<String> response =  client.send(request, HttpResponse.BodyHandlers.ofString());
+            return objectMapper.readValue(response.body(), new TypeReference<Doors_Object>(){});
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<Windows_Object> getAllRoomWindow(String roomId) {
+        HttpRequest request =
+                HttpRequest.newBuilder()
+                        .uri(URI.create(startURI + "/Rooms/"+roomId+"/Windows"))
+                        .header("Content-Type", "application/json")
+                        .GET()
+                        .build();
+
+//        HttpRequest request =
+//                HttpRequest.newBuilder().uri(URI.create(startURI + "/Rooms/"+roomId+"/Windows")).GET().build();
+        try {
+            HttpResponse<String> response =  client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            String body = response.body();
+            ObjectMapper mapper = new ObjectMapper();
+            List<Windows_Object> windows = mapper.readValue(body, new TypeReference<List<Windows_Object>>()
+            {});
+            return windows;
+            //return objectMapper.readValue(response.body(), new TypeReference<List<Windows_Object>>() {});
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public Windows_Object addRoomWindow(String roomId) {
+        Windows_Object windows_object = new Windows_Object();
+        String body = "";
+        try {
+            body = objectMapper.writeValueAsString(windows_object);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        HttpRequest request =
+                HttpRequest.newBuilder().uri(URI.create(startURI + "/Rooms/"+roomId+"/Windows")).
+                        header("Content-Type", "application/json").
+                        POST(HttpRequest.BodyPublishers.ofString(body)).build();
+
+        try {
+            HttpResponse<String> response =  client.send(request, HttpResponse.BodyHandlers.ofString());
+            return objectMapper.readValue(response.body(), new TypeReference<>() {
+            });
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    @Override
+    public Windows_Object getRoomWindow(String roomId, String windowId) {
+
+        HttpRequest request =
+                HttpRequest.newBuilder().uri(URI.create(startURI + "/Rooms/" + roomId+"/Windows/"+windowId)).header("Content-Type", "application/json").GET().build();
+
+        try {
+            HttpResponse<String> response =  client.send(request, HttpResponse.BodyHandlers.ofString());
+            return objectMapper.readValue(response.body(), new TypeReference<Windows_Object>(){});
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+*/
 
 }

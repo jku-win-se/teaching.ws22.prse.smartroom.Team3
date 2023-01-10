@@ -41,18 +41,19 @@ public interface APIFunctions {
 //
 //
 //    //doors
-//    public HttpResponse getAllRoomDoor (String roomId);
-//    public HttpResponse addRoomDoor (String roomId);
-//    public HttpResponse getRoomDoor (String roomId, String doorId);
+
+//    public List<Doors_Object> getAllRoomDoor (String roomId) throws IOException, InterruptedException;
+//    public Doors_Object addRoomDoor (String roomId);
+//    public Doors_Object getRoomDoor (String roomId, String doorId);
 //    public HttpResponse updateRoomDoor (String roomId, String doorId);
 //    public HttpResponse getOpenRoomDoor (String roomId, String doorId);
 //    public HttpResponse openRoomDoor (String roomId, String doorId);
 //
 //
 //    //windows
-//    public HttpResponse getAllRoomWindow (String roomId);
-//    public HttpResponse addRoomWindow (String roomId);
-//    public HttpResponse getRoomWindow (String roomId, String doorId);
+//    public List<Windows_Object> getAllRoomWindow (String roomId) throws IOException, InterruptedException;
+//    public Windows_Object addRoomWindow (String roomId);
+//    public Windows_Object getRoomWindow (String roomId, String windowId);
 //    public HttpResponse updateRoomWindow (String roomId, String doorId);
 //    public HttpResponse getOpenRoomWindow (String roomId, String doorId);
 //    public HttpResponse openRoomWindow (String roomId, String doorId);

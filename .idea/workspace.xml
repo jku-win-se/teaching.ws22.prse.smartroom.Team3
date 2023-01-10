@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="feb1e5aa-cf87-42a9-8180-1301f8cbca17" name="Changes" comment="gui updated" />
+    <list default="true" id="feb1e5aa-cf87-42a9-8180-1301f8cbca17" name="Changes" comment="gui updated">
+      <change afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/objects/Doors_Object.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/objects/Windows_Object.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/APIFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/APIFunctions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/resources/StartScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/resources/StartScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/StartScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/StartScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Controller.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,8 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -31,8 +42,8 @@
     </option>
     <option name="myId2Visible">
       <map>
-        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
-        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
         <entry key="com.haulmont.jpb.jpaStructure" value="false" />
       </map>
     </option>
@@ -56,6 +67,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../Studium/Wirtschaftsinformatik/PR_Software_Engineering/Altes_Projekt_Feldler_Luki" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -156,8 +168,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.App" />
         <item itemvalue="Spring Boot.RestApplication" />
+        <item itemvalue="Application.App" />
         <item itemvalue="Spring Boot.RestApplication" />
         <item itemvalue="JUnit.RestApplicationTests" />
       </list>
@@ -181,6 +193,8 @@
       <workItem from="1672919384872" duration="4797000" />
       <workItem from="1672924821947" duration="3173000" />
       <workItem from="1673012170935" duration="10548000" />
+      <workItem from="1673338055972" duration="5167000" />
+      <workItem from="1673345902860" duration="5074000" />
     </task>
     <task id="LOCAL-00001" summary="getPeopleInRoom added">
       <created>1670446267606</created>
@@ -245,16 +259,5 @@
     <MESSAGE value="workspace.xml updated" />
     <MESSAGE value="gui updated" />
     <option name="LAST_COMMIT_MESSAGE" value="gui updated" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/clientObjects/Room.java</url>
-          <line>83</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

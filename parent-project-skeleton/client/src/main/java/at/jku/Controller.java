@@ -16,6 +16,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import at.jku.clientObjects.*;
+import org.apache.jena.base.Sys;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.Collection;
@@ -83,9 +85,11 @@ public class Controller implements Initializable {
     @FXML
     private TableView<Component> detailTableView = new TableView<Component>();
     @FXML
-    private TableColumn<Component, Integer> device = new TableColumn<>();;
+    private TableColumn<Component, Integer> device = new TableColumn<>();
     @FXML
-    private TableColumn<Component, Integer> device_id = new TableColumn<>();;
+    private TableColumn<Component, Integer> type = new TableColumn<>();
+    @FXML
+    private TableColumn<Component, Integer> status = new TableColumn<>();
     @FXML
     private TableColumn<Room_Object, Integer> size = new TableColumn<>();
     @FXML
@@ -110,7 +114,6 @@ public class Controller implements Initializable {
         room.setSize((int)r.getRoom_size());
         //room.setNoPeopleInRoom(##airquality##);
         List<Lights_Object> lights = client.getAllLights(room_id);
-
 
         for(Lights_Object l : lights)
         {
@@ -169,7 +172,8 @@ public class Controller implements Initializable {
         //size.setCellValueFactory(new PropertyValueFactory<Room_Object, Integer>("measurement_unit"));
 
         device.setCellValueFactory(new PropertyValueFactory<Component, Integer>("name"));
-        device_id.setCellValueFactory(new PropertyValueFactory<Component, Integer>("type"));
+        type.setCellValueFactory(new PropertyValueFactory<Component, Integer>("type"));
+        status.setCellValueFactory(new PropertyValueFactory<Component, Integer>("status"));
 
         detailTableView.setItems(details);
 
@@ -252,15 +256,28 @@ public class Controller implements Initializable {
 
         Component component = detailTableView.getSelectionModel().getSelectedItem();
 
-        String comp = component.getName();
-
-        System.out.println(comp); //nur zum testen von Button
 
         client.deleteRoomLight(component.getRoom_id(), component.getId()); ////Muss noch umgeschrieben werden auf deleteComponent
 
         details.clear();
 
         showRoom();
+    }
+    @FXML
+    public void changeStatus () {
+
+        Component component = detailTableView.getSelectionModel().getSelectedItem();
+
+        component.setStatus(false);
+
+        System.out.println(component.getStatus()); //zum testen
+
+
+
+        details.clear();
+
+        showRoom();
+
     }
 
 
@@ -395,10 +412,7 @@ public class Controller implements Initializable {
         return unit;
     }
 
-    @FXML
-    public void changeStatus () {
 
-    }
 
 
 
