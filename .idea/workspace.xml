@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="feb1e5aa-cf87-42a9-8180-1301f8cbca17" name="Changes" comment="gui updated">
-      <change afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/objects/Doors_Object.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/objects/Windows_Object.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/APIFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/APIFunctions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/resources/StartScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/resources/StartScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/StartScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/StartScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Controller.class" afterDir="false" />
-    </list>
+    <list default="true" id="feb1e5aa-cf87-42a9-8180-1301f8cbca17" name="Changes" comment="Delete Funktion und Status in der DetailsTableView eingefügt" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -194,7 +183,7 @@
       <workItem from="1672924821947" duration="3173000" />
       <workItem from="1673012170935" duration="10548000" />
       <workItem from="1673338055972" duration="5167000" />
-      <workItem from="1673345902860" duration="5074000" />
+      <workItem from="1673345902860" duration="5484000" />
     </task>
     <task id="LOCAL-00001" summary="getPeopleInRoom added">
       <created>1670446267606</created>
@@ -224,7 +213,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673022714926</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Delete Funktion und Status in der DetailsTableView eingefügt">
+      <created>1673358141260</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1673358141260</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -258,6 +254,7 @@
     <MESSAGE value="gui updadet" />
     <MESSAGE value="workspace.xml updated" />
     <MESSAGE value="gui updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="gui updated" />
+    <MESSAGE value="Delete Funktion und Status in der DetailsTableView eingefügt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete Funktion und Status in der DetailsTableView eingefügt" />
   </component>
 </project>
