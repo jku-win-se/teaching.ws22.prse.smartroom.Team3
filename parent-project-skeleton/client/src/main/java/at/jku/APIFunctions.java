@@ -10,9 +10,9 @@ public interface APIFunctions {
 
     //Rooms
     public List<Room_Object> getRooms();
-    public Room_Object addRoom(String room_id, double room_size, String measurment_unit);
+    public Room_Object addRoom(String room_id, double room_size, String measurement_unit);
     public Room_Object getRoomID (String id);
-    public Update_RoomObject updateRoom (String id, double room_size, String measurment_unit);
+    public Update_RoomObject updateRoom (String id, double room_size, String measurement_unit);
     public HttpResponse deleteRoom (String id);
     public PeopleInRoomObject getPeopleCount (String id);
     public PeopleInRoomObject addPeopleRoom (String id,int peopleCount);

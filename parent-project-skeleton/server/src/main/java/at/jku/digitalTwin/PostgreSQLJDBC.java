@@ -1,8 +1,6 @@
 package at.jku.digitalTwin;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
+import java.sql.*;
 
 public class PostgreSQLJDBC {
     public Connection connect_to_db(String dbname, String user, String password){
@@ -22,7 +20,23 @@ public class PostgreSQLJDBC {
         return c;
     }
 
-    public void insert_row(Connection c, String table_name, String roomid, int size){
+    public void read_room(Connection c, String table_name){
+        Statement statement;
+        ResultSet rs = null;
+        try {
+            String query = String.format("select * from %s", table_name);
+            statement = c.createStatement();
+            rs = statement.executeQuery(query);
+            while (rs.next()) {
+                System.out.println(rs.getString("roomid") + " ");
+                System.out.println(rs.getString("size") + " ");
+            }
+        } catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
+    public void add_room(Connection c, String table_name, String roomid, int size){
         Statement statement;
         try {
             String query=String.format("insert into %s(roomid, size) values ('%s','%s');", table_name,roomid,size);
@@ -34,7 +48,7 @@ public class PostgreSQLJDBC {
         }
     }
 
-    public void delete_row(Connection c, String table_name, String roomid){
+    public void delete_room(Connection c, String table_name, String roomid){
         Statement statement;
         try {
             String query=String.format("delete from %s where roomid='%s'", table_name,roomid);
