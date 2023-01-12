@@ -16,50 +16,47 @@ public interface APIFunctions {
     public HttpResponse deleteRoom (String id);
     public PeopleInRoomObject getPeopleCount (String id);
     public PeopleInRoomObject addPeopleRoom (String id,int peopleCount);
-//
-//
-//    //Lights
+
+//    Lights
     public List<Lights_Object> getAllLights (String roomId) throws IOException, InterruptedException;
     public Lights_Object addLight (String roomId, String light_id, String name);
     public Lights_Object getRoomLight (String roomId, String lightId);
-//    public HttpResponse updateRoomLight (String roomId, String lightId);
-    public HttpResponse deleteRoomLight (String roomId, String lightId);
-//    public HttpResponse getRoomLightStatus (String roomId, String lightId);
-//    public HttpResponse activateRoomLight (String roomId, String lightId);
-//    public HttpResponse setRoomLightColor (String roomId, String lightId);
-//
-//
-//    //Ventilators
-//    public HttpResponse getAllRoomVents (String roomId);
-//    public HttpResponse addVent (String roomId);
-//    public HttpResponse getRoomVent (String roomId, String plugId);
-//    public HttpResponse updateRoomPlug (String roomId, String plugId);
-//    public HttpResponse deleteRoomPlug (String roomId, String plugId);
-//    public HttpResponse operateRoomPlug (String roomId, String plugId);
-//    public HttpResponse getVentDetails (String roomId, String plugId);
-//    public HttpResponse activateRoomPlug (String roomId, String plugId);
-//
-//
-//    //doors
+    public Update_LightObject updateLight (String roomId, String lightId, String name);
+    public boolean deleteRoomLight (String roomId, String lightId);
+    public Light_Operation_Object getCurrentLightStatus(String roomId,String lightId);
+    public Light_Activation_Object activateLight(String roomId, String lightId, Boolean turnon) ;
+    public Light_Operation_Object setColor(String roomId, String lightId, Boolean turnon, int bright, String hex);
 
-//    public List<Doors_Object> getAllRoomDoor (String roomId) throws IOException, InterruptedException;
-//    public Doors_Object addRoomDoor (String roomId);
-//    public Doors_Object getRoomDoor (String roomId, String doorId);
-//    public HttpResponse updateRoomDoor (String roomId, String doorId);
-//    public HttpResponse getOpenRoomDoor (String roomId, String doorId);
-//    public HttpResponse openRoomDoor (String roomId, String doorId);
-//
-//
-//    //windows
-//    public List<Windows_Object> getAllRoomWindow (String roomId) throws IOException, InterruptedException;
-//    public Windows_Object addRoomWindow (String roomId);
-//    public Windows_Object getRoomWindow (String roomId, String windowId);
-//    public HttpResponse updateRoomWindow (String roomId, String doorId);
-//    public HttpResponse getOpenRoomWindow (String roomId, String doorId);
-//    public HttpResponse openRoomWindow (String roomId, String doorId);
-//
-//
-//    //AirQuality
+// Ventilators
+        public List<Power_Plug_Object> getAllVents(String roomId);
+        public Power_Plug_Object addVent(String roomId, String plug_id, String name);
+        public Power_Plug_Object getSpecificVent(String roomId, String plug_id) ;
+    public Power_Plug_Update_Object updateVent (String roomId, String plug_id, String name);
+    public boolean deleteVent(String roomId, String plug_id);
+    public boolean activateVent(String roomId, String plug_id, Boolean turnon);
+    public Power_Plug_Operation_Object getCurrentPowerPlugStatus(String roomId,String plug_id);
+   public boolean activateVent(String roomId, String plug_id);
+
+
+//    doors
+    public List<Door_Object> getAllRoomDoor(String roomId);
+    public Door_Object addRoomDoor(String roomId,String door_id,String name);
+    public Door_Object getRoomDoor(String roomId, String doorId);
+    public Door_Object updateDoor (String roomId, String door_id, String name);
+    public boolean getDoorStatus(String room_id, String door_id);
+    public boolean changeDoorStatus(String room_id, String door_id,Boolean isOpen);
+
+
+//    windows
+    public List<Window_Object> getAllRoomWindows(String roomId);
+    public Window_Object addRoomWindow(String roomId,String window_id,String name);
+    public Window_Object getRoomWindow(String roomId, String window_id);
+    public Window_Object updateWindow (String roomId, String window_id, String name);
+    public boolean getWindowStatus(String room_id, String window_id);
+    public boolean changeWindowStatus(String room_id, String window_id,Boolean isOpen);
+
+
+//    AirQuality
 //    public HttpResponse addRoomAQ ();
 //    public HttpResponse getRoomAQ (String roomId);
 //    public HttpResponse getRoomAQTemp (String roomId);
