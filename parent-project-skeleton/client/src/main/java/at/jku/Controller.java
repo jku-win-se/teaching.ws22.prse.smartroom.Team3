@@ -1,7 +1,6 @@
 package at.jku;
 
-import at.jku.objects.Lights_Object;
-import at.jku.objects.Room_Object;
+import at.jku.objects.*;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -113,6 +112,8 @@ public class Controller implements Initializable {
         room.setName(room_id);
         room.setSize((int)r.getRoom_size());
         //room.setNoPeopleInRoom(##airquality##);
+
+
         List<Lights_Object> lights = client.getAllLights(room_id);
 
         for(Lights_Object l : lights)
@@ -120,14 +121,40 @@ public class Controller implements Initializable {
             room.addLight(l.getLight_id(),l.getName(), false);
         }
 
-        //client.getCurrentLightStatus(room_id,l.getLight_id()).isTurnon()
+        //client.getCurrentLightStatus(room_id,l.getLight_id()).isTurnon(); in status of for()
+        /*
+        List<Power_Plug_Object> fans = client.getAllVents(room_id);
 
-        //alle Windows fans und doors abfragen
+        for(Power_Plug_Object p : fans)
+        {
+            room.addVentilator(p.getPlug_id(),p.getName(), false);
+        }
+        //client.getCurrentPowerPlugStatus(room_id,p.plug_id).isTurnon() in status of for()
+
+        List<Window_Object> windows = client.getAllRoomWindows(room_id);
+
+        for(Window_Object w : windows)
+        {
+            room.addWindow(w.getWindow_id(),w.getName(), false);
+        }
+        //client.getWindowStatus(room_id,w.window_id) in status of for()
+
+        List<Door_Object> doors = client.getAllRoomDoor(room_id);
+
+        for(Door_Object d : doors)
+        {
+            room.addDoor(d.getDoor_id(),d.getName(), false);
+        }
+        //client.getDoorStatus(room_id,d.door_id). in status of for()
+
+        */
+
         //alle airquality abfragen
         return room;
     }
     @FXML
     public void switchToStartScene(ActionEvent event) throws IOException {
+        //fetch rooms from server
         root = FXMLLoader.load(getClass().getClassLoader().getResource("StartScene.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

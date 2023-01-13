@@ -20,7 +20,7 @@ public class Room {
         this.size = size;
         this.room_id = room_id;
         this.noPeopleInRoom = noPeopleInRoom;
-        client = new Client();
+        this.client = new Client();
     }
 
     public Room() {
@@ -85,7 +85,8 @@ public class Room {
         return true;
     }
     public boolean addWindow(String window_id,String name, Boolean status){
-        //client.addWindow(this.room_id,window_id,name);
+        //client.addRoomWindow(this.room_id,window_id,name);
+        //client.changeWindowStatus(this.room_id,window_id,status);
         components.add(new Component(window_id,name,this.room_id,ComponentType.WINDOW,status));
         return true;
     }

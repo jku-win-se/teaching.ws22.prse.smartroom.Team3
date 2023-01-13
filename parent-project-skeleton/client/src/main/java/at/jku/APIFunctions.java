@@ -57,9 +57,9 @@ public interface APIFunctions {
 
 
 //    AirQuality
-//    public HttpResponse addRoomAQ ();
-//    public HttpResponse getRoomAQ (String roomId);
-//    public HttpResponse getRoomAQTemp (String roomId);
+public AirQuality_Properties_Object getAirQ(String room_id);
+    public AirQuality_Co2_Object getAirQCo2(String room_id);
+    public AirQuality_Temperature_Object getAirQTemperature(String room_id);
 //    public HttpResponse getRoomAQHum (String roomId);
 //    public HttpResponse getRoomAQCo2 (String roomId);
 }

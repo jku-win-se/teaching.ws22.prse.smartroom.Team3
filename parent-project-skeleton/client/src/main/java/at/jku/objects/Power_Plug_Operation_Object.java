@@ -1,10 +1,10 @@
 package at.jku.objects;
 
 public class Power_Plug_Operation_Object {
-    String turnon;
+    boolean turnon;
     String time;
 
-    public Power_Plug_Operation_Object(String turnon, String time) {
+    public Power_Plug_Operation_Object(boolean turnon, String time) {
         this.turnon = turnon;
         this.time = time;
     }
@@ -12,11 +12,11 @@ public class Power_Plug_Operation_Object {
     public Power_Plug_Operation_Object() {
     }
 
-    public String getTurnon() {
+    public boolean isTurnon() {
         return turnon;
     }
 
-    public void setTurnon(String turnon) {
+    public void setTurnon(boolean turnon) {
         this.turnon = turnon;
     }
 
