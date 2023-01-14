@@ -283,18 +283,21 @@ public class Client implements APIFunctions{
 
         return null;
     }
-    public Light_Operation_Object getCurrentLightStatus(String roomId,String lightId){
+    public boolean getCurrentLightStatus(String roomId,String lightId){
         HttpRequest request =
                 HttpRequest.newBuilder().uri(URI.create(startURI + "/Rooms/" + roomId+"/Lights/"+lightId+"/Activation")).GET().build();
 
         try {
             HttpResponse<String> response =  client.send(request, HttpResponse.BodyHandlers.ofString());
             List<Light_Operation_Object> l= objectMapper.readValue(response.body(), new TypeReference<>() {});
-            return l.get(l.size());
+            if(l.size()>0) {
+                return l.get(l.size() - 1).isTurnon();
+            }
+            return false;
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
-        return null;
+        return false;
     }
 
     public Light_Operation_Object setColor(String roomId, String lightId, Boolean turnon, int bright, String hex) {

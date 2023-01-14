@@ -1,6 +1,7 @@
 package at.jku.clientObjects;
 
 import at.jku.Client;
+import at.jku.objects.Lights_Object;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,14 @@ public class Room {
         this.room_id = room_id;
         this.noPeopleInRoom = noPeopleInRoom;
         this.client = new Client();
+    }
+    public Room(String name, int size, String room_id, int noPeopleInRoom,List<Component> components) {
+        this.name = name;
+        this.size = size;
+        this.room_id = room_id;
+        this.noPeopleInRoom = noPeopleInRoom;
+        this.client = new Client();
+        this.components = components;
     }
 
     public Room() {
@@ -81,6 +90,7 @@ public class Room {
 
     public boolean addLight(String light_id,String name, Boolean status){
         client.addLight(this.room_id,light_id,name);
+        client.activateLight(room_id,light_id,status);
         components.add(new Component(light_id,name,this.room_id,ComponentType.LIGHT,status));
         return true;
     }

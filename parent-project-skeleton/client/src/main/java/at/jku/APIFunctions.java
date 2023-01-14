@@ -23,7 +23,7 @@ public interface APIFunctions {
     public Lights_Object getRoomLight (String roomId, String lightId);
     public Update_LightObject updateLight (String roomId, String lightId, String name);
     public boolean deleteRoomLight (String roomId, String lightId);
-    public Light_Operation_Object getCurrentLightStatus(String roomId,String lightId);
+    public boolean getCurrentLightStatus(String roomId,String lightId);
     public Light_Activation_Object activateLight(String roomId, String lightId, Boolean turnon) ;
     public Light_Operation_Object setColor(String roomId, String lightId, Boolean turnon, int bright, String hex);
 

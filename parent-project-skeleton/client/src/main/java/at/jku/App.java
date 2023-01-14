@@ -1,5 +1,7 @@
 package at.jku;
 
+import at.jku.clientObjects.Room;
+import at.jku.objects.Lights_Object;
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonObjectBuilder;
@@ -23,8 +25,13 @@ public class App {
 
 
         Client client = new Client();
-
-
+        Room r = new Room();
+        r.setSize(23);
+        r.setName("room1");
+        r.addLight("light1","lamp",false);
+        List<Lights_Object> l = client.getAllLights("room1");
+        r.getAllComponents();
+/*
         System.out.println("add 1: " + client.addRoom("room1", 5, "m2"));
 //        System.out.println("add 2: " + client.addRoom("room2", 6, "m2"));
         System.out.println("get 3: " + client.getRooms());
@@ -50,5 +57,6 @@ public class App {
         System.out.println("get 20: " + client.getAllLights("room1"));
         System.out.println("act 21: " + client.activateLight("room1", "Light3", true));
         System.out.println("actC 22: " + client.setColor("room1", "Light3", true, 213, "hexhex"));
+*/
     }
 }

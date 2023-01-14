@@ -50,10 +50,6 @@ public class Component {
         return status;
     }
 
-    public void setStatus(Boolean status) {
-        this.status = status;
-
-    }
     public boolean changeStatus()
     {
         Boolean succeeded =false;
@@ -73,7 +69,7 @@ public class Component {
         {
             Light_Activation_Object l = client.activateLight(this.room_id,this.id,!status);
             if(l.isTurnon()!=status)
-                return true;
+                succeeded = true;
         }
         if(succeeded)
         {
@@ -81,7 +77,7 @@ public class Component {
         }
         return succeeded;
     }
-    public boolean changeStatus(boolean newStatus)
+    public boolean setStatus(boolean newStatus)
     {
         Boolean succeeded =false;
         if(type==ComponentType.DOOR)
@@ -107,5 +103,26 @@ public class Component {
             status = !status;
         }
         return succeeded;
+    }
+    public boolean update(String name)
+    {
+        if(type==ComponentType.DOOR)
+        {
+            client.updateDoor(this.room_id,this.id,name);
+        }
+        if(type==ComponentType.WINDOW)
+        {
+            client.updateWindow(this.room_id,this.id,name);
+        }
+        if(type==ComponentType.FAN)
+        {
+            client.updateVent(this.room_id,this.id,name);
+        }
+        if(type==ComponentType.LIGHT)
+        {
+            client.updateLight(this.room_id,this.id,name);
+        }
+
+        return true;
     }
 }

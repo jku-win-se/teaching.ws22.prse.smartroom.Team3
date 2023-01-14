@@ -19,6 +19,7 @@ import org.apache.jena.base.Sys;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -106,28 +107,23 @@ public class Controller implements Initializable {
 
 
     public Room getCompleteRoom(String room_id){
-        Room room = new Room();
         Room_Object r = client.getRoomID(room_id);
-        room.setRoom_id(room_id);
-        room.setName(room_id);
-        room.setSize((int)r.getRoom_size());
-        //room.setNoPeopleInRoom(##airquality##);
-
+        List<Component> components =  new ArrayList<>();
 
         List<Lights_Object> lights = client.getAllLights(room_id);
 
         for(Lights_Object l : lights)
         {
-            room.addLight(l.getLight_id(),l.getName(), false);
+            components.add(new Component(l.getLight_id(),l.getName(),room_id,ComponentType.LIGHT,client.getCurrentLightStatus(room_id,l.getLight_id())));
         }
-
+/*
         //client.getCurrentLightStatus(room_id,l.getLight_id()).isTurnon(); in status of for()
-        /*
+
         List<Power_Plug_Object> fans = client.getAllVents(room_id);
 
         for(Power_Plug_Object p : fans)
         {
-            room.addVentilator(p.getPlug_id(),p.getName(), false);
+            components.add(new Component(p.getPlug_id(),p.getName(),room_id,ComponentType.FAN,false));
         }
         //client.getCurrentPowerPlugStatus(room_id,p.plug_id).isTurnon() in status of for()
 
@@ -135,7 +131,7 @@ public class Controller implements Initializable {
 
         for(Window_Object w : windows)
         {
-            room.addWindow(w.getWindow_id(),w.getName(), false);
+            components.add(new Component(w.getWindow_id(),w.getName(),room_id,ComponentType.WINDOW,false));
         }
         //client.getWindowStatus(room_id,w.window_id) in status of for()
 
@@ -143,14 +139,14 @@ public class Controller implements Initializable {
 
         for(Door_Object d : doors)
         {
-            room.addDoor(d.getDoor_id(),d.getName(), false);
+            components.add(new Component(d.getDoor_id(),d.getName(),room_id,ComponentType.DOOR,false));
         }
         //client.getDoorStatus(room_id,d.door_id). in status of for()
 
-        */
+*/
 
         //alle airquality abfragen
-        return room;
+        return new Room(room_id,(int)r.getRoom_size(),room_id,0,components);
     }
     @FXML
     public void switchToStartScene(ActionEvent event) throws IOException {
@@ -214,8 +210,9 @@ public class Controller implements Initializable {
 
         Room_Object room = roomTableView.getSelectionModel().getSelectedItem();
         String roomId = room.getRoom_id();
-        currentRoom = getCompleteRoom(roomId);
-
+        if(roomId!=null) {
+            currentRoom = getCompleteRoom(roomId);
+        }
 
         roomNameLabel.setText(currentRoom.getRoom_id());
         roomSizeLabel.setText("Size: " + currentRoom.getSize() + " " + globalMeasurementUnit);
@@ -295,7 +292,7 @@ public class Controller implements Initializable {
 
         Component component = detailTableView.getSelectionModel().getSelectedItem();
 
-        component.setStatus(false);
+        component.changeStatus();
 
         System.out.println(component.getStatus()); //zum testen
 
@@ -347,9 +344,9 @@ public class Controller implements Initializable {
     public void addLight(ActionEvent event) throws IOException {
 
         String lightName = getNameOfLight();
+        currentRoom =getCompleteRoom(getRoomId());
         String lightId = getLightId();
-
-        client.addLight(getRoomId(),lightId,lightName);
+        currentRoom.addLight(lightId,lightName,false);
 
     }
 
@@ -374,8 +371,7 @@ public class Controller implements Initializable {
     @FXML
     public void createNewRoom() throws IOException {
 
-        client.addRoom(getRoomId(), getRoomSize(), globalMeasurementUnit);
-
+       Room_Object r = client.addRoom(getRoomId(), getRoomSize(), globalMeasurementUnit);
         createdRoom.setText(getRoomId() + " wurde erstellt.");
     }
 
