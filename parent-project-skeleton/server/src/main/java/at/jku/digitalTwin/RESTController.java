@@ -69,7 +69,10 @@ public class RESTController {
         if (roomRepository.findById(room_id).isEmpty())
             return ResponseEntity.notFound().build();
 
+        System.out.println(roomRepository.findById(room_id));
+        lightRepository.deleteAllInBatch(lightRepository.findByRoom(roomRepository.findById(room_id).get()));
         roomRepository.deleteById(room_id);
+
         return ResponseEntity.ok(null);
     }
     @GetMapping("/Rooms/{room_id}/PeopleInRoom")

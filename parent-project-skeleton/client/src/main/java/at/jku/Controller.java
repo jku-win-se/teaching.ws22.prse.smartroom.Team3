@@ -1,7 +1,6 @@
 package at.jku;
 
 import at.jku.objects.*;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,9 +14,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import at.jku.clientObjects.*;
-import org.apache.jena.base.Sys;
 
-import java.io.IOException;
+
+import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -48,18 +47,21 @@ public class Controller implements Initializable {
     @FXML
     private Label roomSizeLabel;
     @FXML
-    private Label deviceLabel1;
+    private TextField fanName;
+    @FXML
+    private TextField fanId1;
     @FXML
     private Label createdRoom;
     @FXML
     private Label peopleInRoomLabel;
     @FXML
-    private Label roomIdLabelInUpdateRoom;
-
+    private Label createdLight;
     @FXML
-    private TextField roomName;
+    private Label roomUpdated;
     @FXML
     private TextField roomSize;
+    @FXML
+    private TextField roomName;
     @FXML
     private TextField roomId;
     @FXML
@@ -71,15 +73,21 @@ public class Controller implements Initializable {
     @FXML
     private TextField people;
     @FXML
-    private TextField fanName;
+    private TextField doorId;
     @FXML
-    private TextField roomIdForDeleting;
+    private TextField windowId;
+    @FXML
+    private TextField windowName;
+    @FXML
+    private TextField doorName;
     @FXML
     private TextArea lights;
     @FXML
     private Label fans;
     @FXML
     private ListView<Room_Object> roomListView = new ListView<>();
+    @FXML
+    private ComboBox<Room_Object> comboBox1 = new ComboBox<Room_Object>();
     @FXML
     private TableView<Room_Object> roomTableView = new TableView<>();
     @FXML
@@ -100,6 +108,9 @@ public class Controller implements Initializable {
 
     public Client client = new Client();
     Room currentRoom = new Room();
+
+
+
     String globalMeasurementUnit = "m2";
     ObservableList<Room_Object> rooms = FXCollections.observableArrayList(client.getRooms());
     ObservableList<Component> details = FXCollections.observableArrayList();
@@ -187,6 +198,53 @@ public class Controller implements Initializable {
         stage.show();
     }
 
+
+    @FXML
+    public void addLight(ActionEvent event) throws IOException {
+        currentRoom = getCompleteRoom(comboBox1.getValue().getRoom_id());
+
+        String lightName = getNameOfLight();
+        String lightId = getLightId();
+
+        currentRoom.addLight(lightId,lightName,false);
+        createdLight.setText(lightName + " wurde hinzugefügt");
+    }
+
+    @FXML
+    public void addFan(ActionEvent event) throws IOException {
+        currentRoom = getCompleteRoom(comboBox1.getValue().getRoom_id());
+
+        String fanName = getNameOfFan();
+        String fanId = getFanId();
+
+
+        currentRoom.addVentilator(fanId,fanName,false);
+        createdLight.setText(fanName + " wurde hinzugefügt");
+    }
+
+    @FXML
+    public void addDoor(ActionEvent event) throws IOException {
+        currentRoom = getCompleteRoom(comboBox1.getValue().getRoom_id());
+
+        String doorName = getNameOfDoor();
+        String doorId = getDoorId();
+
+
+        currentRoom.addDoor(doorId, doorName,false);
+        createdLight.setText(doorName + " wurde hinzugefügt");
+    }
+
+    @FXML
+    public void addWindow(ActionEvent event) throws IOException {
+        currentRoom = getCompleteRoom(comboBox1.getValue().getRoom_id());
+
+        String windowName = getNameOfWindow();
+        String windowId = getWindowId();
+
+        currentRoom.addWindow(windowName, windowId,false);
+        createdLight.setText(windowName + " wurde hinzugefügt");
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -198,10 +256,73 @@ public class Controller implements Initializable {
         type.setCellValueFactory(new PropertyValueFactory<Component, Integer>("type"));
         status.setCellValueFactory(new PropertyValueFactory<Component, Integer>("status"));
 
+
         detailTableView.setItems(details);
 
+        comboBox1.setItems(getRooms());
 
-        getRooms();
+        roomTableView.setItems(getRooms());
+    }
+
+
+    @FXML
+    public void showDetails(){
+        details.clear();
+
+        Room_Object room = roomTableView.getSelectionModel().getSelectedItem();
+        String roomId = room.getRoom_id();
+        System.out.println(roomId);
+
+        details.addAll((Collection<? extends Component>) client.getRoomLight(roomId, "Light10"));
+
+        System.out.println(client.getRoomLight(roomId, "Light10"));
+        System.out.println(client.getPeopleCount(roomId));
+
+
+        for ( int i = 0; i < details.size(); i++ ) {
+            detailTableView.setItems(details);
+        }
+
+        peopleInRoomLabel.setText("People in Room: " + client.getPeopleCount(roomId).getPeople_count());
+    }
+
+    @FXML
+    public void saveToCsvData() throws IOException {
+        File file = new File(System.getProperty("user.home") + "\\Desktop\\components.csv");
+        Writer writer = new BufferedWriter(new FileWriter(file));
+        try {
+            writer.write("Room,Size,Component,Component Type,Status");
+            writer.write("\n");
+            for (Room_Object room_object : client.getRooms()) {
+
+                Room room = getCompleteRoom(room_object.getRoom_id());
+                for (Component component : room.getAllComponents()) {
+
+                    String text = room_object.getRoom_id() + ","+ room_object.getRoom_size()+",";
+
+                    if(component.getName() != null) {
+                        text += component.getName() + "," + component.getType() + "," + component.getStatus() + "\n";
+                    }
+
+                    writer.write(text);
+                }
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        finally {
+            writer.flush();
+            writer.close();
+        }
+
+    }
+
+
+    public ObservableList<Room_Object> getRooms() {
+
+        ObservableList<Room_Object> rooms = FXCollections.observableArrayList(client.getRooms());
+
+        return rooms;
     }
 
     public void showRoom(){
@@ -231,55 +352,21 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    public void showDetails(){
-        details.clear();
-
-        Room_Object room = roomTableView.getSelectionModel().getSelectedItem();
-        String roomId = room.getRoom_id();
-        System.out.println(roomId);
-
-        details.addAll((Collection<? extends Component>) client.getRoomLight(roomId, "Light10"));
-
-        System.out.println(client.getRoomLight(roomId, "Light10"));
-        System.out.println(client.getPeopleCount(roomId));
-
-
-        for ( int i = 0; i < details.size(); i++ ) {
-            detailTableView.setItems(details);
-        }
-
-        peopleInRoomLabel.setText("People in Room: " + client.getPeopleCount(roomId).getPeople_count());
-    }
-
-
-    public void getRooms() {
-
-        ObservableList<Room_Object> rooms = FXCollections.observableArrayList(client.getRooms());
-
-        for ( int i = 0; i < rooms.size(); i++ ) {
-            roomTableView.setItems(rooms);
-        }
-    }
-
-    @FXML
     public void deleteRoom() throws IOException {
 
         Room_Object room_object = roomTableView.getSelectionModel().getSelectedItem();
 
-        String room = room_object.getRoom_id();
-
-        client.deleteRoom(room);
+        client.deleteRoom(room_object.getRoom_id());
 
         rooms.clear();
 
-        getRooms();
+        roomTableView.setItems(getRooms());
     }
 
     @FXML
     public void deleteComponent () {
 
         Component component = detailTableView.getSelectionModel().getSelectedItem();
-
 
         client.deleteRoomLight(component.getRoom_id(), component.getId()); ////Muss noch umgeschrieben werden auf deleteComponent
 
@@ -295,8 +382,6 @@ public class Controller implements Initializable {
         component.changeStatus();
 
         System.out.println(component.getStatus()); //zum testen
-
-
 
         details.clear();
 
@@ -340,32 +425,19 @@ public class Controller implements Initializable {
     }
 
 
-    @FXML
-    public void addLight(ActionEvent event) throws IOException {
 
-        String lightName = getNameOfLight();
-        currentRoom =getCompleteRoom(getRoomId());
-        String lightId = getLightId();
-        currentRoom.addLight(lightId,lightName,false);
-
-    }
 
     @FXML
     public void addPeople(ActionEvent event) throws IOException {
 
+        currentRoom = getCompleteRoom(comboBox1.getValue().getRoom_id());
+
         int people = getPeople();
 
-        client.addPeopleRoom(getRoomId(),getPeople());
+        client.addPeopleRoom(currentRoom.getRoom_id(),getPeople());
 
     }
 
-    @FXML
-    public void addFan(ActionEvent event) throws IOException {
-
-        String fan1 = getFanName();
-
-        fans.setText(fan1);
-    }
 
 
     @FXML
@@ -378,13 +450,11 @@ public class Controller implements Initializable {
     @FXML
     public void updateRoom() throws IOException {
 
-        client.updateRoom(getRoomId(), getRoomSize(), globalMeasurementUnit);
-    }
+        currentRoom = getCompleteRoom(comboBox1.getValue().getRoom_id());
 
-    @FXML
-    public void addLight() throws IOException {
+        client.updateRoom(currentRoom.getRoom_id(), getRoomSize(), globalMeasurementUnit);
 
-        client.addLight(getRoomId(), getLightId(), getLightName());
+        roomUpdated.setText(currentRoom.getRoom_id() + " wurde upgedated.");
     }
 
     @FXML
@@ -395,26 +465,30 @@ public class Controller implements Initializable {
     }
 
     @FXML
+    public String getRoomName() throws IOException {
+        String name = roomName.getText();
+
+        return name;
+    }
+
+    @FXML
     public String getRoomId () {
         String room = roomId.getText();
 
-        //Room_Object room = roomTableView.getSelectionModel().getSelectedItem();
         return room;
     }
 
-/*
-    @FXML
-    public String getMeasurementUnit () {
-        String unit = measurementUnit.getText();
-
-        return unit;
-    }
-
-*/
 
     @FXML
     public String getLightId () {
         String unit = lightId.getText();
+
+        return unit;
+    }
+
+    @FXML
+    public String getFanId () {
+        String unit = fanName.getText();
 
         return unit;
     }
@@ -435,7 +509,40 @@ public class Controller implements Initializable {
         return unit;
     }
 
+    @FXML
+    public String getNameOfDoor () {
+        String unit = doorName.getText();
 
+        return unit;
+    }
+
+    @FXML
+    public String getNameOfWindow () {
+        String unit = windowName.getText();
+
+        return unit;
+    }
+
+    @FXML
+    public String getNameOfFan () {
+        String unit = fanName.getText();
+
+        return unit;
+    }
+
+    @FXML
+    public String getDoorId () {
+        String unit = doorId.getText();
+
+        return unit;
+    }
+
+    @FXML
+    public String getWindowId () {
+        String unit = windowId.getText();
+
+        return unit;
+    }
 
 
 
