@@ -11,14 +11,19 @@ public class RestApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(RestApplication.class, args);
 
-		/*PostgreSQLJDBC db = new PostgreSQLJDBC();
+		PostgreSQLJDBC db = new PostgreSQLJDBC();
 		Connection c=db.connect_to_db("SmartroomGruppe3","postgres","smartroom3");
 
-		//delete room
-		db.delete_row(c,"room","Wohnzimmer2");
-
 		//insert room
-		db.insert_row(c,"room","Wohnzimmer2", 33);*/
+		db.add_room(c,"room","Wohnzimmer", 33);
+		db.add_room(c,"room","Bad", 8);
+
+		//read room
+		db.read_room(c,"room");
+
+		//delete room
+		db.delete_room(c,"room","Wohnzimmer");
+		db.delete_room(c,"room","Bad");
 	}
 
 }

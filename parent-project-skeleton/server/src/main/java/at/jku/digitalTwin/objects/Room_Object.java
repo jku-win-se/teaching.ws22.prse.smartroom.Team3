@@ -9,9 +9,7 @@ public class Room_Object {
 
     private double room_size;
     private String measurement_unit;
-
     private int people;
-
     @Id
     //@JoinColumn(name = "room_id")
     private String room_id;
@@ -60,6 +58,7 @@ public class Room_Object {
     public void setLights_object(List<Lights_Object> lights_object) {
         this.lights_object = lights_object;
     }
+
     public double getRoom_size() {
         return room_size;
     }
@@ -92,4 +91,5 @@ public class Room_Object {
                 ", room_id=" + room_id +
                 "}";
     }
+
 }
