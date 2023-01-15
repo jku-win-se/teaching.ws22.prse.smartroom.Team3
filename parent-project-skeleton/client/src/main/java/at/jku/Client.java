@@ -213,6 +213,11 @@ public class Client implements APIFunctions{
             return null;
     }
 
+    @Override
+    public HttpResponse updateRoomLight(String roomId, String lightId) {
+        return null;
+    }
+
 
     @Override
     public HttpResponse deleteRoomLight(String roomId, String lightId) {
@@ -224,6 +229,21 @@ public class Client implements APIFunctions{
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
+        return null;
+    }
+
+    @Override
+    public HttpResponse getRoomLightStatus(String roomId, String lightId) {
+        return null;
+    }
+
+    @Override
+    public HttpResponse activateRoomLight(String roomId, String lightId) {
+        return null;
+    }
+
+    @Override
+    public HttpResponse setRoomLightColor(String roomId, String lightId) {
         return null;
     }
 
@@ -298,8 +318,4 @@ public class Client implements APIFunctions{
 
         return null;
     }
-
-
-
-
 }
