@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "rooms")
+@Table(name = "room")
 public class Room_Object {
 
     private double room_size;
@@ -16,14 +16,11 @@ public class Room_Object {
 
 //    @OneToOne
 //    @JoinColumn(name = "room_id")
-//    private PeopleInRoomObject peopleInRoomObject;
+    //private PeopleInRoomObject peopleInRoomObject;
 
     //@OneToMany(mappedBy = "room", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @OneToMany(cascade = CascadeType.ALL)
     private List<Lights_Object> lights_object;
-
-
-
 
     public Room_Object(String room_id, double room_size, String measurement_unit) {
         this.room_id = room_id;
@@ -34,13 +31,13 @@ public class Room_Object {
     public Room_Object() {
     }
 
-//    public PeopleInRoomObject getPeopleInRoomObject() {
-//        return peopleInRoomObject;
-//    }
-//
-//    public void setPeopleInRoomObject(PeopleInRoomObject peopleInRoomObject) {
-//        this.peopleInRoomObject = peopleInRoomObject;
-//    }
+    /*public PeopleInRoomObject getPeopleInRoomObject() {
+        return peopleInRoomObject;
+    }
+
+    public void setPeopleInRoomObject(PeopleInRoomObject peopleInRoomObject) {
+        this.peopleInRoomObject = peopleInRoomObject;
+    }*/
 
 
     public int getPeople() {

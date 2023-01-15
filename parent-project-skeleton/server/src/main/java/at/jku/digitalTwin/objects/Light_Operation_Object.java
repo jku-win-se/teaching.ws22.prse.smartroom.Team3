@@ -1,9 +1,14 @@
 package at.jku.digitalTwin.objects;
 
+import javax.persistence.Id;
+import java.sql.Timestamp;
+
 public class Light_Operation_Object {
     boolean turnon;
     int brightness;
     String hex;
+    @Id
+    private Timestamp light_timestamp;
 
     public Light_Operation_Object(boolean turnon, int brightness, String hex) {
         this.turnon = turnon;
