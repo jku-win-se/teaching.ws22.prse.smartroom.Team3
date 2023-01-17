@@ -276,6 +276,35 @@ public class Controller implements Initializable {
 
         detailTableView.setItems(details);
 
+        comboBox1.setButtonCell(new ListCell<Room_Object>(){
+            @Override
+            protected void updateItem(Room_Object r, boolean bln) {
+                super.updateItem(r, bln);
+                if(r != null) {
+                    setText(r.getRoom_id());
+                }else{
+                    setText(null);
+                }
+            }
+        });
+
+        comboBox1.setCellFactory(new Callback<ListView<Room_Object>, ListCell<Room_Object>>() {
+            @Override
+            public ListCell<Room_Object> call(ListView<Room_Object> room_objectListView) {
+                return new ListCell<Room_Object>(){
+                    @Override
+                    protected void updateItem (Room_Object r, boolean bln) {
+                        super.updateItem(r, bln);
+                        if(r != null){
+                            setText(r.getRoom_id());
+                        }else{
+                            setText(null);
+                        }
+                    }
+                };
+            }
+        });
+
         comboBox1.setItems(getRooms());
 
         roomTableView.setItems(getRooms());
@@ -400,6 +429,7 @@ public class Controller implements Initializable {
         component.changeStatus();
 
         System.out.println(component.getStatus()); //zum testen
+
 
         details.clear();
 
