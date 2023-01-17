@@ -13,7 +13,7 @@ import java.util.List;
 public class RESTController {
 
     PostgreSQLJDBC db = new PostgreSQLJDBC();
-    Connection c = db.connect_to_db("SmartroomGruppe3", "postgres", "smartroom3");
+    Connection c = db.connect_to_db("SmartroomGruppe3", "postgres", "svried1912");
 
     @Autowired
     public PostgreSQLJDBC postgreSQLJDBC;
