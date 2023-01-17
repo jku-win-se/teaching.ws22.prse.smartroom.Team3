@@ -28,9 +28,9 @@ public interface APIFunctions {
     public Light_Operation_Object setColor(String roomId, String lightId, Boolean turnon, int bright, String hex);
 
 // Ventilators
-        public List<Power_Plug_Object> getAllVents(String roomId);
-        public Power_Plug_Object addVentilator(String roomId, String plug_id, String name);
-        public Power_Plug_Object getSpecificVent(String roomId, String plug_id) ;
+    public List<Power_Plug_Object> getAllVents(String roomId);
+    public Power_Plug_Object addVentilator(String roomId, String plug_id, String name);
+    public Power_Plug_Object getSpecificVent(String roomId, String plug_id) ;
     public Power_Plug_Update_Object updateVent (String roomId, String plug_id, String name);
     public boolean deleteVent(String roomId, String plug_id);
     public boolean activateVent(String roomId, String plug_id, Boolean turnon);

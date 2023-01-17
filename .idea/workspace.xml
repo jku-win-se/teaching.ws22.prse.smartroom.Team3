@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="feb1e5aa-cf87-42a9-8180-1301f8cbca17" name="Changes" comment="workspace.xml updated">
+    <list default="true" id="feb1e5aa-cf87-42a9-8180-1301f8cbca17" name="Changes" comment="BugFixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/resources/CreateRoomScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/resources/CreateRoomScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/resources/UpdateRoomScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/resources/UpdateRoomScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/CreateRoomScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/CreateRoomScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/UpdateRoomScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/UpdateRoomScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/APIFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/APIFunctions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/clientObjects/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/clientObjects/Room.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/PostgreSQLJDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/PostgreSQLJDBC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/RESTController.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/RESTController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/PostgreSQLJDBC.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/PostgreSQLJDBC.class" afterDir="false" />
@@ -61,6 +61,9 @@
     <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2IaobuTF4rO3Pi5282Mq0wFoFDI" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -194,7 +197,7 @@
       <workItem from="1673420300750" duration="11884000" />
       <workItem from="1673959650023" duration="10881000" />
       <workItem from="1673973922860" duration="331000" />
-      <workItem from="1673982556619" duration="5281000" />
+      <workItem from="1673982556619" duration="14072000" />
     </task>
     <task id="LOCAL-00001" summary="getPeopleInRoom added">
       <created>1670446267606</created>
@@ -217,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673983184836</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="BugFixes">
+      <created>1673988002825</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1673988002825</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,6 +249,7 @@
     <MESSAGE value="gui updadet" />
     <MESSAGE value="gui updated" />
     <MESSAGE value="workspace.xml updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="workspace.xml updated" />
+    <MESSAGE value="BugFixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="BugFixes" />
   </component>
 </project>
