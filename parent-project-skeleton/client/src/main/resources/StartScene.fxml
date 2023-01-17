@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="545.0" prefWidth="851.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.jku.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="545.0" prefWidth="851.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.jku.Controller">
     <children>
       <HBox layoutY="1.0">
          <children>
