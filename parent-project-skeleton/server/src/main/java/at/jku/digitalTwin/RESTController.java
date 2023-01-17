@@ -55,7 +55,7 @@ public class RESTController {
         return new ResponseEntity<>(deletedRoom, HttpStatus.OK);
     }
 
-    @PatchMapping("Rooms/{room_id}")
+    @PutMapping("Rooms/{room_id}")
     ResponseEntity<Update_RoomObject> updateRoom(@PathVariable String room_id, @RequestBody Update_RoomObject update_roomObject) {
 
         Room_Object updatedRoom = postgreSQLJDBC.updateRoomById(c, room_id, update_roomObject);

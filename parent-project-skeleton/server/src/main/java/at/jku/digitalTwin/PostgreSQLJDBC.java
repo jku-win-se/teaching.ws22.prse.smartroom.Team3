@@ -132,7 +132,6 @@ public class PostgreSQLJDBC {
                 peopleInRoom = new PeopleInRoomObject();
                 peopleInRoom.setRoom_id(rs.getString("peopleroomid"));
                 peopleInRoom.setPeople_count(rs.getInt("nopeopleinroom"));
-                peopleInRoom.setPeople_timestamp(rs.getTimestamp("peopletimestamp"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -143,11 +142,10 @@ public class PostgreSQLJDBC {
     public PeopleInRoomObject addPeopleInRoomById(Connection c, String room_id, PeopleInRoomObject peopleInRoomObject) {
         PeopleInRoomObject addedPeopleInRoom = null;
         try {
-            String sql = "INSERT INTO peopleinroom (peopleroomid, nopeopleinroom, peopletimestamp) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO peopleinroom (peopleroomid, nopeopleinroom) VALUES (?, ?)";
             PreparedStatement stmt = c.prepareStatement(sql);
             stmt.setString(1, room_id);
             stmt.setInt(2, peopleInRoomObject.getPeople_count());
-            stmt.setTimestamp(3, peopleInRoomObject.getPeople_timestamp());
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected == 1) {
                 addedPeopleInRoom = peopleInRoomObject;
@@ -292,7 +290,7 @@ public class PostgreSQLJDBC {
 
     public boolean activateLight(Connection c, String room_id, String light_id, Light_Activation_Object light_activation_object) {
         try {
-            String sql = "UPDATE lightstatus SET lightison = ? WHERE lightid = ? and roomid = ?";
+            String sql = "UPDATE lightstatus SET lightison = ? FROM lightstatus as ls JOIN light ON ls.lightid = light.lightid WHERE ls.lightid = ? and light.roomid = ?";
             PreparedStatement stmt = c.prepareStatement(sql);
             stmt.setBoolean(1, light_activation_object.isTurnon());
             stmt.setString(2, light_id);
