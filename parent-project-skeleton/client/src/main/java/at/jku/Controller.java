@@ -135,16 +135,13 @@ public class Controller implements Initializable {
         {
             components.add(new Component(p.getPlug_id(),p.getName(),room_id,ComponentType.FAN,false));
         }
-/*
-        //client.getCurrentLightStatus(room_id,l.getLight_id()).isTurnon(); in status of for()
 
-        List<Power_Plug_Object> fans = client.getAllVents(room_id);
+        List<Door_Object> doors = client.getAllRoomDoor(room_id);
 
-        for(Power_Plug_Object p : fans)
+        for(Door_Object d : doors)
         {
-            components.add(new Component(p.getPlug_id(),p.getName(),room_id,ComponentType.FAN,false));
+            components.add(new Component(d.getDoor_id(),d.getName(),room_id,ComponentType.DOOR,false));
         }
-        //client.getCurrentPowerPlugStatus(room_id,p.plug_id).isTurnon() in status of for()
 
         List<Window_Object> windows = client.getAllRoomWindows(room_id);
 
@@ -152,6 +149,15 @@ public class Controller implements Initializable {
         {
             components.add(new Component(w.getWindow_id(),w.getName(),room_id,ComponentType.WINDOW,false));
         }
+
+
+/*
+        //client.getCurrentLightStatus(room_id,l.getLight_id()).isTurnon(); in status of for()
+
+
+        //client.getCurrentPowerPlugStatus(room_id,p.plug_id).isTurnon() in status of for()
+
+
         //client.getWindowStatus(room_id,w.window_id) in status of for()
 
         List<Door_Object> doors = client.getAllRoomDoor(room_id);
@@ -416,6 +422,8 @@ public class Controller implements Initializable {
 
         client.deleteRoomLight(component.getRoom_id(), component.getId()); ////Muss noch umgeschrieben werden auf deleteComponent
         client.deleteVent(component.getRoom_id(), component.getId());
+        client.deleteDoor(component.getRoom_id(), component.getId());
+        client.deleteWindow(component.getRoom_id(),component.getId());
 
         details.clear();
 

@@ -95,13 +95,13 @@ public class Room {
         return true;
     }
     public boolean addWindow(String window_id,String name, Boolean status){
-        //client.addRoomWindow(this.room_id,window_id,name);
-        //client.changeWindowStatus(this.room_id,window_id,status);
+        client.addRoomWindow(this.room_id,window_id,name);
+        client.changeWindowStatus(this.room_id,window_id,status);
         components.add(new Component(window_id,name,this.room_id,ComponentType.WINDOW,status));
         return true;
     }
     public boolean addDoor(String door_id,String name, Boolean status){
-        //client.addDoor(this.room_id,door_id,name);
+        client.addRoomDoor(this.room_id,door_id,name);
         components.add(new Component(door_id,name,this.room_id,ComponentType.DOOR,status));
         return true;
     }

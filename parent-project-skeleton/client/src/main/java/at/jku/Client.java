@@ -548,6 +548,21 @@ public class Client implements APIFunctions{
         return null;
     }
 
+    public boolean deleteDoor(String roomId, String door_id) {
+        HttpRequest request =
+                HttpRequest.newBuilder().uri(URI.create(startURI + "/Rooms/" + roomId+"/Doors/"+door_id)).DELETE().build();
+
+        try {
+            HttpResponse<String> r =  client.send(request, HttpResponse.BodyHandlers.ofString());
+            if(r.statusCode()==200) {
+                return true;
+            }
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public Door_Object updateDoor (String roomId, String door_id, String name) {
         Door_Object door_object = new Door_Object(door_id,name);
         String body="";
@@ -669,6 +684,21 @@ public class Client implements APIFunctions{
             e.printStackTrace();
         }
         return null;
+    }
+
+    public boolean deleteWindow(String roomId, String window_id) {
+        HttpRequest request =
+                HttpRequest.newBuilder().uri(URI.create(startURI + "/Rooms/" + roomId+"/Windows/"+window_id)).DELETE().build();
+
+        try {
+            HttpResponse<String> r =  client.send(request, HttpResponse.BodyHandlers.ofString());
+            if(r.statusCode()==200) {
+                return true;
+            }
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public Window_Object updateWindow (String roomId, String window_id, String name) {

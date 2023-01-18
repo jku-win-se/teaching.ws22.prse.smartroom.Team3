@@ -290,7 +290,7 @@ public class PostgreSQLJDBC {
 
     public boolean activateLight(Connection c, String room_id, String light_id, Light_Activation_Object light_activation_object) {
         try {
-            String sql = "UPDATE lightstatus SET lightison = ? FROM lightstatus as ls JOIN light ON ls.lightid = light.lightid WHERE ls.lightid = ? and light.roomid = ?";
+            String sql = "UPDATE lightstatus SET lightison = ? WHERE lightid = ? and roomid = ?";
             PreparedStatement stmt = c.prepareStatement(sql);
             stmt.setBoolean(1, light_activation_object.isTurnon());
             stmt.setString(2, light_id);
@@ -449,6 +449,151 @@ public class PostgreSQLJDBC {
         }
         return operations;
     }
+
+    public List<Door_Object> getDoors(Connection c, String room_id) {
+        try {
+            String sql = "SELECT * FROM door WHERE roomid = ?";
+            PreparedStatement stmt = c.prepareStatement(sql);
+            stmt.setString(1, room_id);
+            ResultSet rs = stmt.executeQuery();
+            List<Door_Object> doors = new ArrayList<>();
+            while (rs.next()) {
+                String door_id = rs.getString("doorid");
+                String name = rs.getString("doorname");
+                Door_Object door = new Door_Object(door_id, name);
+                doors.add(door);
+            }
+            return doors;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<Door_Object> addDoor(Connection c, String room_id, Door_Object doorObject) {
+        PreparedStatement ps = null;
+        try {
+            ps = c.prepareStatement("INSERT INTO door (roomid, doorid, doorname) VALUES (?, ?, ?)");
+            ps.setString(1, room_id);
+            ps.setString(2, doorObject.getDoor_id());
+            ps.setString(3, doorObject.getName());
+            ps.executeUpdate();
+            return getDoors(c, room_id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public Door_Object getDoor(Connection c, String door_id) {
+        Door_Object door_object = null;
+        try {
+            PreparedStatement pstmt = c.prepareStatement("SELECT * FROM door WHERE doorid = ?");
+            pstmt.setString(1, door_id);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                door_object = new Door_Object(rs.getString("doorid"), rs.getString("doorname"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return door_object;
+    }
+
+    public boolean deleteDoor(Connection c, String door_id) {
+        try {
+            PreparedStatement st = c.prepareStatement("DELETE FROM door WHERE doorid = ?");
+            st.setString(1, door_id);
+            int rowsAffected = st.executeUpdate();
+            if(rowsAffected > 0) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public List<Window_Object> getWindows(Connection c, String room_id) {
+        try {
+            String sql = "SELECT * FROM windows WHERE roomid = ?";
+            PreparedStatement stmt = c.prepareStatement(sql);
+            stmt.setString(1, room_id);
+            ResultSet rs = stmt.executeQuery();
+            List<Window_Object> windows = new ArrayList<>();
+            while (rs.next()) {
+                String window_id = rs.getString("windowid");
+                String name = rs.getString("windowname");
+                Window_Object window = new Window_Object(window_id, name);
+                windows.add(window);
+            }
+            return windows;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<Window_Object> addWindow(Connection c, String room_id, Window_Object windowObject) {
+        PreparedStatement ps = null;
+        try {
+            ps = c.prepareStatement("INSERT INTO windows (roomid, windowid, windowname) VALUES (?, ?, ?)");
+            ps.setString(1, room_id);
+            ps.setString(2, windowObject.getWindow_id());
+            ps.setString(3, windowObject.getName());
+            ps.executeUpdate();
+            return getWindows(c, room_id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public Window_Object getWindow(Connection c, String window_id) {
+        Window_Object window_object = null;
+        try {
+            PreparedStatement pstmt = c.prepareStatement("SELECT * FROM windows WHERE windowid = ?");
+            pstmt.setString(1, window_id);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                window_object = new Window_Object(rs.getString("windowid"), rs.getString("windowname"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return window_object;
+    }
+
+    public boolean deleteWindow(Connection c, String window_id) {
+        try {
+            PreparedStatement st = c.prepareStatement("DELETE FROM windows WHERE windowid = ?");
+            st.setString(1, window_id);
+            int rowsAffected = st.executeUpdate();
+            if(rowsAffected > 0) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 
 
 }
