@@ -438,7 +438,6 @@ public class Controller implements Initializable {
 
         System.out.println(component.getStatus()); //zum testen
 
-
         details.clear();
 
         showRoom();
