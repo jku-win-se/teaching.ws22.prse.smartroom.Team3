@@ -55,7 +55,7 @@ public class RESTController {
         return new ResponseEntity<>(deletedRoom, HttpStatus.OK);
     }
 
-    @PatchMapping("Rooms/{room_id}")
+    @PutMapping("Rooms/{room_id}")
     ResponseEntity<Update_RoomObject> updateRoom(@PathVariable String room_id, @RequestBody Update_RoomObject update_roomObject) {
 
         Room_Object updatedRoom = postgreSQLJDBC.updateRoomById(c, room_id, update_roomObject);
@@ -227,4 +227,85 @@ public class RESTController {
         }
         return new ResponseEntity<>(ventilatorOperations, HttpStatus.OK);
     }
+
+    //#########Door
+
+    @GetMapping("Rooms/{room_id}/Doors")
+    public ResponseEntity<List<Door_Object>> getDoors(@PathVariable String room_id) {
+        List<Door_Object> doors = postgreSQLJDBC.getDoors(c, room_id);
+        if (doors == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(doors, HttpStatus.OK);
+    }
+
+    @PostMapping("Rooms/{room_id}/Doors")
+    public ResponseEntity<List<Door_Object>> addDoors(@PathVariable String room_id, @RequestBody Door_Object doorObject) {
+        List<Door_Object> doors = postgreSQLJDBC.addDoor(c, room_id, doorObject);
+        if (doors == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(doors, HttpStatus.OK);
+    }
+
+    @GetMapping("/Rooms/{room_id}/Doors/{door_id}")
+    public ResponseEntity<Door_Object> getRoomDoor(@PathVariable String room_id, @PathVariable String door_id) {
+        Door_Object door = postgreSQLJDBC.getDoor(c, door_id);
+        if (door == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(door, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/Rooms/{room_id}/Doors/{door_id}")
+    public ResponseEntity<String> deleteDoor(@PathVariable String room_id, @PathVariable String door_id) {
+        boolean isDeleted = postgreSQLJDBC.deleteDoor(c, door_id);
+        if (isDeleted) {
+            return new ResponseEntity<>("Door with id " + door_id + " has been deleted", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Door with id " + door_id + " not found", HttpStatus.NOT_FOUND);
+        }
+    }
+
+    //Rest von Door
+
+    //#########Window
+
+    @GetMapping("Rooms/{room_id}/Windows")
+    public ResponseEntity<List<Window_Object>> getWindows(@PathVariable String room_id) {
+        List<Window_Object> windows = postgreSQLJDBC.getWindows(c, room_id);
+        if (windows == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(windows, HttpStatus.OK);
+    }
+
+    @PostMapping("Rooms/{room_id}/Windows")
+    public ResponseEntity<List<Window_Object>> addWindows(@PathVariable String room_id, @RequestBody Window_Object windowObject) {
+        List<Window_Object> windows = postgreSQLJDBC.addWindow(c, room_id, windowObject);
+        if (windows == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(windows, HttpStatus.OK);
+    }
+
+    @GetMapping("/Rooms/{room_id}/Windows/{window_id}")
+    public ResponseEntity<Window_Object> getRoomWindow(@PathVariable String room_id, @PathVariable String window_id) {
+        Window_Object window = postgreSQLJDBC.getWindow(c, window_id);
+        if (window == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(window, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/Rooms/{room_id}/Windows/{window_id}")
+    public ResponseEntity<String> windowDoor(@PathVariable String room_id, @PathVariable String window_id) {
+        boolean isDeleted = postgreSQLJDBC.deleteWindow(c, window_id);
+        if (isDeleted) {
+            return new ResponseEntity<>("Door with id " + window_id + " has been deleted", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Door with id " + window_id + " not found", HttpStatus.NOT_FOUND);
+        }
+    }
+
 }

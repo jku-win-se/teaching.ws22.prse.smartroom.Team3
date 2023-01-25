@@ -14,13 +14,11 @@
             </font>
         </Label>
         <Label layoutX="63.0" layoutY="166.0" text="Größe" />
-        <TextField fx:id="roomSize" layoutX="110.0" layoutY="163.0" onAction="#getRoomSize" />
-        <Button fx:id="bestätigenButton" layoutX="149.0" layoutY="230.0" mnemonicParsing="false" onAction="#createNewRoom" text="Bestätigen" />
-        <Button fx:id="backToRoomOverviewButton" layoutX="88.0" layoutY="304.0" mnemonicParsing="false" onAction="#switchToStartScene" text="Zurück zur Room Overview" />
         <TextField fx:id="roomId" layoutX="110.0" layoutY="129.0" onAction="#getRoomId" />
+        <TextField fx:id="roomSize" layoutX="110.0" layoutY="163.0" onAction="#getRoomSize" />
+        <Button fx:id="bestätigenButton" layoutX="149.0" layoutY="200.0" mnemonicParsing="false" onAction="#createNewRoom" text="Bestätigen" />
+        <Button fx:id="backToRoomOverviewButton" layoutX="88.0" layoutY="304.0" mnemonicParsing="false" onAction="#switchToStartScene" text="Zurück zur Room Overview" />
         <Label layoutX="55.0" layoutY="133.0" text="Room ID" />
-        <TextField fx:id="measurementUnit" layoutX="110.0" layoutY="194.0" onAction="#getMeasurementUnit" />
-        <Label layoutX="66.0" layoutY="198.0" text="Unit" />
         <Label fx:id="createdRoom" layoutX="100.0" layoutY="262.0" text="|" />
     </children>
 </AnchorPane>
