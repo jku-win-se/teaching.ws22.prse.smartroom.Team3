@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="545.0" prefWidth="851.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.jku.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="545.0" prefWidth="851.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.jku.Controller">
     <children>
       <HBox layoutY="1.0">
          <children>
@@ -29,7 +29,7 @@
                       </Menu>
                       <Menu mnemonicParsing="false" text="Automation">
                           <items>
-                              <MenuItem mnemonicParsing="false" text="Enable Auto Rules" />
+                              <MenuItem mnemonicParsing="false" onAction="#enableAutoRules" text="Enable Auto Rules" />
                           </items>
                       </Menu>
                   </menus>
@@ -70,7 +70,7 @@
          </font>
       </Label>
       <Button layoutX="659.0" layoutY="217.0" mnemonicParsing="false" onAction="#changeStatus" text="Change Status" />
-      <LineChart layoutX="393.0" layoutY="341.0" prefHeight="204.0" prefWidth="202.0">
+      <LineChart fx:id="tempChart" layoutX="393.0" layoutY="341.0" prefHeight="204.0" prefWidth="202.0">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -78,7 +78,7 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <LineChart layoutX="622.0" layoutY="341.0" prefHeight="204.0" prefWidth="202.0">
+      <LineChart fx:id="peopleChart" layoutX="622.0" layoutY="341.0" prefHeight="204.0" prefWidth="202.0">
          <xAxis>
             <CategoryAxis side="BOTTOM" />
          </xAxis>
@@ -87,7 +87,7 @@
          </yAxis>
       </LineChart>
       <Button fx:id="deleteComponentButton" layoutX="659.0" layoutY="260.0" mnemonicParsing="false" onAction="#deleteComponent" text="Delete Component" />
-      <LineChart layoutX="178.0" layoutY="348.0" prefHeight="204.0" prefWidth="202.0">
+      <LineChart fx:id="co2Chart" layoutX="178.0" layoutY="348.0" prefHeight="204.0" prefWidth="202.0">
          <xAxis>
             <CategoryAxis side="BOTTOM" />
          </xAxis>
@@ -95,7 +95,7 @@
             <NumberAxis side="LEFT" />
          </yAxis>
       </LineChart>
-      <Label layoutX="265.0" layoutY="324.0" text="CO2 Value" />
+      <Label layoutX="200.0" layoutY="324.0" text="CO2 Value" />
       <Label layoutX="466.0" layoutY="324.0" text="Temp Value" />
       <Label layoutX="691.0" layoutY="324.0" text="People in Room" />
       <Button fx:id="createRoom1" layoutX="660.0" layoutY="174.0" mnemonicParsing="false" onAction="#switchToUpdateRoomScene" prefWidth="100.0" text="Update Room" />

@@ -10,6 +10,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
@@ -19,10 +21,12 @@ import javafx.util.Callback;
 
 import java.io.*;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.util.*;
 
 public class Controller implements Initializable {
 
@@ -103,6 +107,28 @@ public class Controller implements Initializable {
     private TableColumn<Room_Object, Integer> size = new TableColumn<>();
     @FXML
     private TableColumn<Room_Object, Integer> name = new TableColumn<>();
+
+    @FXML
+    private LineChart co2Chart;
+    @FXML
+    private LineChart.Series<String,Integer> seriesCo2 = new LineChart.Series();
+    @FXML
+    private ObservableList<XYChart.Series<String,Integer>> co2ChartData = FXCollections.observableArrayList();
+
+    @FXML
+    private LineChart tempChart;
+    @FXML
+    private LineChart.Series<String,Integer> seriesTemp = new LineChart.Series();
+    @FXML
+    private ObservableList<XYChart.Series<String,Integer>> tempChartData = FXCollections.observableArrayList();
+
+    @FXML
+    private LineChart peopleChart;
+    @FXML
+    private LineChart.Series<String,Integer> peopleSeries = new LineChart.Series();
+    @FXML
+    private ObservableList<XYChart.Series<String,Integer>> peopleChartData = FXCollections.observableArrayList();
+
     @FXML
     private TableColumn<Room_Object, Integer> unit;
 
@@ -115,6 +141,9 @@ public class Controller implements Initializable {
     String globalMeasurementUnit = "m2";
     ObservableList<Room_Object> rooms = FXCollections.observableArrayList(client.getRooms());
     ObservableList<Component> details = FXCollections.observableArrayList();
+
+
+
 
 
 
@@ -133,14 +162,14 @@ public class Controller implements Initializable {
 
         for(Power_Plug_Object p : fans)
         {
-            components.add(new Component(p.getPlug_id(),p.getName(),room_id,ComponentType.FAN,false));
+            components.add(new Component(p.getPlug_id(),p.getName(),room_id,ComponentType.FAN,true));
         }
 
         List<Door_Object> doors = client.getAllRoomDoor(room_id);
 
         for(Door_Object d : doors)
         {
-            components.add(new Component(d.getDoor_id(),d.getName(),room_id,ComponentType.DOOR,false));
+            components.add(new Component(d.getDoor_id(),d.getName(),room_id,ComponentType.DOOR,true));
         }
 
         List<Window_Object> windows = client.getAllRoomWindows(room_id);
@@ -268,6 +297,7 @@ public class Controller implements Initializable {
         createdLight.setText(windowName + " wurde hinzugefügt");
     }
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -279,6 +309,7 @@ public class Controller implements Initializable {
         type.setCellValueFactory(new PropertyValueFactory<Component, Integer>("type"));
         status.setCellValueFactory(new PropertyValueFactory<Component, Integer>("status"));
 
+        peopleChart.setTitle("People");
 
         detailTableView.setItems(details);
 
@@ -336,6 +367,8 @@ public class Controller implements Initializable {
         }
 
         peopleInRoomLabel.setText("People in Room: " + client.getPeopleCount(roomId).getPeople_count());
+
+
     }
 
     @FXML
@@ -393,6 +426,12 @@ public class Controller implements Initializable {
         //deviceLabel1.setText(details.);
         //Test
 
+        //People Line Chart
+        //peopleChart.getData().removeAll();
+        //peopleSeries.getData().add(new XYChart.Data<String,Integer>("test", client.getPeopleCount(roomId).getPeople_count()));
+        //peopleChartData.add(peopleSeries);
+        //peopleChart.setData(peopleChartData);
+
         details.addAll(currentRoom.getAllComponents());
 
 
@@ -420,7 +459,7 @@ public class Controller implements Initializable {
 
         Component component = detailTableView.getSelectionModel().getSelectedItem();
 
-        client.deleteRoomLight(component.getRoom_id(), component.getId()); ////Muss noch umgeschrieben werden auf deleteComponent
+        client.deleteRoomLight(component.getRoom_id(), component.getId());
         client.deleteVent(component.getRoom_id(), component.getId());
         client.deleteDoor(component.getRoom_id(), component.getId());
         client.deleteWindow(component.getRoom_id(),component.getId());
@@ -434,7 +473,11 @@ public class Controller implements Initializable {
 
         Component component = detailTableView.getSelectionModel().getSelectedItem();
 
-        component.changeStatus();
+        //component.changeStatus();
+
+        boolean status = component.getStatus();
+
+        component.setStatus( (!status) );
 
         System.out.println(component.getStatus()); //zum testen
 
@@ -592,6 +635,53 @@ public class Controller implements Initializable {
         return unit;
     }
 
+    @FXML
+    public void enableAutoRules(){
+        addRandomCo2();
+        addRandomTemp();
+    }
+
+    public void addRandomTemp(){
+        seriesTemp.getData().clear();
+        for (int i = 0; i < 14; i++) {
+            int random = (int)(Math.random()*(100-20+1)+20);
+            seriesTemp.getData().add(new XYChart.Data<String, Integer>(Integer.toString(i),random));
+        }
+        int randomLast = (int)(Math.random()*(100-20+1)+20);
+        seriesTemp.getData().add(new XYChart.Data<String, Integer>(Integer.toString(15),randomLast));
+        if (randomLast > 70){
+            //openAllDoors();
+        }
+
+        tempChartData.add(seriesTemp);
+        tempChart.setData(tempChartData);
+
+    }
+
+    @FXML
+    public void addRandomCo2(){
+        seriesCo2.getData().clear();
+
+        for (int i = 0; i < 14; i++) {
+            int random = (int)(Math.random()*(1400-500+1)+500);
+            seriesCo2.getData().add(new XYChart.Data<String, Integer>(Integer.toString(i),random));
+        }
+        int randomLast = (int)(Math.random()*(1400-500+1)+500);
+        seriesCo2.getData().add(new XYChart.Data<String, Integer>(Integer.toString(15),randomLast));
+
+        if(randomLast < 800){
+            roomTableView.setStyle("-fx-selection-bar: green; -fx-selection-bar-non-focused: green;");
+        }else if(randomLast > 800 && randomLast < 1000){
+            roomTableView.setStyle("-fx-selection-bar: yellow; -fx-selection-bar-non-focused: yellow;");
+        }else {
+            roomTableView.setStyle("-fx-selection-bar: red; -fx-selection-bar-non-focused: red;");
+            //openAllWindows();
+            //switchAllVentilatorsOn();
+        }
+
+        co2ChartData.add(seriesCo2);
+        co2Chart.setData(co2ChartData);
+    }
 
 
 
