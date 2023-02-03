@@ -1,0 +1,22 @@
+
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ù¬¢©
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ù¬¢©
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ù¬¢©
+e	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³ãç<
+k	java:S117'"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÂÌÈÐûÿÿÿÿ
+f	java:S117/"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ö¯ð¶
+b	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ƒ±»¿
+n	java:S116
+"TRename this field "room_size" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²ÝÄúÿÿÿÿ
+u	java:S116"[Rename this field "measurement_unit" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…ØÎÿÿÿÿÿ
+l	java:S116"RRename this field "room_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³‚ŽÑúÿÿÿÿ
+u
+java:S41447"ZUpdate this method so that its implementation is not identical to "getRoom_id" on line 43.(ü¬ö’ùÿÿÿÿ
+b	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©‰†^
+b	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³ãç<
+b	java:S100#"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·ýšv
+h	java:S100'"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÂÌÈÐûÿÿÿÿ
+h	java:S100+"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨ÒÛõúÿÿÿÿ
+c	java:S100/"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ö¯ð¶
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8Ã¬éÁá0
