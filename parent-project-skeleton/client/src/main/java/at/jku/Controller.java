@@ -23,13 +23,8 @@ import javafx.util.Callback;
 import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Timestamp;
-import java.time.Instant;
 import java.util.*;
-import java.util.logging.Logger;
 
 public class Controller implements Initializable {
 
@@ -128,7 +123,7 @@ public class Controller implements Initializable {
     @FXML
     private LineChart peopleChart;
     @FXML
-    private LineChart.Series<String,Integer> peopleSeries = new LineChart.Series();
+    private LineChart.Series<String,Integer> seriesPeople = new LineChart.Series();
     @FXML
     private ObservableList<XYChart.Series<String,Integer>> peopleChartData = FXCollections.observableArrayList();
 
@@ -643,9 +638,27 @@ public class Controller implements Initializable {
     public void enableAutoRules(){
         addRandomCo2();
         addRandomTemp();
+        addRandomPeople();
+    }
+
+    public void addRandomPeople(){
+
+        seriesPeople.getData().clear();
+        for (int i = 0; i < 10; i++) {
+            int random = (int)(Math.random()* 30);
+            seriesPeople.getData().add(new XYChart.Data<String, Integer>(Integer.toString(i),random));
+        }
+        int random = (int)(Math.random()* 30);
+        seriesPeople.getData().add(new XYChart.Data<String, Integer>(" ",random));
+
+
+        peopleChartData.add(seriesPeople);
+        peopleChart.setData(peopleChartData);
+
     }
 
     public void addRandomTemp(){
+
         seriesTemp.getData().clear();
         for (int i = 0; i < 10; i++) {
             int random = (int)(Math.random()*(100-20+1)+20);
@@ -667,6 +680,7 @@ public class Controller implements Initializable {
 
     @FXML
     public void addRandomCo2(){
+
         seriesCo2.getData().clear();
 
         for (int i = 0; i < 10; i++) {

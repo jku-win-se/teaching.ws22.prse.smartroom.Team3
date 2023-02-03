@@ -75,7 +75,7 @@
           <CategoryAxis side="BOTTOM" />
         </xAxis>
         <yAxis>
-          <NumberAxis side="LEFT" />
+          <NumberAxis label="degrees" side="LEFT" upperBound="75.0" />
         </yAxis>
       </LineChart>
       <LineChart fx:id="peopleChart" layoutX="622.0" layoutY="341.0" prefHeight="204.0" prefWidth="202.0" title="People in Room">
@@ -83,7 +83,7 @@
             <CategoryAxis side="BOTTOM" />
          </xAxis>
          <yAxis>
-            <NumberAxis side="LEFT" />
+            <NumberAxis label="people" minorTickCount="1" minorTickLength="1.0" side="LEFT" tickUnit="1.0" upperBound="25.0" />
          </yAxis>
       </LineChart>
       <Button fx:id="deleteComponentButton" layoutX="659.0" layoutY="260.0" mnemonicParsing="false" onAction="#deleteComponent" text="Delete Component" />
@@ -92,7 +92,7 @@
             <CategoryAxis side="BOTTOM" />
          </xAxis>
          <yAxis>
-            <NumberAxis side="LEFT" />
+            <NumberAxis label="ppm" side="LEFT" upperBound="1300.0" />
          </yAxis>
       </LineChart>
       <Button fx:id="createRoom1" layoutX="660.0" layoutY="174.0" mnemonicParsing="false" onAction="#switchToUpdateRoomScene" prefWidth="100.0" text="Update Room" />

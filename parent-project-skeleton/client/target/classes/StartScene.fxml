@@ -83,7 +83,7 @@
             <CategoryAxis side="BOTTOM" />
          </xAxis>
          <yAxis>
-            <NumberAxis side="LEFT" />
+            <NumberAxis minorTickCount="1" minorTickLength="1.0" side="LEFT" tickUnit="1.0" upperBound="25.0" />
          </yAxis>
       </LineChart>
       <Button fx:id="deleteComponentButton" layoutX="659.0" layoutY="260.0" mnemonicParsing="false" onAction="#deleteComponent" text="Delete Component" />
