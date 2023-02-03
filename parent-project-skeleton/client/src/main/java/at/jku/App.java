@@ -25,12 +25,9 @@ public class App {
 
 
         Client client = new Client();
-        Room r = new Room();
-        r.setSize(23);
-        r.setName("room1");
-        r.addLight("light1","lamp",false);
-        List<Lights_Object> l = client.getAllLights("room1");
-        r.getAllComponents();
+
+        System.out.println("add 10: " + client.addPeopleRoom("Schlafzimmer",11));
+
 /*
         System.out.println("add 1: " + client.addRoom("room1", 5, "m2"));
 //        System.out.println("add 2: " + client.addRoom("room2", 6, "m2"));

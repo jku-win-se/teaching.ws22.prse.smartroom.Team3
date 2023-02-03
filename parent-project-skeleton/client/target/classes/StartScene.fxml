@@ -23,7 +23,7 @@
                   <menus>
                       <Menu mnemonicParsing="false" text="File">
                           <items>
-                              <MenuItem mnemonicParsing="false" text="Load Data From CSV-FileAction" />
+                              <MenuItem fx:id="loadDataFromCsv" mnemonicParsing="false" onAction="#loadDataFromCsv" text="Load Data From CSV-File" />
                               <MenuItem fx:id="saveToCsvData" mnemonicParsing="false" onAction="#saveToCsvData" text="Save to CSV-Data" />
                           </items>
                       </Menu>
@@ -70,7 +70,7 @@
          </font>
       </Label>
       <Button layoutX="659.0" layoutY="217.0" mnemonicParsing="false" onAction="#changeStatus" text="Change Status" />
-      <LineChart fx:id="tempChart" layoutX="393.0" layoutY="341.0" prefHeight="204.0" prefWidth="202.0">
+      <LineChart fx:id="tempChart" layoutX="393.0" layoutY="341.0" prefHeight="204.0" prefWidth="202.0" title="Temp Value">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -78,7 +78,7 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <LineChart fx:id="peopleChart" layoutX="622.0" layoutY="341.0" prefHeight="204.0" prefWidth="202.0">
+      <LineChart fx:id="peopleChart" layoutX="622.0" layoutY="341.0" prefHeight="204.0" prefWidth="202.0" title="People in Room">
          <xAxis>
             <CategoryAxis side="BOTTOM" />
          </xAxis>
@@ -87,7 +87,7 @@
          </yAxis>
       </LineChart>
       <Button fx:id="deleteComponentButton" layoutX="659.0" layoutY="260.0" mnemonicParsing="false" onAction="#deleteComponent" text="Delete Component" />
-      <LineChart fx:id="co2Chart" layoutX="178.0" layoutY="348.0" prefHeight="204.0" prefWidth="202.0">
+      <LineChart fx:id="co2Chart" layoutX="178.0" layoutY="348.0" prefHeight="204.0" prefWidth="202.0" title="CO2 Value">
          <xAxis>
             <CategoryAxis side="BOTTOM" />
          </xAxis>
@@ -95,9 +95,6 @@
             <NumberAxis side="LEFT" />
          </yAxis>
       </LineChart>
-      <Label layoutX="200.0" layoutY="324.0" text="CO2 Value" />
-      <Label layoutX="466.0" layoutY="324.0" text="Temp Value" />
-      <Label layoutX="691.0" layoutY="324.0" text="People in Room" />
       <Button fx:id="createRoom1" layoutX="660.0" layoutY="174.0" mnemonicParsing="false" onAction="#switchToUpdateRoomScene" prefWidth="100.0" text="Update Room" />
     </children>
 </AnchorPane>

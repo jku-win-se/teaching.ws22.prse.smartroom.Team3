@@ -14,6 +14,7 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import at.jku.clientObjects.*;
 import javafx.util.Callback;
@@ -21,12 +22,14 @@ import javafx.util.Callback;
 
 import java.io.*;
 import java.net.URL;
+import java.nio.file.Files;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.*;
+import java.util.logging.Logger;
 
 public class Controller implements Initializable {
 
@@ -180,6 +183,7 @@ public class Controller implements Initializable {
         }
 
 
+
 /*
         //client.getCurrentLightStatus(room_id,l.getLight_id()).isTurnon(); in status of for()
 
@@ -213,14 +217,7 @@ public class Controller implements Initializable {
     }
 
 
-    @FXML
-    public void switchToRoomScene(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getClassLoader().getResource("RoomScene.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
+
 
 
     @FXML
@@ -309,7 +306,6 @@ public class Controller implements Initializable {
         type.setCellValueFactory(new PropertyValueFactory<Component, Integer>("type"));
         status.setCellValueFactory(new PropertyValueFactory<Component, Integer>("status"));
 
-        peopleChart.setTitle("People");
 
         detailTableView.setItems(details);
 
@@ -349,25 +345,33 @@ public class Controller implements Initializable {
 
 
     @FXML
-    public void showDetails(){
-        details.clear();
+    public void loadDataFromCsv() throws SQLException, IOException {
+        FileChooser fc = new FileChooser();
+        File selectedFile = fc.showOpenDialog(null);
 
-        Room_Object room = roomTableView.getSelectionModel().getSelectedItem();
-        String roomId = room.getRoom_id();
-        System.out.println(roomId);
+        List<String> lines = Files.readAllLines(selectedFile.toPath());
 
-        details.addAll((Collection<? extends Component>) client.getRoomLight(roomId, "Light10"));
+        for(int i = 1; i < lines.size(); i++) {
 
-        System.out.println(client.getRoomLight(roomId, "Light10"));
-        System.out.println(client.getPeopleCount(roomId));
+            String[] fields = lines.get(i).split(",");
 
+            client.addRoom(fields[0], Double.parseDouble(fields[1]), globalMeasurementUnit);
 
-        for ( int i = 0; i < details.size(); i++ ) {
-            detailTableView.setItems(details);
+            if (fields[3].equals(ComponentType.LIGHT.toString()))
+                client.addLight(fields[0], fields[2], fields[2]);
+
+            if (fields[3].equals(ComponentType.DOOR.toString()))
+                client.addRoomDoor(fields[0], fields[2], fields[2]);
+
+            if (fields[3].equals(ComponentType.FAN.toString()))
+                client.addVentilator(fields[0], fields[2], fields[2]);
+
+            if (fields[3].equals(ComponentType.WINDOW.toString()))
+                client.addRoomWindow(fields[0], fields[2], fields[2]);
         }
 
-        peopleInRoomLabel.setText("People in Room: " + client.getPeopleCount(roomId).getPeople_count());
-
+        rooms.clear();
+        roomTableView.setItems(getRooms());
 
     }
 
@@ -422,7 +426,7 @@ public class Controller implements Initializable {
 
         roomNameLabel.setText(currentRoom.getRoom_id());
         roomSizeLabel.setText("Size: " + currentRoom.getSize() + " " + globalMeasurementUnit);
-        peopleInRoomLabel.setText("People in Room: " + client.getPeopleCount(roomId).getPeople_count());
+        //peopleInRoomLabel.setText("People in Room: " + client.getPeopleCount(roomId).getPeople_count());
         //deviceLabel1.setText(details.);
         //Test
 
@@ -643,14 +647,17 @@ public class Controller implements Initializable {
 
     public void addRandomTemp(){
         seriesTemp.getData().clear();
-        for (int i = 0; i < 14; i++) {
+        for (int i = 0; i < 10; i++) {
             int random = (int)(Math.random()*(100-20+1)+20);
             seriesTemp.getData().add(new XYChart.Data<String, Integer>(Integer.toString(i),random));
         }
-        int randomLast = (int)(Math.random()*(100-20+1)+20);
-        seriesTemp.getData().add(new XYChart.Data<String, Integer>(Integer.toString(15),randomLast));
-        if (randomLast > 70){
+        int random = (int)(Math.random()*(100-20+1)+20);
+        seriesTemp.getData().add(new XYChart.Data<String, Integer>(" ",random));
+        if (random > 70){
             //openAllDoors();
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Temperature is above 70 degrees");
+            alert.showAndWait();
         }
 
         tempChartData.add(seriesTemp);
@@ -662,19 +669,19 @@ public class Controller implements Initializable {
     public void addRandomCo2(){
         seriesCo2.getData().clear();
 
-        for (int i = 0; i < 14; i++) {
+        for (int i = 0; i < 10; i++) {
             int random = (int)(Math.random()*(1400-500+1)+500);
             seriesCo2.getData().add(new XYChart.Data<String, Integer>(Integer.toString(i),random));
         }
-        int randomLast = (int)(Math.random()*(1400-500+1)+500);
-        seriesCo2.getData().add(new XYChart.Data<String, Integer>(Integer.toString(15),randomLast));
+        int random = (int)(Math.random()*(1400-500+1)+500);
+        seriesCo2.getData().add(new XYChart.Data<String, Integer>(" ",random));
 
-        if(randomLast < 800){
-            roomTableView.setStyle("-fx-selection-bar: green; -fx-selection-bar-non-focused: green;");
-        }else if(randomLast > 800 && randomLast < 1000){
-            roomTableView.setStyle("-fx-selection-bar: yellow; -fx-selection-bar-non-focused: yellow;");
+        if(random < 800){
+            roomTableView.setStyle("-fx-selection-bar: green;");
+        }else if(random > 800 && random < 1000){
+            roomTableView.setStyle("-fx-selection-bar: yellow;");
         }else {
-            roomTableView.setStyle("-fx-selection-bar: red; -fx-selection-bar-non-focused: red;");
+            roomTableView.setStyle("-fx-selection-bar: red;");
             //openAllWindows();
             //switchAllVentilatorsOn();
         }
