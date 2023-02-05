@@ -1,0 +1,198 @@
+
+E
+java:S3740n"/Provide the parametrized type for this generic.(¹®…Ä
+E
+java:S3740p"/Provide the parametrized type for this generic.(ê¸ıÜ
+E
+java:S3740u"/Provide the parametrized type for this generic.(„ª´º
+J
+java:S3740w"/Provide the parametrized type for this generic.(˜œŒ¦úÿÿÿÿ
+J
+java:S3740|"/Provide the parametrized type for this generic.(ì¿şíøÿÿÿÿ
+E
+java:S3740~"/Provide the parametrized type for this generic.(±™Ğ
+t
+java:S2293]"YReplace the type specification in this constructor call with the diamond operator ("<>").(†Çüÿÿÿÿ
+t
+java:S2293a"YReplace the type specification in this constructor call with the diamond operator ("<>").(‡„±Šıÿÿÿÿ
+u
+java:S2293¨"YReplace the type specification in this constructor call with the diamond operator ("<>").(›ı®Öüÿÿÿÿ
+u
+java:S2293©"YReplace the type specification in this constructor call with the diamond operator ("<>").(ö‚İ—ûÿÿÿÿ
+p
+java:S2293¬"YReplace the type specification in this constructor call with the diamond operator ("<>").(æÀœ¨
+u
+java:S2293­"YReplace the type specification in this constructor call with the diamond operator ("<>").(˜Ö¥Øşÿÿÿÿ
+p
+java:S2293®"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÚƒÂä
+p
+java:S2293‰"YReplace the type specification in this constructor call with the diamond operator ("<>").(¤ĞÕÌ
+p
+java:S2293Œ"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ïöß
+u
+java:S2293™"YReplace the type specification in this constructor call with the diamond operator ("<>").(ßƒ¦»øÿÿÿÿ
+u
+java:S2293œ"YReplace the type specification in this constructor call with the diamond operator ("<>").(»ÿ¶øÿÿÿÿ
+u
+java:S2293°"YReplace the type specification in this constructor call with the diamond operator ("<>").(”ÁÇãÿÿÿÿÿ
+p
+java:S2293³"YReplace the type specification in this constructor call with the diamond operator ("<>").(üÀñ˜
+k
+java:S1192õ"TDefine a constant instead of duplicating this literal " wurde hinzugefÃ¼gt" 4 times.(îìùü
+l	java:S117”"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñÕÚ¿úÿÿÿÿ
+g	java:S117Á"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†ê¸‰
+l	java:S117¿"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Š£äøÿÿÿÿ
+D
+java:S1604¿"(Make this anonymous inner class a lambda(º³Öœüÿÿÿÿ
+W	java:S110³"<This class has 9 parents which is greater than 5 authorized.(ú ¤ ûÿÿÿÿ
+Q	java:S110Â"<This class has 9 parents which is greater than 5 authorized.(„²¡R
+y
+java:S1488—"]Immediately return this expression instead of assigning it to the temporary variable "rooms".(ğüÊ›ıÿÿÿÿ
+s
+java:S1488í"\Immediately return this expression instead of assigning it to the temporary variable "name".(¾Ùè†
+x
+java:S1488õ"\Immediately return this expression instead of assigning it to the temporary variable "name".(Û¶äûùÿÿÿÿ
+s
+java:S1488ÿ"\Immediately return this expression instead of assigning it to the temporary variable "name".(íÄˆ¹
+s
+java:S1488‡"\Immediately return this expression instead of assigning it to the temporary variable "name".(ä±ÑŞ
+s
+java:S1488¨"\Immediately return this expression instead of assigning it to the temporary variable "size".(÷•Ú“
+s
+java:S1488¯"\Immediately return this expression instead of assigning it to the temporary variable "name".(È¾ø¡
+s
+java:S1488¶"\Immediately return this expression instead of assigning it to the temporary variable "room".(¸Öı
+x
+java:S1488¾"\Immediately return this expression instead of assigning it to the temporary variable "unit".(áÎë…ıÿÿÿÿ
+x
+java:S1488Å"\Immediately return this expression instead of assigning it to the temporary variable "unit".(æÒ¤áùÿÿÿÿ
+{
+java:S1488Í"_Immediately return this expression instead of assigning it to the temporary variable "peoples".(÷ãùÿÿÿÿ
+x
+java:S1488Õ"\Immediately return this expression instead of assigning it to the temporary variable "unit".(ØÁèœşÿÿÿÿ
+s
+java:S1488Ü"\Immediately return this expression instead of assigning it to the temporary variable "unit".(ã¾‹Ö
+x
+java:S1488ã"\Immediately return this expression instead of assigning it to the temporary variable "unit".(Ï”ä‚ıÿÿÿÿ
+x
+java:S1488ê"\Immediately return this expression instead of assigning it to the temporary variable "unit".(æÒ¤áùÿÿÿÿ
+x
+java:S1488ñ"\Immediately return this expression instead of assigning it to the temporary variable "unit".(’ÔÇæúÿÿÿÿ
+s
+java:S1488ø"\Immediately return this expression instead of assigning it to the temporary variable "unit".(³ÕˆÉ
+i
+java:S1104†"RMake client a static final constant or non-public and provide accessors if needed.(èÁİ¸
+h
+java:S2095ø"LUse try-with-resources or close this "BufferedWriter" in a "finally" clause.(¢¦¥”ùÿÿÿÿ
+u
+java:S4144é"YUpdate this method so that its implementation is not identical to "getFanId" on line 580.(ÚŒÖÃøÿÿÿÿ
+W
+java:S3252p"AUse static access with "javafx.scene.chart.XYChart" for "Series".(ê¸ıÜ
+\
+java:S3252w"AUse static access with "javafx.scene.chart.XYChart" for "Series".(˜œŒ¦úÿÿÿÿ
+W
+java:S3252~"AUse static access with "javafx.scene.chart.XYChart" for "Series".(±™Ğ
+Q
+java:S1117˜":Rename "lights" which hides the field declared at line 86.(©˜Ğ¶
+O
+java:S1117Ÿ"8Rename "fans" which hides the field declared at line 88.(Ò¢âØ
+Q	java:S125·"<This block of commented-out lines of code should be removed.( ­Ñb
+ˆ
+java:S1130î"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(îÒ’ÿÿÿÿÿ
+Y
+java:S1117ñ"=Rename "lightName" which hides the field declared at line 72.(Ù»åŸùÿÿÿÿ
+W
+java:S1117ò";Rename "lightId" which hides the field declared at line 74.(ïä·„ùÿÿÿÿ
+ˆ
+java:S1130‚"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(ˆ×±¥ùÿÿÿÿ
+R
+java:S1117…";Rename "fanName" which hides the field declared at line 52.(ô¤š¤
+ƒ
+java:S1130"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(§ˆ¿
+X
+java:S1117‘"<Rename "doorName" which hides the field declared at line 84.(èã‚®úÿÿÿÿ
+V
+java:S1117’":Rename "doorId" which hides the field declared at line 78.(óìÑªıÿÿÿÿ
+ˆ
+java:S1130š"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(Ç¼ ¾şÿÿÿÿ
+U
+java:S1117">Rename "windowName" which hides the field declared at line 82.(é‰¥¾
+S
+java:S1117"<Rename "windowId" which hides the field declared at line 80.(Ëàÿ´
+W	java:S125ª"<This block of commented-out lines of code should be removed.(ºÍÉ±şÿÿÿÿ
+Š
+java:S1130×"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(º¢Òïüÿÿÿÿ
+F
+java:S2093ù"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ
+V
+java:S1117—":Rename "rooms" which hides the field declared at line 140.(ğüÊ›ıÿÿÿÿ
+V
+java:S1117¡":Rename "roomId" which hides the field declared at line 68.(ÜÆí‹ÿÿÿÿÿ
+W	java:S125¨"<This block of commented-out lines of code should be removed.(ßÅõÄûÿÿÿÿ
+R	java:S125­"<This block of commented-out lines of code should be removed.(ÛÙ¨Ë
+ˆ
+java:S1130½"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(”’—Óÿÿÿÿÿ
+R
+java:S1117İ";Rename "status" which hides the field declared at line 102.(À®ç÷
+W	java:S125Û"<This block of commented-out lines of code should be removed.(¤—ƒÿÿÿÿÿ
+ƒ
+java:S1130ë"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(—ƒ¤š
+P
+java:S1117í"9Rename "name" which hides the field declared at line 106.(¾Ùè†
+ƒ
+java:S1130ó"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(º€¹“
+U
+java:S1117õ"9Rename "name" which hides the field declared at line 106.(Û¶äûùÿÿÿÿ
+ˆ
+java:S1130ı"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(Ô£á¤ûÿÿÿÿ
+P
+java:S1117ÿ"9Rename "name" which hides the field declared at line 106.(íÄˆ¹
+ˆ
+java:S1130…"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(†”Â…şÿÿÿÿ
+P
+java:S1117‡"9Rename "name" which hides the field declared at line 106.(ä±ÑŞ
+ƒ
+java:S1130"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(á®ˆ¶
+V
+java:S1117”":Rename "people" which hides the field declared at line 76.(ß×‘Öûÿÿÿÿ
+R	java:S125 "<This block of commented-out lines of code should be removed.(õ·ş°
+ˆ
+java:S1130§"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(¦÷İÖÿÿÿÿÿ
+P
+java:S1117¨"9Rename "size" which hides the field declared at line 104.(÷•Ú“
+ƒ
+java:S1130®"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(é¹í¤
+P
+java:S1117¯"9Rename "name" which hides the field declared at line 106.(È¾ø¡
+U
+java:S1117¾"9Rename "unit" which hides the field declared at line 130.(áÎë…ıÿÿÿÿ
+U
+java:S1117Å"9Rename "unit" which hides the field declared at line 130.(æÒ¤áùÿÿÿÿ
+U
+java:S1117Õ"9Rename "unit" which hides the field declared at line 130.(ØÁèœşÿÿÿÿ
+P
+java:S1117Ü"9Rename "unit" which hides the field declared at line 130.(ã¾‹Ö
+U
+java:S1117ã"9Rename "unit" which hides the field declared at line 130.(Ï”ä‚ıÿÿÿÿ
+U
+java:S1117ê"9Rename "unit" which hides the field declared at line 130.(æÒ¤áùÿÿÿÿ
+U
+java:S1117ñ"9Rename "unit" which hides the field declared at line 130.(’ÔÇæúÿÿÿÿ
+P
+java:S1117ø"9Rename "unit" which hides the field declared at line 130.(³ÕˆÉ
+@
+java:S2140ˆ")Use "java.util.Random.nextInt()" instead.(Ç§°¸
+@
+java:S2140‹")Use "java.util.Random.nextInt()" instead.(Ç§°¸
+@
+java:S2140˜")Use "java.util.Random.nextInt()" instead.(í–Åƒ
+@
+java:S2140›")Use "java.util.Random.nextInt()" instead.(í–Åƒ
+W	java:S125"<This block of commented-out lines of code should be removed.(èÏ‡²ıÿÿÿÿ
+E
+java:S2140¯")Use "java.util.Random.nextInt()" instead.(Ùá£Äúÿÿÿÿ
+E
+java:S2140²")Use "java.util.Random.nextInt()" instead.(Ùá£Äúÿÿÿÿ
+W	java:S125»"<This block of commented-out lines of code should be removed.(Ğ†±ıÿÿÿÿ
+W	java:S125Î"<This block of commented-out lines of code should be removed.(Öš©Ãüÿÿÿÿ
+Q	java:S125â"<This block of commented-out lines of code should be removed.(€ñˆ6

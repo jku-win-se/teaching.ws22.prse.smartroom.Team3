@@ -1,0 +1,38 @@
+
+‡
+java:S1130"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(àÒþüøÿÿÿÿ
+’
+java:S1130"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(àÒþüøÿÿÿÿ
+Q	java:S125 "<This block of commented-out lines of code should be removed.(–Àì
+X
+java:S1128"6Remove this unused import 'at.jku.clientObjects.Room'.(æšõÅûÿÿÿÿ8œ½Í´á0
+V
+java:S1128"9Remove this unused import 'at.jku.objects.Lights_Object'.(ªËæ8ÅˆÍ´á0
+C
+java:S1128".Remove this unused import 'jakarta.json.Json'.(‡Ñ¥T
+O
+java:S1128"4Remove this unused import 'jakarta.json.JsonObject'.(Òé¨¤üÿÿÿÿ
+V
+java:S1128";Remove this unused import 'jakarta.json.JsonObjectBuilder'.(™½ëÃþÿÿÿÿ
+J
+java:S1128"/Remove this unused import 'org.json.JSONArray'.(¬¸Ê’üÿÿÿÿ
+K
+java:S1128	"0Remove this unused import 'org.json.JSONObject'.(œÖ´üþÿÿÿÿ
+N
+java:S1128"3Remove this unused import 'java.net.Authenticator'.(ÏˆŽáúÿÿÿÿ
+W
+java:S1128"<Remove this unused import 'java.net.PasswordAuthentication'.(µßºåûÿÿÿÿ
+?
+java:S1128")Remove this unused import 'java.net.URI'.(Ö¦¨°
+P
+java:S1128"5Remove this unused import 'java.net.http.HttpClient'.(Œ³’Öþÿÿÿÿ
+Q
+java:S1128"6Remove this unused import 'java.net.http.HttpRequest'.(þ€ŠÍþÿÿÿÿ
+R
+java:S1128"7Remove this unused import 'java.net.http.HttpResponse'.(’ûÌûÿÿÿÿ
+F
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ÈˆÍ´á0
+I
+java:S1128".Remove this unused import 'java.util.Scanner'.(ÒÜÅ¸úÿÿÿÿ

@@ -1,0 +1,194 @@
+
+b
+java:S1192Ñ"FDefine a constant instead of duplicating this literal "/Open" 4 times.(¥Œ±èûÿÿÿÿ
+d
+java:S1192B"IDefine a constant instead of duplicating this literal "/Rooms/" 39 times.(„ªæ¼üÿÿÿÿ
+h
+java:S11921"RDefine a constant instead of duplicating this literal "application/json" 31 times.(¢¾»Ò
+d
+java:S1192œ"HDefine a constant instead of duplicating this literal "/Doors/" 5 times.(ï‹»íûÿÿÿÿ
+a
+java:S1192¦"JDefine a constant instead of duplicating this literal "/Windows/" 5 times.(“Í¯•
+e
+java:S1192‰"NDefine a constant instead of duplicating this literal "/Ventilators/" 4 times.(åı™†
+`
+java:S1192Ò"IDefine a constant instead of duplicating this literal "/Lights/" 7 times.(¬çùØ
+c
+java:S1192"LDefine a constant instead of duplicating this literal "/Activation" 4 times.(Ëˆ¨Ô
+d
+java:S11921"NDefine a constant instead of duplicating this literal "Content-Type" 31 times.(¢¾»Ò
+f	java:S117&"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¿æû«
+f	java:S117&"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¿æû«
+f	java:S117&"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¿æû«
+e	java:S1176"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•„™H
+k	java:S117@"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(û»°€ıÿÿÿÿ
+f	java:S117N"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ø¡º‹
+f	java:S117N"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ø¡º‹
+f	java:S117N"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ø¡º‹
+k	java:S117O"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ø²¬£ıÿÿÿÿ
+k	java:S117]"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“ë±öúÿÿÿÿ
+k	java:S117f"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼Ãìÿÿÿÿÿÿ
+k	java:S117s"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çŸÎ¿şÿÿÿÿ
+g	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹ÿ¬ş
+l	java:S117´"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ó£»Ãúÿÿÿÿ
+f	java:S117µ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚şØ`
+l	java:S117ñ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…Ù—ùÿÿÿÿ
+l	java:S117ÿ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™¿ƒíüÿÿÿÿ
+l	java:S117à"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´¢”™ùÿÿÿÿ
+g	java:S117á"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»†„á
+l	java:S117ï"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜£Õøÿÿÿÿ
+l	java:S117ù"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ğùä•ûÿÿÿÿ
+f	java:S117‡"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€’¿
+l	java:S117˜"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Êõ‹ùøÿÿÿÿ
+l	java:S117™"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿ­Îÿÿÿÿÿ
+g	java:S117§"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©– ğ
+l	java:S117®"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ä‚çğşÿÿÿÿ
+l	java:S117Æ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜´äİÿÿÿÿÿ
+l	java:S117Ó"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ê¤»ÿÿÿÿÿ
+g	java:S117€"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²ÈÃ“
+g	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„‰’Ì
+g	java:S117§"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®’Ğ
+l	java:S117¶"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿÄéöüÿÿÿÿ
+g	java:S117·"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„‰’Ì
+l	java:S117Å"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨»»²øÿÿÿÿ
+g	java:S117Í"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ï‰“À
+g	java:S117Í"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ï‰“À
+g	java:S117à"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿÕÇ¼
+g	java:S117à"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿÕÇ¼
+g	java:S117Š"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–´Ì
+g	java:S117‹"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÜĞä¥
+l	java:S117£"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹§‡µùÿÿÿÿ
+l	java:S117±"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãÍ¤ûÿÿÿÿ
+f	java:S117À"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãä‘
+g	java:S117Á"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÜĞä¥
+l	java:S117Ï"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ƒÆğúÿÿÿÿ
+g	java:S117×"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×èÄÌ
+g	java:S117×"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×èÄÌ
+l	java:S117ê"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Œµ”¾ûÿÿÿÿ
+l	java:S117ê"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Œµ”¾ûÿÿÿÿ
+l	java:S117ü"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(É¹“ÿÿÿÿÿ
+g	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ù…
+l	java:S117¡"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤ø—Åÿÿÿÿÿ
+l	java:S117³"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²ü¬Õşÿÿÿÿ
+x
+java:S14886"cImmediately return this expression instead of assigning it to the temporary variable "room_object".(•„™H
+~
+java:S1488]"cImmediately return this expression instead of assigning it to the temporary variable "room_object".(“ë±öúÿÿÿÿ
+z
+java:S1488¨"^Immediately return this expression instead of assigning it to the temporary variable "lights".(Ã°Õêûÿÿÿÿ
+€
+java:S1488ÿ"dImmediately return this expression instead of assigning it to the temporary variable "light_object".(™¿ƒíüÿÿÿÿ
+r
+java:S1488Õ"\Immediately return this expression instead of assigning it to the temporary variable "vent".(­Şª*
+†
+java:S1488ï"jImmediately return this expression instead of assigning it to the temporary variable "power_plug_object1".(˜£Õøÿÿÿÿ
+y
+java:S1488õ"]Immediately return this expression instead of assigning it to the temporary variable "doors".(»şûÿÿÿÿ
+€
+java:S1488Å"dImmediately return this expression instead of assigning it to the temporary variable "door_object1".(¨»»²øÿÿÿÿ
+v
+java:S1488ÿ"_Immediately return this expression instead of assigning it to the temporary variable "windows".(™Å§
+‚
+java:S1488Ï"fImmediately return this expression instead of assigning it to the temporary variable "window_object1".(ƒÆğúÿÿÿÿ
+0
+java:S1700"Rename field "client"(¨ÚÔıÿÿÿÿ
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ñÀìˆ
+t
+java:S2142"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+t
+java:S21428"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+V	java:S1257"<This block of commented-out lines of code should be removed.(†—†çÿÿÿÿÿ
+t
+java:S2142G"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+t
+java:S2142_"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+t
+java:S2142l"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+t
+java:S2142z"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+u
+java:S2142‘"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+u
+java:S2142¬"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+R	java:S125¢"<This block of commented-out lines of code should be removed.(ö‘¶Ë
+W	java:S125«"<This block of commented-out lines of code should be removed.(Ú»òñüÿÿÿÿ
+B
+java:S1168¯"+Return an empty collection instead of null.(¥¹ï
+u
+java:S2142Å"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+u
+java:S2142×"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+u
+java:S2142é"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+u
+java:S2142"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+u
+java:S2142˜"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+u
+java:S2142©"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+Z
+java:S1155¥">Use isEmpty() to check whether the collection is empty or not.(§ø‘üüÿÿÿÿ
+u
+java:S2142À"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+u
+java:S2142Ù"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+W	java:S125Ø"<This block of commented-out lines of code should be removed.(Ú»òñüÿÿÿÿ
+B
+java:S1168Ü"+Return an empty collection instead of null.(¥¹ï
+u
+java:S2142ò"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+W	java:S125ğ"<This block of commented-out lines of code should be removed.(×ßÕôıÿÿÿÿ
+u
+java:S2142"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+u
+java:S2142‘"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+u
+java:S2142©"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+u
+java:S2142¿"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+u
+java:S2142Î"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+u
+java:S2142ß"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+u
+java:S2142ù"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+W	java:S125ø"<This block of commented-out lines of code should be removed.(Õ–•ıÿÿÿÿ
+B
+java:S1168ü"+Return an empty collection instead of null.(¥¹ï
+u
+java:S2142‘"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+u
+java:S2142¡"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+u
+java:S2142°"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+u
+java:S2142Ç"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+u
+java:S2142Ù"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+u
+java:S2142ë"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+u
+java:S2142ƒ"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+W	java:S125‚"<This block of commented-out lines of code should be removed.(Õ–•ıÿÿÿÿ
+B
+java:S1168†"+Return an empty collection instead of null.(¥¹ï
+u
+java:S2142›"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+u
+java:S2142«"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+u
+java:S2142º"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+u
+java:S2142Ñ"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+u
+java:S2142ã"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+u
+java:S2142õ"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+u
+java:S2142ˆ"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+u
+java:S2142›"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+u
+java:S2142­"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
+u
+java:S2142¿"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
