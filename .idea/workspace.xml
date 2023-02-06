@@ -5,8 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="feb1e5aa-cf87-42a9-8180-1301f8cbca17" name="Changes" comment="Window+Door Impl">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_h2database_h2_1_4_200.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_19.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_19.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_19.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_19.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_19.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_19.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_19.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_19.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/StartScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/StartScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/client.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/PostgreSQLJDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/PostgreSQLJDBC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/objects/AirQuality_Properties_Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/objects/AirQuality_Properties_Object.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/objects/Lights_Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/objects/Lights_Object.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/objects/PeopleInRoomObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/objects/PeopleInRoomObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/objects/Room_Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/objects/Room_Object.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/PostgreSQLJDBC.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/PostgreSQLJDBC.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/RestApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/RestApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/objects/AirQuality_Properties_Object.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/objects/AirQuality_Properties_Object.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/objects/Door_Object.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/objects/Door_Object.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/objects/Light_Operation_Object.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/objects/Light_Operation_Object.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/objects/Light_Operation_Return_Object.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/objects/Light_Operation_Return_Object.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/objects/Lights_Object.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/objects/Lights_Object.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/objects/PeopleInRoomObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/objects/PeopleInRoomObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/objects/Plug_Activation_Object.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/objects/Plug_Activation_Object.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/objects/Power_Plug_Operation_Object.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/objects/Power_Plug_Operation_Object.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/objects/Room_Object.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/objects/Room_Object.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/objects/Update_PlugObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/objects/Update_PlugObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/objects/Window_Object.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/objects/Window_Object.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,15 +89,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RequestMappingsPanelOrder0" value="0" />
-    <property name="RequestMappingsPanelOrder1" value="1" />
-    <property name="RequestMappingsPanelWidth0" value="75" />
-    <property name="RequestMappingsPanelWidth1" value="75" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../Studium/Wirtschaftsinformatik/PR_Software_Engineering/Altes_Projekt_Feldler_Luki" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "WebServerToolWindowFactoryState": "false",
+    "spring.configuration.checksum": "bb9d6e2e09c4e2305b052de906e345d2"
+  }
+}]]></component>
   <component name="RunManager" selected="Application.Main">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
@@ -98,7 +127,7 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="at.jku.Main" />
       <module name="client" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Studium\Wirtschaftsinformatik\PR_Software_Engineering\DigitalRoom_Test3\client\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\f.leidwein\Desktop\JavaFX&quot; --add-modules javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="at.jku.*" />
@@ -140,16 +169,16 @@
       </method>
     </configuration>
     <configuration name="RestApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="ACTIVE_PROFILES" />
       <module name="server" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="at.jku.digitalTwin.RestApplication" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\f.leidwein\Desktop\JavaFX&quot; --add-modules javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="at.jku.digitalTwin.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="at.jku.digitalTwin.RestApplication" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Studium\Wirtschaftsinformatik\PR_Software_Engineering\DigitalRoom_Test3\client\lib&quot; --add-modules javafx.controls,javafx.fxml" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -193,6 +222,7 @@
       <workItem from="1674047634879" duration="810000" />
       <workItem from="1675350139023" duration="9389000" />
       <workItem from="1675414347398" duration="14714000" />
+      <workItem from="1675584781318" duration="9008000" />
     </task>
     <task id="LOCAL-00001" summary="getPeopleInRoom added">
       <created>1670446267606</created>

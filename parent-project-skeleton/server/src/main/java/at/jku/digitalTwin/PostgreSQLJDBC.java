@@ -124,13 +124,13 @@ public class PostgreSQLJDBC {
     public PeopleInRoomObject getPeopleInRoomById(Connection c, String room_id) {
         PeopleInRoomObject peopleInRoom = null;
         try {
-            String sql = "SELECT * FROM peopleinroom WHERE peopleroomid = ?";
+            String sql = "SELECT * FROM airquality WHERE deviceid = ?";
             PreparedStatement stmt = c.prepareStatement(sql);
             stmt.setString(1, room_id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 peopleInRoom = new PeopleInRoomObject();
-                peopleInRoom.setRoom_id(rs.getString("peopleroomid"));
+                peopleInRoom.setRoom_id(rs.getString("roomid"));
                 peopleInRoom.setPeople_count(rs.getInt("nopeopleinroom"));
             }
         } catch (SQLException e) {
@@ -142,7 +142,7 @@ public class PostgreSQLJDBC {
     public PeopleInRoomObject addPeopleInRoomById(Connection c, String room_id, PeopleInRoomObject peopleInRoomObject) {
         PeopleInRoomObject addedPeopleInRoom = null;
         try {
-            String sql = "INSERT INTO peopleinroom (peopleroomid, nopeopleinroom) VALUES (?, ?)";
+            String sql = "INSERT INTO airquality (roomid, nopeopleinroom) VALUES (?, ?)";
             PreparedStatement stmt = c.prepareStatement(sql);
             stmt.setString(1, room_id);
             stmt.setInt(2, peopleInRoomObject.getPeople_count());
