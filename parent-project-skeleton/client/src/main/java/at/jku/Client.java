@@ -368,8 +368,8 @@ public class Client implements APIFunctions{
 
         try {
             HttpResponse<String> response =  client.send(request, HttpResponse.BodyHandlers.ofString());
-            Power_Plug_Object power_plug_object1 = objectMapper.readValue(response.body(), new TypeReference<Power_Plug_Object>(){});
-            return power_plug_object1;//or true;
+            return objectMapper.readValue(response.body(), new TypeReference<>(){});
+            //return power_plug_object1;//or true;
 
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
@@ -431,7 +431,7 @@ public class Client implements APIFunctions{
         }
         return null;
     }
-    public boolean activateVent(String roomId, String plug_id, Boolean turnon) {
+    public Power_Plug_Storing_Object activateVent(String roomId, String plug_id, Boolean turnon) {
         Power_Plug_Storing_Object activation = new Power_Plug_Storing_Object(turnon);
         String body = "";
         try {
@@ -439,20 +439,22 @@ public class Client implements APIFunctions{
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
+        System.out.println("request: " + turnon);
         HttpRequest request =
-                HttpRequest.newBuilder().uri(URI.create(startURI + "/Rooms/" + roomId+"/Ventilators/"+plug_id + "/Operations")).
+                HttpRequest.newBuilder().uri(URI.create(startURI + "/Rooms/" + roomId+"/Ventilators/"+plug_id + "/Activation")).
                         header("Content-Type", "application/json").
                         POST(HttpRequest.BodyPublishers.ofString(body)).build();
 
         try {
             HttpResponse<String> response =  client.send(request, HttpResponse.BodyHandlers.ofString());
+            System.out.println(response.body() + " - " + response.statusCode());
             if(response.statusCode()==200)
-                return true;
+                return activation;
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
 
-        return false;
+        return activation;
     }
 
     public Power_Plug_Operation_Object getCurrentPowerPlugStatus(String roomId,String plug_id){
@@ -468,24 +470,24 @@ public class Client implements APIFunctions{
         }
         return null;
     }
-    public boolean activateVent(String roomId, String plug_id) {
-
-        String body = "";
-        HttpRequest request =
-                HttpRequest.newBuilder().uri(URI.create(startURI + "/Rooms/" + roomId+"/Ventilators/"+plug_id + "/Activation")).
-                        header("Content-Type", "application/json").
-                        POST(HttpRequest.BodyPublishers.ofString(body)).build();
-
-        try {
-            HttpResponse<String> response =  client.send(request, HttpResponse.BodyHandlers.ofString());
-            if(response.statusCode()==200)
-                return true;
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        return false;
-    }
+//    public boolean activateVent(String roomId, String plug_id) {
+//
+//        String body = "";
+//        HttpRequest request =
+//                HttpRequest.newBuilder().uri(URI.create(startURI + "/Rooms/" + roomId+"/Ventilators/"+plug_id + "/Activation")).
+//                        header("Content-Type", "application/json").
+//                        POST(HttpRequest.BodyPublishers.ofString(body)).build();
+//
+//        try {
+//            HttpResponse<String> response =  client.send(request, HttpResponse.BodyHandlers.ofString());
+//            if(response.statusCode()==200)
+//                return true;
+//        } catch (IOException | InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return false;
+//    }
 
 
 

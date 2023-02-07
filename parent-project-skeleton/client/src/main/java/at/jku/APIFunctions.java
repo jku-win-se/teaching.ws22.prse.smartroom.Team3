@@ -33,9 +33,9 @@ public interface APIFunctions {
     public Power_Plug_Object getSpecificVent(String roomId, String plug_id) ;
     public Power_Plug_Update_Object updateVent (String roomId, String plug_id, String name);
     public boolean deleteVent(String roomId, String plug_id);
-    public boolean activateVent(String roomId, String plug_id, Boolean turnon);
+    public Power_Plug_Storing_Object activateVent(String roomId, String plug_id, Boolean turnon);
     public Power_Plug_Operation_Object getCurrentPowerPlugStatus(String roomId,String plug_id);
-   public boolean activateVent(String roomId, String plug_id);
+   //public boolean activateVent(String roomId, String plug_id); Warum?
 
 
 //    doors
