@@ -7,8 +7,7 @@ public class Light_Operation_Object {
     boolean turnon;
     int brightness;
     String hex;
-    @Id
-    private Timestamp light_timestamp;
+    //private Timestamp light_timestamp;
 
     public Light_Operation_Object(boolean turnon, int brightness, String hex) {
         this.turnon = turnon;

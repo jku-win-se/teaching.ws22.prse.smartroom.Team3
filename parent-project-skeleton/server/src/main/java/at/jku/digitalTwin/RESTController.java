@@ -30,9 +30,9 @@ public class RESTController {
     @PostMapping("/Rooms")
     ResponseEntity<Room_Object> addRoom(@RequestBody Room_Object room) {
         Room_Object room_object = new Room_Object(room.getRoom_id(), room.getRoom_size(), room.getMeasurement_unit());
-        room_object.setRoom_id(room.getRoom_id());
-        room_object.setRoom_size(room.getRoom_size());
-        room_object.setMeasurement_unit(room.getMeasurement_unit());
+//        room_object.setRoom_id(room.getRoom_id());
+//        room_object.setRoom_size(room.getRoom_size());
+//        room_object.setMeasurement_unit(room.getMeasurement_unit());
         db.add_room(c, "room", room.getRoom_id(), room.getRoom_size(), room.getMeasurement_unit());
         return ResponseEntity.ok(room);
     }
@@ -97,8 +97,7 @@ public class RESTController {
 
     @PostMapping("/Rooms/{room_id}/Lights")
     public ResponseEntity<Lights_Object> addLights(@PathVariable String room_id, @RequestBody Lights_Object lights_object) {
-        lights_object.setRoom_id(room_id);
-        Lights_Object addedLight = postgreSQLJDBC.addLight(c, lights_object);
+        Lights_Object addedLight = postgreSQLJDBC.addLight(c, room_id, lights_object);
         if (addedLight == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -107,8 +106,8 @@ public class RESTController {
 
     @GetMapping("/Rooms/{room_id}/Lights/{light_id}")
     public ResponseEntity<Lights_Object> getRoomLight(@PathVariable String room_id, @PathVariable String light_id) {
-        Lights_Object light = postgreSQLJDBC.getLightById(c, light_id);
-        if (light == null || !light.getRoom_id().equals(room_id)) {
+        Lights_Object light = postgreSQLJDBC.getLightById(c, room_id, light_id);
+        if (light == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(light, HttpStatus.OK);
@@ -116,7 +115,7 @@ public class RESTController {
 
     @DeleteMapping("/Rooms/{room_id}/Lights/{light_id}")
     public ResponseEntity<String> deleteLight(@PathVariable String room_id, @PathVariable String light_id) {
-        boolean isDeleted = postgreSQLJDBC.deleteLightById(c, light_id);
+        boolean isDeleted = postgreSQLJDBC.deleteLightById(c, room_id, light_id);
         if (!isDeleted) {
             return new ResponseEntity<>("Failed to delete light with id: " + light_id, HttpStatus.BAD_REQUEST);
         }
@@ -125,11 +124,9 @@ public class RESTController {
 
     @PatchMapping ("/Rooms/{room_id}/Lights/{light_id}")
     public ResponseEntity<Update_LightObject> updateLight(@PathVariable String room_id, @PathVariable String light_id, @RequestBody Update_LightObject update_LightObject) {
-        Lights_Object updatedLight = postgreSQLJDBC.updateLightById(c, light_id, update_LightObject);
+        Lights_Object updatedLight = postgreSQLJDBC.updateLightById(c, room_id, light_id, update_LightObject);
         if (updatedLight == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } else if (!updatedLight.getRoom_id().equals(room_id)) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(update_LightObject, HttpStatus.OK);
     }

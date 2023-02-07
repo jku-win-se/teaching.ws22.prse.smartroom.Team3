@@ -124,13 +124,13 @@ public class PostgreSQLJDBC {
     public PeopleInRoomObject getPeopleInRoomById(Connection c, String room_id) {
         PeopleInRoomObject peopleInRoom = null;
         try {
-            String sql = "SELECT * FROM airquality WHERE deviceid = ?";
+            String sql = "SELECT * FROM peopleinroom WHERE peopleroomid = ?";
             PreparedStatement stmt = c.prepareStatement(sql);
             stmt.setString(1, room_id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 peopleInRoom = new PeopleInRoomObject();
-                peopleInRoom.setRoom_id(rs.getString("roomid"));
+                peopleInRoom.setRoom_id(rs.getString("peopleroomid"));
                 peopleInRoom.setPeople_count(rs.getInt("nopeopleinroom"));
             }
         } catch (SQLException e) {
@@ -142,7 +142,7 @@ public class PostgreSQLJDBC {
     public PeopleInRoomObject addPeopleInRoomById(Connection c, String room_id, PeopleInRoomObject peopleInRoomObject) {
         PeopleInRoomObject addedPeopleInRoom = null;
         try {
-            String sql = "INSERT INTO airquality (roomid, nopeopleinroom) VALUES (?, ?)";
+            String sql = "INSERT INTO peopleinroom (peopleroomid, nopeopleinroom) VALUES (?, ?)";
             PreparedStatement stmt = c.prepareStatement(sql);
             stmt.setString(1, room_id);
             stmt.setInt(2, peopleInRoomObject.getPeople_count());
@@ -169,7 +169,7 @@ public class PostgreSQLJDBC {
                 light.setLight_id(rs.getString("lightid"));
                 light.setName(rs.getString("lightname"));
                 //light.setStatus(rs.getString("status"));
-                light.setRoom_id(rs.getString("roomid"));
+                //light.setRoom_id(rs.getString("roomid"));
                 lights.add(light);
             }
         } catch (SQLException e) {
@@ -178,14 +178,14 @@ public class PostgreSQLJDBC {
         return lights;
     }
 
-    public Lights_Object addLight(Connection c, Lights_Object lights_object) {
+    public Lights_Object addLight(Connection c, String room_id, Lights_Object lights_object) {
         Lights_Object addedLight = null;
         try {
             String sql = "INSERT INTO light (lightname, lightid, roomid) VALUES (?,?,?)";
             PreparedStatement stmt = c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, lights_object.getName());
             stmt.setString(2, lights_object.getLight_id());
-            stmt.setString(3, lights_object.getRoom_id());
+            stmt.setString(3, room_id);
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected == 1) {
                 ResultSet rs = stmt.getGeneratedKeys();
@@ -200,7 +200,7 @@ public class PostgreSQLJDBC {
         return addedLight;
     }
 
-    public Lights_Object getLightById(Connection c, String light_id) {
+    public Lights_Object getLightById(Connection c, String room_id, String light_id) {
         Lights_Object light = null;
         try {
             String sql = "SELECT * FROM light WHERE lightid = ?";
@@ -212,7 +212,7 @@ public class PostgreSQLJDBC {
                 light.setLight_id(rs.getString("lightid"));
                 light.setName(rs.getString("lightname"));
                 //light.setStatus(rs.getString("status"));
-                light.setRoom_id(rs.getString("roomid"));
+                //light.setRoom_id(rs.getString("roomid"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -220,7 +220,7 @@ public class PostgreSQLJDBC {
         return light;
     }
 
-    public boolean deleteLightById(Connection c, String light_id) {
+    public boolean deleteLightById(Connection c, String room_id, String light_id) {
         boolean isDeleted = false;
         try {
             String sql = "DELETE FROM light WHERE lightid = ?";
@@ -236,8 +236,9 @@ public class PostgreSQLJDBC {
         return isDeleted;
     }
 
-    public Lights_Object updateLightById(Connection c, String light_id, Update_LightObject update_LightObject) {
+    public Lights_Object updateLightById(Connection c, String room_id, String light_id, Update_LightObject update_LightObject) {
         Lights_Object updatedLight = null;
+        //Update_LightObject updatedLight = null;
         try {
             String sql = "UPDATE light SET lightname = ? WHERE lightid = ?";
             PreparedStatement stmt = c.prepareStatement(sql);
@@ -253,10 +254,11 @@ public class PostgreSQLJDBC {
                 ResultSet rs = stmt.executeQuery();
                 if (rs.next()) {
                     updatedLight = new Lights_Object();
+                    //updatedLight = new Update_LightObject();
                     updatedLight.setLight_id(rs.getString("lightid"));
                     updatedLight.setName(rs.getString("lightname"));
                     //updatedLight.setStatus(rs.getString("status"));
-                    updatedLight.setRoom_id(rs.getString("roomid"));
+                    //updatedLight.setRoom_id(rs.getString("roomid"));
                 }
             }
         } catch (SQLException e) {
@@ -268,10 +270,10 @@ public class PostgreSQLJDBC {
     public List<Light_Operation_Return_Object> getLightOperations(Connection c, String room_id, String light_id) {
         List<Light_Operation_Return_Object> lightOperations = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM lightstatus WHERE lightid = ? and roomid = ?";
+            String sql = "SELECT * FROM lightstatus WHERE lightid = ?";
             PreparedStatement stmt = c.prepareStatement(sql);
             stmt.setString(1, light_id);
-            stmt.setString(2, room_id);
+            //stmt.setString(2, room_id);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Light_Operation_Return_Object operation = new Light_Operation_Return_Object();
@@ -279,7 +281,7 @@ public class PostgreSQLJDBC {
                 operation.setTurnon(rs.getBoolean("lightison"));
                 operation.setBrightness(rs.getInt("brightness"));
                 operation.setHex(rs.getString("hex"));
-                operation.setTime(rs.getTimestamp("lighttimestamp").toLocalDateTime());
+                operation.setTime(rs.getTimestamp("lighttimestamp"));
                 lightOperations.add(operation);
             }
         } catch (SQLException e) {
@@ -289,12 +291,16 @@ public class PostgreSQLJDBC {
     }
 
     public boolean activateLight(Connection c, String room_id, String light_id, Light_Activation_Object light_activation_object) {
+        java.util.Date date = new java.util.Date();
+        java.sql.Timestamp timestamp = new java.sql.Timestamp(date.getTime());
         try {
-            String sql = "UPDATE lightstatus SET lightison = ? WHERE lightid = ? and roomid = ?";
+            String sql = "INSERT INTO lightstatus (lightid, lightison, lighttimestamp, hex, brightness) VALUES (?,?,?,?,?)";
             PreparedStatement stmt = c.prepareStatement(sql);
-            stmt.setBoolean(1, light_activation_object.isTurnon());
-            stmt.setString(2, light_id);
-            stmt.setString(3, room_id);
+            stmt.setString(1, light_id);
+            stmt.setBoolean(2, light_activation_object.isTurnon());
+            stmt.setTimestamp(3, timestamp);
+            stmt.setString(4, "ffffe0");
+            stmt.setInt(5, 50);
             int updatedRows = stmt.executeUpdate();
             if (updatedRows > 0) {
                 return true;
@@ -306,20 +312,25 @@ public class PostgreSQLJDBC {
     }
 
     public Light_Operation_Object setColor(Connection c, String room_id, String light_id, Light_Operation_Object light_operation_object) {
+        java.util.Date date = new java.util.Date();
+        java.sql.Timestamp timestamp = new java.sql.Timestamp(date.getTime());
+
         try {
-            String sql = "UPDATE lightstatus SET hex = ? WHERE lightid = ? and roomid = ?";
+            String sql = "INSERT INTO lightstatus (lightid, lightison, lighttimestamp, hex, brightness) VALUES (?,?,?,?,?)";
             PreparedStatement stmt = c.prepareStatement(sql);
-            stmt.setString(1, light_operation_object.getHex());
-            stmt.setString(2, light_id);
-            stmt.setString(3, room_id);
+            stmt.setString(1, light_id);
+            stmt.setBoolean(2, light_operation_object.isTurnon());
+            stmt.setTimestamp(3, timestamp);
+            stmt.setString(4, light_operation_object.getHex());
+            stmt.setInt(5, light_operation_object.getBrightness());
             int updatedRows = stmt.executeUpdate();
-            if (updatedRows == 0) {
-                return null;
+            if (updatedRows < 0) {
+                return light_operation_object;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return light_operation_object;
+        return null;
     }
 
     //VENTILATORS
