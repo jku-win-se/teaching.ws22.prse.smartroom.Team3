@@ -274,19 +274,19 @@ public class Client implements APIFunctions{
                         POST(HttpRequest.BodyPublishers.ofString(body)).build();
 
         try {
-            HttpResponse<String> response =  client.send(request, HttpResponse.BodyHandlers.ofString());
-            //return objectMapper.readValue(response.body(), new TypeReference<>() {
-            //});
-            if(response.statusCode()==200)
+            HttpResponse<String> r =  client.send(request, HttpResponse.BodyHandlers.ofString());
+            if(r.statusCode()==200) {
                 return activation;
-            else
-                return null;
+            }
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
 
-        return null;
+        activation.setTurnon(!turnon);
+        return activation;
     }
+
+
     public boolean getCurrentLightStatus(String roomId,String lightId){
         HttpRequest request =
                 HttpRequest.newBuilder().uri(URI.create(startURI + "/Rooms/" + roomId+"/Lights/"+lightId+"/Activation")).GET().build();
