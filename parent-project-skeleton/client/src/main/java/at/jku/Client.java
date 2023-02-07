@@ -275,8 +275,12 @@ public class Client implements APIFunctions{
 
         try {
             HttpResponse<String> response =  client.send(request, HttpResponse.BodyHandlers.ofString());
-            return objectMapper.readValue(response.body(), new TypeReference<>() {
-            });
+            //return objectMapper.readValue(response.body(), new TypeReference<>() {
+            //});
+            if(response.statusCode()==200)
+                return activation;
+            else
+                return null;
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
