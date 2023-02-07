@@ -354,27 +354,26 @@ public class PostgreSQLJDBC {
         return null;
     }
 
-    public List<Power_Plug_Object> addVentilator(Connection c, String room_id, Power_Plug_Object powerPlugObject) {
-        PreparedStatement ps = null;
+    public Power_Plug_Object addVentilator(Connection c, String room_id, Power_Plug_Object powerPlugObject) {
+        Power_Plug_Object addedVentilator = null;
         try {
-            ps = c.prepareStatement("INSERT INTO fan (roomid, fanid, fanname) VALUES (?, ?, ?)");
-            ps.setString(1, room_id);
-            ps.setString(2, powerPlugObject.getPlug_id());
-            ps.setString(3, powerPlugObject.getName());
-            ps.executeUpdate();
-            return getVentilators(c, room_id);
+            String sql = "INSERT INTO fan (roomid, fanid, fanname) VALUES (?, ?, ?)";
+            PreparedStatement stmt = c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, room_id);
+            stmt.setString(2, powerPlugObject.getPlug_id());
+            stmt.setString(3, powerPlugObject.getName());
+            int rowsAffected = stmt.executeUpdate();
+            if (rowsAffected == 1) {
+                ResultSet rs = stmt.getGeneratedKeys();
+                if (rs.next()) {
+                    addedVentilator = powerPlugObject;
+                    addedVentilator.setPlug_id(rs.getString(1));
+                }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
-            return null;
-        } finally {
-            try {
-                if (ps != null) {
-                    ps.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
+        return addedVentilator;
     }
 
     public Power_Plug_Object getVentilator(Connection c, String plug_id) {
@@ -422,13 +421,17 @@ public class PostgreSQLJDBC {
         return false;
     }
 
-    public boolean activateVentilator(Connection c, String room_id, String plug_id) {
+    public boolean activateVentilator(Connection c, String plug_id, Power_Plug_Storing_Object plug) {
+        java.util.Date date = new java.util.Date();
+        java.sql.Timestamp timestamp = new java.sql.Timestamp(date.getTime());
         try {
-            PreparedStatement statement = c.prepareStatement("UPDATE fanstatus SET fanison = true WHERE fanid = ? AND roomid = ?");
-            statement.setString(1, plug_id);
-            statement.setString(2, room_id);
+            String sql = "INSERT INTO fanstatus (fanid, fanison, fantimestamp) VALUES (?,?,?)";
+            PreparedStatement stmt = c.prepareStatement(sql);
+            stmt.setString(1, plug_id);
+            stmt.setBoolean(2, plug.isTurnon());
+            stmt.setTimestamp(3, timestamp);
 
-            int rowsAffected = statement.executeUpdate();
+            int rowsAffected = stmt.executeUpdate();
             if (rowsAffected > 0) {
                 return true;
             }
@@ -441,9 +444,9 @@ public class PostgreSQLJDBC {
     public List<Power_Plug_Operation_Object> getVentilatorOperations(Connection c, String room_id, String plug_id) {
         List<Power_Plug_Operation_Object> operations = new ArrayList<>();
         try {
-            PreparedStatement st = c.prepareStatement("SELECT fanison, fantimestamp FROM fanstatus WHERE roomid = ? AND fanid = ?");
-            st.setString(1, room_id);
-            st.setString(2, plug_id);
+            PreparedStatement st = c.prepareStatement("SELECT fanison, fantimestamp FROM fanstatus WHERE fanid = ?");
+            //st.setString(1, room_id);
+            st.setString(1, plug_id);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 boolean turnon = rs.getBoolean("fanison");
@@ -460,6 +463,9 @@ public class PostgreSQLJDBC {
         }
         return operations;
     }
+
+
+
 
     public List<Door_Object> getDoors(Connection c, String room_id) {
         try {

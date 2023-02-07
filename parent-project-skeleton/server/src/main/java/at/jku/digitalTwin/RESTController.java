@@ -170,8 +170,8 @@ public class RESTController {
     }
 
     @PostMapping("Rooms/{room_id}/Ventilators")
-    public ResponseEntity<List<Power_Plug_Object>> addVentilator(@PathVariable String room_id, @RequestBody Power_Plug_Object powerPlugObject) {
-        List<Power_Plug_Object> ventilators = postgreSQLJDBC.addVentilator(c, room_id, powerPlugObject);
+    public ResponseEntity<Power_Plug_Object> addVentilator(@PathVariable String room_id, @RequestBody Power_Plug_Object powerPlugObject) {
+        Power_Plug_Object ventilators = postgreSQLJDBC.addVentilator(c, room_id, powerPlugObject);
         if (ventilators == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -208,8 +208,9 @@ public class RESTController {
     }
 
     @PostMapping("/Rooms/{room_id}/Ventilators/{plug_id}/Activation")
-    public ResponseEntity<String> activateVentilator(@PathVariable String room_id, @PathVariable String plug_id, @RequestBody Plug_Activation_Object plug_activation_object) {
-        boolean isActivated = postgreSQLJDBC.activateVentilator(c, room_id, plug_id);
+    public ResponseEntity<String> activateVentilator(@PathVariable String room_id, @PathVariable String plug_id, @RequestBody Power_Plug_Storing_Object powerPlug_storing_object) {
+        System.out.println("rest activate vent " + powerPlug_storing_object.isTurnon());
+        boolean isActivated = postgreSQLJDBC.activateVentilator(c, plug_id, powerPlug_storing_object);
         if (!isActivated) {
             return new ResponseEntity<>("Ventilator activation failed", HttpStatus.BAD_REQUEST);
         }
