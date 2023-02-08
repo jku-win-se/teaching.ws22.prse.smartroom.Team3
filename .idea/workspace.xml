@@ -7,6 +7,9 @@
     <list default="true" id="feb1e5aa-cf87-42a9-8180-1301f8cbca17" name="Changes" comment="Window+Door Impl">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Controller$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Controller$2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Controller$2$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Controller$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Controller$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Controller.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -200,7 +203,7 @@
       <workItem from="1675692529935" duration="8019000" />
       <workItem from="1675847590754" duration="8046000" />
       <workItem from="1675858200023" duration="5713000" />
-      <workItem from="1675867189659" duration="6076000" />
+      <workItem from="1675867189659" duration="11354000" />
     </task>
     <task id="LOCAL-00001" summary="getPeopleInRoom added">
       <created>1670446267606</created>

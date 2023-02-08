@@ -1,6 +1,7 @@
 package at.jku;
 
 import at.jku.objects.*;
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -100,7 +101,7 @@ public class Controller implements Initializable {
     @FXML
     private TableColumn<Component, Integer> type = new TableColumn<>();
     @FXML
-    private TableColumn<Component, Integer> status = new TableColumn<>();
+    private TableColumn<Component, String> status = new TableColumn<Component, String>();
     @FXML
     private TableColumn<Room_Object, Integer> size = new TableColumn<>();
     @FXML
@@ -327,7 +328,27 @@ public class Controller implements Initializable {
 
         device.setCellValueFactory(new PropertyValueFactory<Component, Integer>("name"));
         type.setCellValueFactory(new PropertyValueFactory<Component, Integer>("type"));
-        status.setCellValueFactory(new PropertyValueFactory<Component, Integer>("status"));
+        status.setCellValueFactory(new PropertyValueFactory<Component, String>("status"));
+
+        status.setCellValueFactory(cellData -> {
+            boolean status = cellData.getValue().getStatus();
+            String statusAsString;
+            if( (status == true) && ((cellData.getValue().getType().equals(ComponentType.FAN)) || (cellData.getValue().getType().equals(ComponentType.LIGHT))) )
+                statusAsString = "On";
+
+            else if ( (status == false) && ((cellData.getValue().getType().equals(ComponentType.FAN)) || (cellData.getValue().getType().equals(ComponentType.LIGHT))) )
+                    statusAsString = "Off";
+
+            else if ( (status == true) && ((cellData.getValue().getType().equals(ComponentType.WINDOW)) || (cellData.getValue().getType().equals(ComponentType.DOOR))) )
+                statusAsString = "Open";
+            else statusAsString = "Closed";
+
+            return new ReadOnlyStringWrapper(statusAsString);
+        });
+
+
+
+
 
 
         detailTableView.setItems(details);
@@ -378,7 +399,7 @@ public class Controller implements Initializable {
 
             String[] fields = lines.get(i).split(";");
 
-            if(client.getRoomID(fields[0]) == null)
+            if(client.getRoomID(fields[0]) == null )
                 client.addRoom(fields[0], Double.parseDouble(fields[1]), globalMeasurementUnit);
 
 
@@ -473,7 +494,7 @@ public class Controller implements Initializable {
         //peopleSeries.getData().add(new XYChart.Data<String,Integer>("test", client.getPeopleCount(roomId).getPeople_count()));
         //peopleChartData.add(peopleSeries);
         //peopleChart.setData(peopleChartData);
-        
+
 
 
         details.addAll(currentRoom.getAllComponents());
