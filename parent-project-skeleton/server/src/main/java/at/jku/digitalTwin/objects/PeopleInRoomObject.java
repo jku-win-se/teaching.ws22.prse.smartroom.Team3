@@ -5,17 +5,17 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-@Entity
-@Table(name = "peopleinroom")
+//@Entity
+//@Table(name = "peopleinroom")
 public class PeopleInRoomObject {
 
     private String room_id;
     private int people_count;
-    @Id
+    //    @Id
     private Timestamp people_timestamp;
 
-    @ManyToOne
-    @JoinColumn(name = "peopleroomId")
+    //    @ManyToOne
+//    @JoinColumn(name = "peopleroomId")
     private Room_Object room;
 
     public PeopleInRoomObject(String room_id, int people_count, Timestamp people_timestamp) {

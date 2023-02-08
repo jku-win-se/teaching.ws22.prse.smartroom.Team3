@@ -1,30 +1,26 @@
 package at.jku.digitalTwin.objects;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "lights_Operation")
 public class Light_Operation_Return_Object {
 
     boolean turnon;
     int brightness;
     String hex;
+    Timestamp time;
 
-    LocalDateTime time;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
 
-    public Light_Operation_Return_Object(boolean turnon, int brightness, String hex, LocalDateTime time) {
+    public Light_Operation_Return_Object(boolean turnon, int brightness, String hex, Timestamp time) {
         this.turnon = turnon;
         this.brightness = brightness;
         this.hex = hex;
         this.time = time;
     }
 
-    public Light_Operation_Return_Object(Light_Operation_Object operation, LocalDateTime time) {
+    public Light_Operation_Return_Object(Light_Operation_Object operation, Timestamp time) {
         this.turnon = operation.isTurnon();
         this.brightness = operation.getBrightness();
         this.hex = operation.getHex();
@@ -34,13 +30,7 @@ public class Light_Operation_Return_Object {
     public Light_Operation_Return_Object() {
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public boolean isTurnon() {
         return turnon;
@@ -66,11 +56,11 @@ public class Light_Operation_Return_Object {
         this.hex = hex;
     }
 
-    public LocalDateTime getTime() {
+    public Timestamp getTime() {
         return time;
     }
 
-    public void setTime(LocalDateTime time) {
+    public void setTime(Timestamp time) {
         this.time = time;
     }
 

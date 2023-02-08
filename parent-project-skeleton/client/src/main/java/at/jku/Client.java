@@ -278,6 +278,11 @@ public class Client implements APIFunctions{
             if(r.statusCode()==200) {
                 return activation;
             }
+
+            else
+            {
+                return null;
+            }
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
@@ -459,12 +464,12 @@ public class Client implements APIFunctions{
 
     public Power_Plug_Operation_Object getCurrentPowerPlugStatus(String roomId,String plug_id){
         HttpRequest request =
-                HttpRequest.newBuilder().uri(URI.create(startURI + "/Rooms/" + roomId+"/Lights/"+plug_id+"/Activation")).GET().build();
+                HttpRequest.newBuilder().uri(URI.create(startURI + "/Rooms/" + roomId+"/Ventilators/"+plug_id+"/Activation")).GET().build();
 
         try {
             HttpResponse<String> response =  client.send(request, HttpResponse.BodyHandlers.ofString());
             List<Power_Plug_Operation_Object> l= objectMapper.readValue(response.body(), new TypeReference<>() {});
-            return l.get(l.size());
+            return l.get(l.size()-1);
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
@@ -592,7 +597,7 @@ public class Client implements APIFunctions{
         return null;
     }
 
-    public boolean getDoorStatus(String room_id, String door_id)
+    public Open_Door_Operation_Object getDoorStatus(String room_id, String door_id)
     {
 
         HttpRequest request =
@@ -603,12 +608,13 @@ public class Client implements APIFunctions{
         try {
             HttpResponse<String> response =  client.send(request, HttpResponse.BodyHandlers.ofString());
 
-                return objectMapper.readValue(response.body(), new TypeReference<>(){});
+            List<Open_Door_Operation_Object> l= objectMapper.readValue(response.body(), new TypeReference<>() {});
+            return l.get(l.size()-1);
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
 
-        return false;
+        return null;
     }
 
     public boolean changeDoorStatus(String room_id, String door_id,Boolean isOpen){
@@ -730,7 +736,7 @@ public class Client implements APIFunctions{
         return null;
     }
 
-    public boolean getWindowStatus(String room_id, String window_id)
+    public Open_Window_Operation_Object getWindowStatus(String room_id, String window_id)
     {
 
         HttpRequest request =
@@ -740,13 +746,13 @@ public class Client implements APIFunctions{
 
         try {
             HttpResponse<String> response =  client.send(request, HttpResponse.BodyHandlers.ofString());
-
-            return objectMapper.readValue(response.body(), new TypeReference<>(){});
+            List<Open_Window_Operation_Object> l= objectMapper.readValue(response.body(), new TypeReference<>() {});
+            return l.get(l.size()-1);
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
 
-        return false;
+        return null;
     }
 
     public boolean changeWindowStatus(String room_id, String window_id,Boolean isOpen){

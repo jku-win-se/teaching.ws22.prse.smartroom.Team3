@@ -3,16 +3,12 @@ package at.jku.digitalTwin.objects;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "plug_Operation")
+//@Entity
+//@Table(name = "plug_Operation")
 public class Power_Plug_Operation_Object {
 
     boolean turnon;
     LocalDateTime time;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
 
     public Power_Plug_Operation_Object(boolean turnon, LocalDateTime time) {
         this.turnon = turnon;
@@ -25,14 +21,6 @@ public class Power_Plug_Operation_Object {
     }
 
     public Power_Plug_Operation_Object() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public boolean isTurnon() {

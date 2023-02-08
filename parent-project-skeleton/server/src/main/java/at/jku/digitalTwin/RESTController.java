@@ -30,9 +30,9 @@ public class RESTController {
     @PostMapping("/Rooms")
     ResponseEntity<Room_Object> addRoom(@RequestBody Room_Object room) {
         Room_Object room_object = new Room_Object(room.getRoom_id(), room.getRoom_size(), room.getMeasurement_unit());
-        room_object.setRoom_id(room.getRoom_id());
-        room_object.setRoom_size(room.getRoom_size());
-        room_object.setMeasurement_unit(room.getMeasurement_unit());
+//        room_object.setRoom_id(room.getRoom_id());
+//        room_object.setRoom_size(room.getRoom_size());
+//        room_object.setMeasurement_unit(room.getMeasurement_unit());
         db.add_room(c, "room", room.getRoom_id(), room.getRoom_size(), room.getMeasurement_unit());
         return ResponseEntity.ok(room);
     }
@@ -97,8 +97,7 @@ public class RESTController {
 
     @PostMapping("/Rooms/{room_id}/Lights")
     public ResponseEntity<Lights_Object> addLights(@PathVariable String room_id, @RequestBody Lights_Object lights_object) {
-        lights_object.setRoom_id(room_id);
-        Lights_Object addedLight = postgreSQLJDBC.addLight(c, lights_object);
+        Lights_Object addedLight = postgreSQLJDBC.addLight(c, room_id, lights_object);
         if (addedLight == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -107,8 +106,8 @@ public class RESTController {
 
     @GetMapping("/Rooms/{room_id}/Lights/{light_id}")
     public ResponseEntity<Lights_Object> getRoomLight(@PathVariable String room_id, @PathVariable String light_id) {
-        Lights_Object light = postgreSQLJDBC.getLightById(c, light_id);
-        if (light == null || !light.getRoom_id().equals(room_id)) {
+        Lights_Object light = postgreSQLJDBC.getLightById(c, room_id, light_id);
+        if (light == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(light, HttpStatus.OK);
@@ -116,7 +115,7 @@ public class RESTController {
 
     @DeleteMapping("/Rooms/{room_id}/Lights/{light_id}")
     public ResponseEntity<String> deleteLight(@PathVariable String room_id, @PathVariable String light_id) {
-        boolean isDeleted = postgreSQLJDBC.deleteLightById(c, light_id);
+        boolean isDeleted = postgreSQLJDBC.deleteLightById(c, room_id, light_id);
         if (!isDeleted) {
             return new ResponseEntity<>("Failed to delete light with id: " + light_id, HttpStatus.BAD_REQUEST);
         }
@@ -125,11 +124,9 @@ public class RESTController {
 
     @PatchMapping ("/Rooms/{room_id}/Lights/{light_id}")
     public ResponseEntity<Update_LightObject> updateLight(@PathVariable String room_id, @PathVariable String light_id, @RequestBody Update_LightObject update_LightObject) {
-        Lights_Object updatedLight = postgreSQLJDBC.updateLightById(c, light_id, update_LightObject);
+        Lights_Object updatedLight = postgreSQLJDBC.updateLightById(c, room_id, light_id, update_LightObject);
         if (updatedLight == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } else if (!updatedLight.getRoom_id().equals(room_id)) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(update_LightObject, HttpStatus.OK);
     }
@@ -173,8 +170,8 @@ public class RESTController {
     }
 
     @PostMapping("Rooms/{room_id}/Ventilators")
-    public ResponseEntity<List<Power_Plug_Object>> addVentilator(@PathVariable String room_id, @RequestBody Power_Plug_Object powerPlugObject) {
-        List<Power_Plug_Object> ventilators = postgreSQLJDBC.addVentilator(c, room_id, powerPlugObject);
+    public ResponseEntity<Power_Plug_Object> addVentilator(@PathVariable String room_id, @RequestBody Power_Plug_Object powerPlugObject) {
+        Power_Plug_Object ventilators = postgreSQLJDBC.addVentilator(c, room_id, powerPlugObject);
         if (ventilators == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -211,8 +208,9 @@ public class RESTController {
     }
 
     @PostMapping("/Rooms/{room_id}/Ventilators/{plug_id}/Activation")
-    public ResponseEntity<String> activateVentilator(@PathVariable String room_id, @PathVariable String plug_id, @RequestBody Plug_Activation_Object plug_activation_object) {
-        boolean isActivated = postgreSQLJDBC.activateVentilator(c, room_id, plug_id);
+    public ResponseEntity<String> activateVentilator(@PathVariable String room_id, @PathVariable String plug_id, @RequestBody Power_Plug_Storing_Object powerPlug_storing_object) {
+        System.out.println("rest activate vent " + powerPlug_storing_object.isTurnon());
+        boolean isActivated = postgreSQLJDBC.activateVentilator(c, plug_id, powerPlug_storing_object);
         if (!isActivated) {
             return new ResponseEntity<>("Ventilator activation failed", HttpStatus.BAD_REQUEST);
         }
@@ -222,6 +220,7 @@ public class RESTController {
     @GetMapping("/Rooms/{room_id}/Ventilators/{plug_id}/Activation")
     public ResponseEntity<List<Power_Plug_Operation_Object>> getVentilatorOperations(@PathVariable String room_id, @PathVariable String plug_id) {
         List<Power_Plug_Operation_Object> ventilatorOperations = postgreSQLJDBC.getVentilatorOperations(c, room_id, plug_id);
+        System.out.println("List:"+ventilatorOperations.toString());
         if (ventilatorOperations == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -240,8 +239,8 @@ public class RESTController {
     }
 
     @PostMapping("Rooms/{room_id}/Doors")
-    public ResponseEntity<List<Door_Object>> addDoors(@PathVariable String room_id, @RequestBody Door_Object doorObject) {
-        List<Door_Object> doors = postgreSQLJDBC.addDoor(c, room_id, doorObject);
+    public ResponseEntity<Door_Object> addDoors(@PathVariable String room_id, @RequestBody Door_Object doorObject) {
+        Door_Object doors = postgreSQLJDBC.addDoor(c, room_id, doorObject);
         if (doors == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -269,6 +268,33 @@ public class RESTController {
 
     //Rest von Door
 
+    @PostMapping("/Rooms/{room_id}/Doors/{door_id}/Open")
+    public ResponseEntity<String> openDoor (@PathVariable String room_id, @PathVariable String door_id, @RequestBody Open_Door_Object openDoorObject) {
+        System.out.println("rest door door " + openDoorObject.isOpen());
+        boolean succeeded = postgreSQLJDBC.openDoor(c, door_id, openDoorObject);
+        if (!succeeded) {
+            return new ResponseEntity<>("Ventilator activation failed", HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>("Ventilator activation successful", HttpStatus.OK);
+    }
+
+    @GetMapping("/Rooms/{room_id}/Doors/{door_id}/Open")
+    public ResponseEntity<List<Open_Door_Operation_Object>> getDoorOperations(@PathVariable String room_id, @PathVariable String door_id) {
+        List<Open_Door_Operation_Object> doorOperations = postgreSQLJDBC.getDoorOperations(c, room_id, door_id);
+        if (doorOperations == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(doorOperations, HttpStatus.OK);
+    }
+
+
+
+
+
+
+
+
+
     //#########Window
 
     @GetMapping("Rooms/{room_id}/Windows")
@@ -281,8 +307,8 @@ public class RESTController {
     }
 
     @PostMapping("Rooms/{room_id}/Windows")
-    public ResponseEntity<List<Window_Object>> addWindows(@PathVariable String room_id, @RequestBody Window_Object windowObject) {
-        List<Window_Object> windows = postgreSQLJDBC.addWindow(c, room_id, windowObject);
+    public ResponseEntity<Window_Object> addWindows(@PathVariable String room_id, @RequestBody Window_Object windowObject) {
+        Window_Object windows = postgreSQLJDBC.addWindow(c, room_id, windowObject);
         if (windows == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -306,6 +332,25 @@ public class RESTController {
         } else {
             return new ResponseEntity<>("Door with id " + window_id + " not found", HttpStatus.NOT_FOUND);
         }
+    }
+
+    @PostMapping("/Rooms/{room_id}/Windows/{window_id}/Open")
+    public ResponseEntity<String> openWindow (@PathVariable String room_id, @PathVariable String window_id, @RequestBody Open_Window_Object openWindowObject) {
+        System.out.println("rest open window " + openWindowObject.isOpen());
+        boolean succeeded = postgreSQLJDBC.openWindow(c, window_id, openWindowObject);
+        if (!succeeded) {
+            return new ResponseEntity<>("Ventilator activation failed", HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>("Ventilator activation successful", HttpStatus.OK);
+    }
+
+    @GetMapping("/Rooms/{room_id}/Windows/{window_id}/Open")
+    public ResponseEntity<List<Open_Window_Operation_Object>> getWindowOperations(@PathVariable String room_id, @PathVariable String window_id) {
+        List<Open_Window_Operation_Object> windowOperations = postgreSQLJDBC.getWindowOperations(c, room_id, window_id);
+        if (windowOperations == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(windowOperations, HttpStatus.OK);
     }
 
 }
