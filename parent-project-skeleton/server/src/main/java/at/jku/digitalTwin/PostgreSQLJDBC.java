@@ -487,27 +487,27 @@ public class PostgreSQLJDBC {
         return null;
     }
 
-    public List<Door_Object> addDoor(Connection c, String room_id, Door_Object doorObject) {
-        PreparedStatement ps = null;
+    public Door_Object addDoor(Connection c, String room_id, Door_Object doorObject) {
+        Door_Object addedDoor = null;
         try {
-            ps = c.prepareStatement("INSERT INTO door (roomid, doorid, doorname) VALUES (?, ?, ?)");
-            ps.setString(1, room_id);
-            ps.setString(2, doorObject.getDoor_id());
-            ps.setString(3, doorObject.getName());
-            ps.executeUpdate();
-            return getDoors(c, room_id);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        } finally {
-            try {
-                if (ps != null) {
-                    ps.close();
+            String sql = "INSERT INTO door (roomid, doorid, doorname) VALUES (?, ?, ?)";
+            PreparedStatement stmt = c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, room_id);
+            stmt.setString(2, doorObject.getDoor_id());
+            stmt.setString(3, doorObject.getName());
+            int rowsAffected = stmt.executeUpdate();
+            if (rowsAffected == 1) {
+                ResultSet rs = stmt.getGeneratedKeys();
+                if (rs.next()) {
+                    addedDoor = doorObject;
+                    addedDoor.setDoor_id(rs.getString(1));
                 }
-            } catch (SQLException e) {
-                e.printStackTrace();
             }
+        } catch(SQLException e){
+                e.printStackTrace();
         }
+
+        return addedDoor;
     }
 
     public Door_Object getDoor(Connection c, String door_id) {
@@ -538,6 +538,54 @@ public class PostgreSQLJDBC {
         }
         return false;
     }
+
+
+    public boolean openDoor (Connection c, String door_id, Open_Door_Object doorObject) {
+        java.util.Date date = new java.util.Date();
+        java.sql.Timestamp timestamp = new java.sql.Timestamp(date.getTime());
+        try {
+            String sql = "INSERT INTO doorstatus (doorid, doorisopen, doortimestamp) VALUES (?,?,?)";
+            PreparedStatement stmt = c.prepareStatement(sql);
+            stmt.setString(1, door_id);
+            stmt.setBoolean(2, doorObject.isOpen());
+            stmt.setTimestamp(3, timestamp);
+
+            int rowsAffected = stmt.executeUpdate();
+            if (rowsAffected > 0) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public List<Open_Door_Operation_Object> getDoorOperations(Connection c, String room_id, String door_id) {
+        List<Open_Door_Operation_Object> doorOperations = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM doorstatus WHERE doorid = ?";
+            PreparedStatement stmt = c.prepareStatement(sql);
+            stmt.setString(1, door_id);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Open_Door_Operation_Object operation = new Open_Door_Operation_Object();
+                operation.setOpen(rs.getBoolean("doorisopen"));
+                operation.setTime(rs.getString("doortimestamp"));
+                doorOperations.add(operation);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return doorOperations;
+    }
+
+
+
+
+
+
+
+
 
     public List<Window_Object> getWindows(Connection c, String room_id) {
         try {
@@ -610,6 +658,47 @@ public class PostgreSQLJDBC {
         }
         return false;
     }
+
+
+    public boolean openWindow (Connection c, String window_id, Open_Window_Object windowObject) {
+        java.util.Date date = new java.util.Date();
+        java.sql.Timestamp timestamp = new java.sql.Timestamp(date.getTime());
+        try {
+            String sql = "INSERT INTO windowstatus (windowid, windowisopen, windowtimestamp) VALUES (?,?,?)";
+            PreparedStatement stmt = c.prepareStatement(sql);
+            stmt.setString(1, window_id);
+            stmt.setBoolean(2, windowObject.isOpen());
+            stmt.setTimestamp(3, timestamp);
+
+            int rowsAffected = stmt.executeUpdate();
+            if (rowsAffected > 0) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public List<Open_Window_Operation_Object> getWindowOperations(Connection c, String room_id, String window_id) {
+        List<Open_Window_Operation_Object> windowOperations = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM doorstatus WHERE doorid = ?";
+            PreparedStatement stmt = c.prepareStatement(sql);
+            stmt.setString(1, window_id);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Open_Window_Operation_Object operation = new Open_Window_Operation_Object();
+                operation.setOpen(rs.getBoolean("windowisopen"));
+                operation.setTime(rs.getString("windowtimestamp"));
+                windowOperations.add(operation);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return windowOperations;
+    }
+
 
 
 
