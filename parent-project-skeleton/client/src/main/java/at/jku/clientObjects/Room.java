@@ -102,11 +102,13 @@ public class Room {
     }
     public boolean addDoor(String door_id,String name, Boolean status){
         client.addRoomDoor(this.room_id,door_id,name);
+        client.changeDoorStatus(this.room_id, door_id, status);
         components.add(new Component(door_id,name,this.room_id,ComponentType.DOOR,status));
         return true;
     }
     public boolean addVentilator(String ventilator_id,String name, Boolean status){
         client.addVentilator(this.room_id,ventilator_id,name);
+        client.activateVent(this.room_id,ventilator_id,status);
         components.add(new Component(ventilator_id,name,this.room_id,ComponentType.FAN,status));
         return true;
     }

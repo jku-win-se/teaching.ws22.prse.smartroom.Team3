@@ -2,6 +2,7 @@ package at.jku.clientObjects;
 
 import at.jku.Client;
 import at.jku.objects.Light_Activation_Object;
+import at.jku.objects.Power_Plug_Storing_Object;
 
 public class Component {
     String id;
@@ -63,7 +64,9 @@ public class Component {
         }
         if(type==ComponentType.FAN)
         {
-            succeeded = client.activateVent(this.room_id,this.id,!status);
+            Power_Plug_Storing_Object p = client.activateVent(this.room_id,this.id,!status);
+            if (p.isTurnon() != status)
+                succeeded = true;
         }
         if(type==ComponentType.LIGHT)
         {
@@ -90,7 +93,9 @@ public class Component {
         }
         if(type==ComponentType.FAN)
         {
-            succeeded = client.activateVent(this.room_id,this.id,newStatus);
+            Power_Plug_Storing_Object p = client.activateVent(this.room_id,this.id,newStatus);
+            if (p.isTurnon() == newStatus)
+                return true;
         }
         if(type==ComponentType.LIGHT)
         {
