@@ -1,14 +1,0 @@
-
-k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’ü¡¯ıÿÿÿÿ
-f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ô‰­Ó
-f	java:S117;"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ö¯ğ¶
-k	java:S117["QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æ½«úÿÿÿÿ
-f	java:S117a"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğ¨«û
-k	java:S117g"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âŒâˆşÿÿÿÿ
-f	java:S117l"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•õ¹¢
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(âÕÛÇ
-l	java:S116"RRename this field "room_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°¬Ü“ûÿÿÿÿ
-h	java:S1007"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨ÒÛõúÿÿÿÿ
-c	java:S100;"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ö¯ğ¶
-O
-java:S1128"9Remove this unused import 'at.jku.objects.Lights_Object'.(ªËæ

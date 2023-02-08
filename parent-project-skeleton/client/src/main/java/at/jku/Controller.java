@@ -376,25 +376,26 @@ public class Controller implements Initializable {
 
         for(int i = 1; i < lines.size(); i++) {
 
-            String[] fields = lines.get(i).split(",");
+            String[] fields = lines.get(i).split(";");
 
             client.addRoom(fields[0], Double.parseDouble(fields[1]), globalMeasurementUnit);
 
-            if (fields[3].equals(ComponentType.LIGHT.toString()))
-                client.addLight(fields[0], fields[2], fields[2]);
+            if (fields[4].equals(ComponentType.LIGHT.toString()))
+                client.addLight(fields[0], fields[3], fields[2]);
 
-            if (fields[3].equals(ComponentType.DOOR.toString()))
-                client.addRoomDoor(fields[0], fields[2], fields[2]);
+            if (fields[4].equals(ComponentType.DOOR.toString()))
+                client.addRoomDoor(fields[0], fields[3], fields[2]);
 
-            if (fields[3].equals(ComponentType.FAN.toString()))
-                client.addVentilator(fields[0], fields[2], fields[2]);
+            if (fields[4].equals(ComponentType.FAN.toString()))
+                client.addVentilator(fields[0], fields[3], fields[2]);
 
-            if (fields[3].equals(ComponentType.WINDOW.toString()))
-                client.addRoomWindow(fields[0], fields[2], fields[2]);
+            if (fields[4].equals(ComponentType.WINDOW.toString()))
+                client.addRoomWindow(fields[0], fields[3], fields[2]);
         }
 
-        rooms.clear();
+
         roomTableView.setItems(getRooms());
+
 
     }
 
@@ -403,17 +404,17 @@ public class Controller implements Initializable {
         File file = new File(System.getProperty("user.home") + "\\Desktop\\components.csv");
         Writer writer = new BufferedWriter(new FileWriter(file));
         try {
-            writer.write("Room,Size,Component,Component Type,Status");
+            writer.write("Room;Size;ComponentName; ComponentID;ComponentType");
             writer.write("\n");
             for (Room_Object room_object : client.getRooms()) {
 
                 Room room = getCompleteRoom(room_object.getRoom_id());
                 for (Component component : room.getAllComponents()) {
 
-                    String text = room_object.getRoom_id() + ","+ room_object.getRoom_size()+",";
+                    String text = room_object.getRoom_id() + ";"+ room_object.getRoom_size()+";";
 
                     if(component.getName() != null) {
-                        text += component.getName() + "," + component.getType() + "," + component.getStatus() + "\n";
+                        text += component.getName() + ";" + component.getId() + ";" + component.getType() + "\n";
                     }
 
                     writer.write(text);
@@ -426,7 +427,6 @@ public class Controller implements Initializable {
             writer.flush();
             writer.close();
         }
-
     }
 
 
@@ -666,45 +666,68 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    public void enableAutoRules(){
-        addRandomCo2();
+    public void addRandomValues() throws InterruptedException {
+
         addRandomTemp();
         addRandomPeople();
+        addRandomCo2();
+
     }
 
     public void addRandomPeople(){
 
         seriesPeople.getData().clear();
-        for (int i = 0; i < 10; i++) {
+
+
+        for (int i = 1; i < 10; i++) {
             int random = (int)(Math.random()* 30);
             seriesPeople.getData().add(new XYChart.Data<String, Integer>(Integer.toString(i),random));
         }
         int random = (int)(Math.random()* 30);
-        seriesPeople.getData().add(new XYChart.Data<String, Integer>(" ",random));
+        seriesPeople.getData().add(new XYChart.Data<String, Integer>(Integer.toString(10),random));
 
+        if(random > 0){
+            turnAllLightsOn();
+        }
+        else if(random == 0){
+            turnAllLightsOff();
+            switchAllVentilatorsOff();
+        }
+        if(peopleChartData.size() == 0) {
+            peopleChartData.add(seriesPeople);
+        }
 
-        peopleChartData.add(seriesPeople);
         peopleChart.setData(peopleChartData);
 
     }
 
-    public void addRandomTemp(){
+
+
+    public void addRandomTemp() throws InterruptedException {
+
 
         seriesTemp.getData().clear();
-        for (int i = 0; i < 10; i++) {
-            int random = (int)(Math.random()*(100-20+1)+20);
-            seriesTemp.getData().add(new XYChart.Data<String, Integer>(Integer.toString(i),random));
+
+        for (int i = 1; i < 10; i++) {
+            int random = (int) (Math.random() * (100 - 20 + 1) + 20);
+            seriesTemp.getData().add(new XYChart.Data<String, Integer>(Integer.toString(i), random));
         }
-        int random = (int)(Math.random()*(100-20+1)+20);
-        seriesTemp.getData().add(new XYChart.Data<String, Integer>(" ",random));
-        if (random > 70){
-            //openAllDoors();
+        int randoms = (int) (Math.random() * (100 - 20 + 1) + 20);
+        seriesTemp.getData().add(new XYChart.Data<String, Integer>(Integer.toString(10), randoms));
+        if (randoms > 70) {
+            openAllDoors();
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Temperature is above 70 degrees");
-            alert.showAndWait();
+            //alert.showAndWait();
+        }
+        else if (randoms <= 70){
+            closeAllDoors();
         }
 
-        tempChartData.add(seriesTemp);
+        if(tempChartData.size() == 0) {
+            tempChartData.add(seriesTemp);
+        }
+
         tempChart.setData(tempChartData);
 
     }
@@ -714,29 +737,221 @@ public class Controller implements Initializable {
 
         seriesCo2.getData().clear();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 1; i < 10; i++) {
             int random = (int)(Math.random()*(1400-500+1)+500);
             seriesCo2.getData().add(new XYChart.Data<String, Integer>(Integer.toString(i),random));
         }
         int random = (int)(Math.random()*(1400-500+1)+500);
-        seriesCo2.getData().add(new XYChart.Data<String, Integer>(" ",random));
+        seriesCo2.getData().add(new XYChart.Data<String, Integer>(Integer.toString(10),random));
 
         if(random < 800){
             roomTableView.setStyle("-fx-selection-bar: green;");
         }else if(random > 800 && random < 1000){
             roomTableView.setStyle("-fx-selection-bar: yellow;");
+
+            closeAllWindows();
+            switchAllVentilatorsOff();
         }else {
             roomTableView.setStyle("-fx-selection-bar: red;");
-            //openAllWindows();
-            //switchAllVentilatorsOn();
+
+            openAllWindows();
+            switchAllVentilatorsOn();
         }
 
-        co2ChartData.add(seriesCo2);
+        if(co2ChartData.size() == 0) {
+            co2ChartData.add(seriesCo2);
+        }
         co2Chart.setData(co2ChartData);
     }
 
 
+    private void turnAllLightsOn() {
 
+        String room = roomTableView.getSelectionModel().getSelectedItem().getRoom_id();
+        List<Component> lights = getCompleteRoom(room).getAllLights();
+        if(lights.size() >= 1) {
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Es sind Leute im Raum, alle Lichter werden eingeschaltet!");
+            //alert.showAndWait();
+
+
+            for (int i = 0; i < lights.size(); i++) {
+                if (!lights.get(i).getStatus()) {
+                    lights.get(i).changeStatus();
+                    System.out.println(!lights.get(i).getStatus() + " Light"); //nur zum testen
+                }
+            }
+
+            details.clear();
+            showRoom();
+        }
+    }
+
+    private void turnAllLightsOff() {
+
+        String room = roomTableView.getSelectionModel().getSelectedItem().getRoom_id();
+        List<Component> lights = getCompleteRoom(room).getAllLights();
+
+        if(lights.size() >= 1) {
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Es sind kein Leute im Raum, alle Lichter werden ausgeschaltet!");
+            //alert.showAndWait();
+
+
+            for (int i = 0; i < lights.size(); i++) {
+                if (lights.get(i).getStatus()) {
+                    lights.get(i).changeStatus();
+                    System.out.println(!lights.get(i).getStatus() + " Light");//nur zum testen
+                }
+            }
+
+            details.clear();
+            showRoom();
+        }
+    }
+
+    public void openAllDoors()  {
+
+        String room = roomTableView.getSelectionModel().getSelectedItem().getRoom_id();
+        List<Component> doors = getCompleteRoom(room).getAllDoors();
+
+        if(doors.size() >= 1) {
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Es werden alle Tueren geoeffnet, es hat ueber 70 Grad!");
+            //alert.showAndWait();
+
+
+            for (int i = 0; i < doors.size(); i++) {
+                if (!doors.get(i).getStatus()) {
+                    doors.get(i).changeStatus();
+                    System.out.println(!doors.get(i).getStatus() + " Door");//nur zum testen
+                }
+            }
+
+            details.clear();
+            showRoom();
+        }
+    }
+
+    public void closeAllDoors()  {
+
+        String room = roomTableView.getSelectionModel().getSelectedItem().getRoom_id();
+        List<Component> doors = getCompleteRoom(room).getAllDoors();
+
+        if(doors.size() >= 1) {
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Es werden alle Tueren geoeffnet, es hat ueber 70 Grad!");
+            //alert.showAndWait();
+
+
+            for (int i = 0; i < doors.size(); i++) {
+                if (doors.get(i).getStatus()) {
+                    doors.get(i).changeStatus();
+                }
+            }
+
+            details.clear();
+            showRoom();
+        }
+    }
+
+    public void openAllWindows()  {
+
+        String room = roomTableView.getSelectionModel().getSelectedItem().getRoom_id();
+        List<Component> windows = getCompleteRoom(room).getAllWindows();
+
+        if(windows.size() >= 1) {
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Es werden alle Fenster geoeffnet, die Luftqualitaet ist über 1000 ppm!");
+            //alert.showAndWait();
+
+
+            for (int i = 0; i < windows.size(); i++) {
+                if (!windows.get(i).getStatus()) {
+                    windows.get(i).changeStatus();
+                    System.out.println(!windows.get(i).getStatus() + " Window");//nur zum testen
+                }
+            }
+
+            details.clear();
+            showRoom();
+        }
+    }
+
+    public void closeAllWindows()  {
+
+        String room = roomTableView.getSelectionModel().getSelectedItem().getRoom_id();
+        List<Component> windows = getCompleteRoom(room).getAllWindows();
+
+        if(windows.size() >= 1) {
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Es werden alle Fenster geoeffnet, die Luftqualitaet ist über 1000 ppm!");
+            //alert.showAndWait();
+
+
+            for (int i = 0; i < windows.size(); i++) {
+                if (windows.get(i).getStatus()) {
+                    windows.get(i).changeStatus();
+                    System.out.println(!windows.get(i).getStatus() + " Window");//nur zum testen
+                }
+            }
+
+            details.clear();
+            showRoom();
+        }
+    }
+
+    public void switchAllVentilatorsOn(){
+
+        String room = roomTableView.getSelectionModel().getSelectedItem().getRoom_id();
+        List<Component> fans = getCompleteRoom(room).getAllVentilators();
+
+        if(fans.size() >= 1) {
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Es werden alle Ventilatoren eingeschaltet, die Luftqualitaet ist über 1000 ppm!");
+            //alert.showAndWait();
+
+
+            for (int i = 0; i < fans.size(); i++) {
+                if (!fans.get(i).getStatus()) {
+                    fans.get(i).changeStatus();
+                    System.out.println(!fans.get(i).getStatus() + " Ventilator");//nur zum testen
+                }
+            }
+
+            details.clear();
+            showRoom();
+        }
+    }
+    public void switchAllVentilatorsOff(){
+
+        String room = roomTableView.getSelectionModel().getSelectedItem().getRoom_id();
+        List<Component> fans = getCompleteRoom(room).getAllVentilators();
+
+        if(fans.size() >= 1) {
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Es werden alle Ventilatoren ausgeschaltet, es sind keine Leute im Raum!");
+            //alert.showAndWait();
+
+
+            for (int i = 0; i < fans.size(); i++) {
+                if (fans.get(i).getStatus()) {
+                    fans.get(i).changeStatus();
+                    System.out.println(!fans.get(i).getStatus() + " Ventilator"); //nur zum testen
+                }
+            }
+            details.clear();
+            showRoom();
+        }
+    }
 
 
 
