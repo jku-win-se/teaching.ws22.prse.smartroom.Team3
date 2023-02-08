@@ -702,4 +702,136 @@ public class PostgreSQLJDBC {
 
 
 
+    public AirQuality_Properties_Object addAirQualityProperties(Connection c, AirQuality_Properties_Object airQualityPropertiesObject) {
+        AirQuality_Properties_Object addedAirQualitys = null;
+
+        try {
+            String sql = "INSERT INTO airquality (deviceid, fanid, roomid, co2, co2unit, humidity, humidityunit, temperature, temperatureunit, airqualitytimestamp) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement stmt = c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, airQualityPropertiesObject.getDevice_id());
+            stmt.setString(2, airQualityPropertiesObject.getVentilator());
+            stmt.setString(3, airQualityPropertiesObject.getRoom_id());
+            stmt.setInt(4, airQualityPropertiesObject.getCo2());
+            stmt.setString(5, airQualityPropertiesObject.getCo2measurementunit());
+            stmt.setInt(6, airQualityPropertiesObject.getHumidity());
+            stmt.setString(7, airQualityPropertiesObject.getHumiditymeasurementunit());
+            stmt.setInt(8, airQualityPropertiesObject.getTemperature());
+            stmt.setString(9, airQualityPropertiesObject.getTemperaturemeasurementunit());
+            stmt.setString(10, airQualityPropertiesObject.getTime());
+
+            int rowsAffected = stmt.executeUpdate();
+            if (rowsAffected == 1) {
+                ResultSet rs = stmt.getGeneratedKeys();
+                if (rs.next()) {
+                    addedAirQualitys = airQualityPropertiesObject;
+                }
+            }
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return addedAirQualitys;
+    }
+
+
+    public AirQuality_Properties_Object getAirQualityProperties(Connection c, String room_id) {
+        AirQuality_Properties_Object airQuality = null;
+
+        try {
+            String sql = "SELECT * FROM airquality WHERE roomid = ?";
+            PreparedStatement stmt = c.prepareStatement(sql);
+            stmt.setString(1, room_id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                airQuality = new AirQuality_Properties_Object(
+                        rs.getString("roomid"),
+                        rs.getString("deviceid"),
+                        rs.getString("fanid"),
+                        rs.getInt("co2"),
+                        rs.getString("co2unit"),
+                        rs.getInt("temperature"),
+                        rs.getString("temperatureunit"),
+                        rs.getInt("humidity"),
+                        rs.getString("humidityunit"),
+                        rs.getString("timestmap")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return airQuality;
+    }
+
+
+    public AirQuality_Temperature_Object getAirQualityTemperature(Connection c, String room_id) {
+        AirQuality_Temperature_Object airQuality = null;
+
+        try {
+            String sql = "SELECT * FROM airquality WHERE roomid = ?";
+            PreparedStatement stmt = c.prepareStatement(sql);
+            stmt.setString(1, room_id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                airQuality = new AirQuality_Temperature_Object(
+                        rs.getString("roomid"),
+                        rs.getString("fanid"),
+                        rs.getInt("temperature"),
+                        rs.getString("temperatureunit"),
+                        rs.getString("timestmap")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return airQuality;
+    }
+
+    public AirQuality_Humidity_Object getAirQualityHumidity(Connection c, String room_id) {
+        AirQuality_Humidity_Object airQuality = null;
+
+        try {
+            String sql = "SELECT * FROM airquality WHERE roomid = ?";
+            PreparedStatement stmt = c.prepareStatement(sql);
+            stmt.setString(1, room_id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                airQuality = new AirQuality_Humidity_Object(
+                        rs.getString("roomid"),
+                        rs.getString("fanid"),
+                        rs.getInt("humidity"),
+                        rs.getString("humidityunit"),
+                        rs.getString("timestmap")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return airQuality;
+    }
+
+
+    public AirQuality_Co2_Object getAirQualityCo2(Connection c, String room_id) {
+        AirQuality_Co2_Object airQuality = null;
+
+        try {
+            String sql = "SELECT * FROM airquality WHERE roomid = ?";
+            PreparedStatement stmt = c.prepareStatement(sql);
+            stmt.setString(1, room_id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                airQuality = new AirQuality_Co2_Object(
+                        rs.getString("roomid"),
+                        rs.getString("fanid"),
+                        rs.getInt("co2"),
+                        rs.getString("co2unit"),
+                        rs.getString("timestmap")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return airQuality;
+    }
+
 }

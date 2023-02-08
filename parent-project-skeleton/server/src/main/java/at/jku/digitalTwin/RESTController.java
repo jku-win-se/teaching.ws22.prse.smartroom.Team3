@@ -353,4 +353,54 @@ public class RESTController {
         return new ResponseEntity<>(windowOperations, HttpStatus.OK);
     }
 
+
+
+
+    //AirQuality
+    @PostMapping("/Room/AirQuality/")
+    public ResponseEntity<AirQuality_Properties_Object> AddAirQuality (@RequestBody AirQuality_Properties_Object airQualityPropertiesObject) {
+        AirQuality_Properties_Object airQuality = postgreSQLJDBC.addAirQualityProperties(c, airQualityPropertiesObject);
+        if (airQuality == null) {
+            return new ResponseEntity<>(airQuality, HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(airQuality, HttpStatus.OK);
+    }
+
+    @GetMapping("/Rooms/{room_id}/AirQuality")
+    public ResponseEntity<AirQuality_Properties_Object> getAirQuality (@PathVariable String room_id) {
+        AirQuality_Properties_Object airQuality = postgreSQLJDBC.getAirQualityProperties(c, room_id);
+        if (airQuality == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(airQuality, HttpStatus.OK);
+    }
+
+    @GetMapping("/Rooms/{room_id}/AirQuality/temperature/")
+    public ResponseEntity<AirQuality_Temperature_Object> getAirQualityTemperature (@PathVariable String room_id) {
+        AirQuality_Temperature_Object airQuality = postgreSQLJDBC.getAirQualityTemperature(c, room_id);
+        if (airQuality == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(airQuality, HttpStatus.OK);
+    }
+
+    @GetMapping("/Rooms/{room_id}/AirQuality/humidity/")
+    public ResponseEntity<AirQuality_Humidity_Object> getAirQualityHumidity (@PathVariable String room_id) {
+        AirQuality_Humidity_Object airQuality = postgreSQLJDBC.getAirQualityHumidity(c, room_id);
+        if (airQuality == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(airQuality, HttpStatus.OK);
+    }
+
+    @GetMapping("/Rooms/{room_id}/AirQuality/co2/")
+    public ResponseEntity<AirQuality_Co2_Object> getAirQualityCo2 (@PathVariable String room_id) {
+        AirQuality_Co2_Object airQuality = postgreSQLJDBC.getAirQualityCo2(c, room_id);
+        if (airQuality == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(airQuality, HttpStatus.OK);
+    }
+
+
 }
