@@ -378,19 +378,31 @@ public class Controller implements Initializable {
 
             String[] fields = lines.get(i).split(";");
 
-            client.addRoom(fields[0], Double.parseDouble(fields[1]), globalMeasurementUnit);
+            if(client.getRoomID(fields[0]) == null)
+                client.addRoom(fields[0], Double.parseDouble(fields[1]), globalMeasurementUnit);
 
-            if (fields[4].equals(ComponentType.LIGHT.toString()))
+
+            if (fields[4].equals(ComponentType.LIGHT.toString())) {
                 client.addLight(fields[0], fields[3], fields[2]);
+                client.activateLight(fields[0], fields[3], Boolean.valueOf(fields[5]));
+            }
 
-            if (fields[4].equals(ComponentType.DOOR.toString()))
+            if (fields[4].equals(ComponentType.DOOR.toString())) {
                 client.addRoomDoor(fields[0], fields[3], fields[2]);
+                client.changeDoorStatus(fields[0], fields[3], Boolean.valueOf(fields[5]));
+            }
 
-            if (fields[4].equals(ComponentType.FAN.toString()))
+            if (fields[4].equals(ComponentType.FAN.toString())) {
                 client.addVentilator(fields[0], fields[3], fields[2]);
+                client.activateVent(fields[0], fields[3], Boolean.valueOf(fields[5]));
+            }
 
-            if (fields[4].equals(ComponentType.WINDOW.toString()))
+            if (fields[4].equals(ComponentType.WINDOW.toString())) {
                 client.addRoomWindow(fields[0], fields[3], fields[2]);
+                client.changeWindowStatus(fields[0], fields[3], Boolean.valueOf(fields[5]));
+            }
+
+
         }
 
 
@@ -404,7 +416,7 @@ public class Controller implements Initializable {
         File file = new File(System.getProperty("user.home") + "\\Desktop\\components.csv");
         Writer writer = new BufferedWriter(new FileWriter(file));
         try {
-            writer.write("Room;Size;ComponentName; ComponentID;ComponentType");
+            writer.write("Room;Size;ComponentName; ComponentID;ComponentType;Status");
             writer.write("\n");
             for (Room_Object room_object : client.getRooms()) {
 
@@ -414,7 +426,7 @@ public class Controller implements Initializable {
                     String text = room_object.getRoom_id() + ";"+ room_object.getRoom_size()+";";
 
                     if(component.getName() != null) {
-                        text += component.getName() + ";" + component.getId() + ";" + component.getType() + "\n";
+                        text += component.getName() + ";" + component.getId() + ";" + component.getType() + ";" + component.getStatus() + "\n";
                     }
 
                     writer.write(text);
@@ -461,6 +473,8 @@ public class Controller implements Initializable {
         //peopleSeries.getData().add(new XYChart.Data<String,Integer>("test", client.getPeopleCount(roomId).getPeople_count()));
         //peopleChartData.add(peopleSeries);
         //peopleChart.setData(peopleChartData);
+        
+
 
         details.addAll(currentRoom.getAllComponents());
 
