@@ -83,6 +83,7 @@ public class PostgreSQLJDBC {
         if(deletedRoom == null) {
             return null;
         }
+
         try (PreparedStatement statement = c.prepareStatement("DELETE FROM room WHERE roomid = ?")) {
             statement.setString(1, room_id);
             statement.executeUpdate();
@@ -277,7 +278,6 @@ public class PostgreSQLJDBC {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Light_Operation_Return_Object operation = new Light_Operation_Return_Object();
-                operation.setId(rs.getInt("lightid"));
                 operation.setTurnon(rs.getBoolean("lightison"));
                 operation.setBrightness(rs.getInt("brightness"));
                 operation.setHex(rs.getString("hex"));
@@ -607,7 +607,7 @@ public class PostgreSQLJDBC {
         return null;
     }
 
-    public List<Window_Object> addWindow(Connection c, String room_id, Window_Object windowObject) {
+    public Window_Object addWindow(Connection c, String room_id, Window_Object windowObject) {
         PreparedStatement ps = null;
         try {
             ps = c.prepareStatement("INSERT INTO windows (roomid, windowid, windowname) VALUES (?, ?, ?)");
@@ -615,7 +615,7 @@ public class PostgreSQLJDBC {
             ps.setString(2, windowObject.getWindow_id());
             ps.setString(3, windowObject.getName());
             ps.executeUpdate();
-            return getWindows(c, room_id);
+            return new Window_Object(windowObject.getWindow_id(),windowObject.getName());
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
@@ -683,7 +683,7 @@ public class PostgreSQLJDBC {
     public List<Open_Window_Operation_Object> getWindowOperations(Connection c, String room_id, String window_id) {
         List<Open_Window_Operation_Object> windowOperations = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM doorstatus WHERE doorid = ?";
+            String sql = "SELECT * FROM windowstatus WHERE windowid = ?";
             PreparedStatement stmt = c.prepareStatement(sql);
             stmt.setString(1, window_id);
             ResultSet rs = stmt.executeQuery();

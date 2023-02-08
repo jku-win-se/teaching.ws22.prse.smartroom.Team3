@@ -43,7 +43,7 @@ public class Light_Operation_Object {
 
     @Override
     public String toString() {
-        return "Light_Operation_Object{" +
+        return "{" +
                 "turnon=" + turnon +
                 ", brightness=" + brightness +
                 ", hex='" + hex + '\'' +

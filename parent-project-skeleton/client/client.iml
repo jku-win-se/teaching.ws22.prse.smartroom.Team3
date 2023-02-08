@@ -21,10 +21,6 @@
     <orderEntry type="library" name="Maven: org.apache.jena:jena-fuseki-server:4.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:19" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:win:19" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:19" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:win:19" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:19" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:win:19" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:19" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:win:19" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains:annotations:23.0.0" level="project" />
@@ -48,5 +44,9 @@
     <orderEntry type="library" name="Maven: com.github.virtuald:curvesapi:1.07" level="project" />
     <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-api:2.17.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-collections4:4.4" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:17" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:win:17" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:17" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:win:17" level="project" />
   </component>
 </module>

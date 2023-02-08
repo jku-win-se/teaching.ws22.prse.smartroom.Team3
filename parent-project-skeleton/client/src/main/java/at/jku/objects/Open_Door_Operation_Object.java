@@ -1,5 +1,8 @@
 package at.jku.objects;
 
+/**
+ * object to transfer status from server to client
+ */
 public class Open_Door_Operation_Object {
     boolean open;
     String time;

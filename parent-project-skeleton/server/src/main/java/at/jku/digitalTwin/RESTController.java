@@ -220,6 +220,7 @@ public class RESTController {
     @GetMapping("/Rooms/{room_id}/Ventilators/{plug_id}/Activation")
     public ResponseEntity<List<Power_Plug_Operation_Object>> getVentilatorOperations(@PathVariable String room_id, @PathVariable String plug_id) {
         List<Power_Plug_Operation_Object> ventilatorOperations = postgreSQLJDBC.getVentilatorOperations(c, room_id, plug_id);
+        System.out.println("List:"+ventilatorOperations.toString());
         if (ventilatorOperations == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -306,8 +307,8 @@ public class RESTController {
     }
 
     @PostMapping("Rooms/{room_id}/Windows")
-    public ResponseEntity<List<Window_Object>> addWindows(@PathVariable String room_id, @RequestBody Window_Object windowObject) {
-        List<Window_Object> windows = postgreSQLJDBC.addWindow(c, room_id, windowObject);
+    public ResponseEntity<Window_Object> addWindows(@PathVariable String room_id, @RequestBody Window_Object windowObject) {
+        Window_Object windows = postgreSQLJDBC.addWindow(c, room_id, windowObject);
         if (windows == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -333,7 +334,7 @@ public class RESTController {
         }
     }
 
-    @PostMapping("/Rooms/{room_id}/Window/{window_id}/Open")
+    @PostMapping("/Rooms/{room_id}/Windows/{window_id}/Open")
     public ResponseEntity<String> openWindow (@PathVariable String room_id, @PathVariable String window_id, @RequestBody Open_Window_Object openWindowObject) {
         System.out.println("rest open window " + openWindowObject.isOpen());
         boolean succeeded = postgreSQLJDBC.openWindow(c, window_id, openWindowObject);
@@ -343,7 +344,7 @@ public class RESTController {
         return new ResponseEntity<>("Ventilator activation successful", HttpStatus.OK);
     }
 
-    @GetMapping("/Rooms/{room_id}/Doors/{door_id}/Open")
+    @GetMapping("/Rooms/{room_id}/Windows/{window_id}/Open")
     public ResponseEntity<List<Open_Window_Operation_Object>> getWindowOperations(@PathVariable String room_id, @PathVariable String window_id) {
         List<Open_Window_Operation_Object> windowOperations = postgreSQLJDBC.getWindowOperations(c, room_id, window_id);
         if (windowOperations == null) {

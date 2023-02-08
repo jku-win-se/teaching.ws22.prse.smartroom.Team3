@@ -160,21 +160,21 @@ public class Controller implements Initializable {
 
         for(Power_Plug_Object p : fans)
         {
-            components.add(new Component(p.getPlug_id(),p.getName(),room_id,ComponentType.FAN,true));
+            components.add(new Component(p.getPlug_id(),p.getName(),room_id,ComponentType.FAN,client.getCurrentPowerPlugStatus(room_id,p.getPlug_id()).isTurnon()));
         }
 
         List<Door_Object> doors = client.getAllRoomDoor(room_id);
 
         for(Door_Object d : doors)
         {
-            components.add(new Component(d.getDoor_id(),d.getName(),room_id,ComponentType.DOOR,true));
+            components.add(new Component(d.getDoor_id(),d.getName(),room_id,ComponentType.DOOR,client.getDoorStatus(room_id,d.getDoor_id()).isOpen()));
         }
 
         List<Window_Object> windows = client.getAllRoomWindows(room_id);
 
         for(Window_Object w : windows)
         {
-            components.add(new Component(w.getWindow_id(),w.getName(),room_id,ComponentType.WINDOW,false));
+            components.add(new Component(w.getWindow_id(),w.getName(),room_id,ComponentType.WINDOW,client.getWindowStatus(room_id,w.getWindow_id()).isOpen()));
         }
 
 
@@ -236,8 +236,12 @@ public class Controller implements Initializable {
 
     @FXML
     public void addLight(ActionEvent event) throws IOException {
-        currentRoom = getCompleteRoom(comboBox1.getValue().getRoom_id());
 
+        if(comboBox1.getValue() == null) {
+            createdLight.setText("Bitte Raum auswählen");
+            return;
+        }
+        currentRoom = getCompleteRoom(comboBox1.getValue().getRoom_id());
         String lightName = getNameOfLight();
         String lightId = getLightId();
 
@@ -247,6 +251,10 @@ public class Controller implements Initializable {
 
     @FXML
     public void updateRoom() throws IOException {
+        if(comboBox1.getValue() == null) {
+            createdLight.setText("Bitte Raum auswählen");
+            return;
+        }
         currentRoom = getCompleteRoom(comboBox1.getValue().getRoom_id());
 
         client.updateRoom(currentRoom.getRoom_id(), getRoomSize(), globalMeasurementUnit);
@@ -256,6 +264,10 @@ public class Controller implements Initializable {
 
     @FXML
     public void addFan(ActionEvent event) throws IOException {
+        if(comboBox1.getValue() == null) {
+            createdLight.setText("Bitte Raum auswählen");
+            return;
+        }
         currentRoom = getCompleteRoom(comboBox1.getValue().getRoom_id());
 
         String fanName = getNameOfFan();
@@ -268,6 +280,10 @@ public class Controller implements Initializable {
 
     @FXML
     public void addDoor(ActionEvent event) throws IOException {
+        if(comboBox1.getValue() == null) {
+            createdLight.setText("Bitte Raum auswählen");
+            return;
+        }
         currentRoom = getCompleteRoom(comboBox1.getValue().getRoom_id());
 
         String doorName = getNameOfDoor();
@@ -280,6 +296,10 @@ public class Controller implements Initializable {
 
     @FXML
     public void addWindow(ActionEvent event) throws IOException {
+        if(comboBox1.getValue() == null) {
+            createdLight.setText("Bitte Raum auswählen");
+            return;
+        }
         currentRoom = getCompleteRoom(comboBox1.getValue().getRoom_id());
 
         String windowName = getNameOfWindow();
@@ -414,6 +434,8 @@ public class Controller implements Initializable {
         details.clear();
 
         Room_Object room = roomTableView.getSelectionModel().getSelectedItem();
+        if(room == null)
+            return;
         String roomId = room.getRoom_id();
         if(roomId!=null) {
             currentRoom = getCompleteRoom(roomId);
@@ -472,11 +494,11 @@ public class Controller implements Initializable {
 
         Component component = detailTableView.getSelectionModel().getSelectedItem();
 
-        //component.changeStatus();
+        component.changeStatus();
 
-        boolean status = component.getStatus();
+        //boolean status = component.getStatus();
 
-        component.setStatus( (!status) );
+        //component.setStatus( (!status) );
 
         System.out.println(component.getStatus()); //zum testen
 
@@ -550,7 +572,6 @@ public class Controller implements Initializable {
     @FXML
     public double getRoomSize() throws IOException {
         double size = Double.parseDouble(roomSize.getText());
-
         return size;
     }
 

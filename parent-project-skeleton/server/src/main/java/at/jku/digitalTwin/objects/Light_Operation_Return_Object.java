@@ -10,7 +10,7 @@ public class Light_Operation_Return_Object {
     int brightness;
     String hex;
     Timestamp time;
-    private int id;
+
 
 
     public Light_Operation_Return_Object(boolean turnon, int brightness, String hex, Timestamp time) {
@@ -31,13 +31,6 @@ public class Light_Operation_Return_Object {
     }
 
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public boolean isTurnon() {
         return turnon;

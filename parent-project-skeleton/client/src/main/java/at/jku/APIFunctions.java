@@ -43,7 +43,7 @@ public interface APIFunctions {
     public Door_Object addRoomDoor(String roomId,String door_id,String name);
     public Door_Object getRoomDoor(String roomId, String doorId);
     public Door_Object updateDoor (String roomId, String door_id, String name);
-    public boolean getDoorStatus(String room_id, String door_id);
+    public Open_Door_Operation_Object getDoorStatus(String room_id, String door_id);
     public boolean changeDoorStatus(String room_id, String door_id,Boolean isOpen);
 
 
@@ -52,7 +52,7 @@ public interface APIFunctions {
     public Window_Object addRoomWindow(String roomId,String window_id,String name);
     public Window_Object getRoomWindow(String roomId, String window_id);
     public Window_Object updateWindow (String roomId, String window_id, String name);
-    public boolean getWindowStatus(String room_id, String window_id);
+    public Open_Window_Operation_Object getWindowStatus(String room_id, String window_id);
     public boolean changeWindowStatus(String room_id, String window_id,Boolean isOpen);
 
 
