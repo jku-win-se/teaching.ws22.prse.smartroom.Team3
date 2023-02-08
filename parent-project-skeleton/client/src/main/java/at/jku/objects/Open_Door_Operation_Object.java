@@ -1,5 +1,6 @@
 package at.jku.objects;
 
+
 /**
  * object to transfer status from server to client
  */

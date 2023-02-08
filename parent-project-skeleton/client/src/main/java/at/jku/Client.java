@@ -278,6 +278,7 @@ public class Client implements APIFunctions{
             if(r.statusCode()==200) {
                 return activation;
             }
+
             else
             {
                 return null;
