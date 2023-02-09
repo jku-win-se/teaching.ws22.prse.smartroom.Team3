@@ -7,13 +7,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.List;
 
 @RestController
 public class RESTController {
 
-    PostgreSQLJDBC db = new PostgreSQLJDBC();
-    Connection c = db.connect_to_db("SmartroomGruppe3", "postgres", "smartroom3");
+    public PostgreSQLJDBC db = new PostgreSQLJDBC();
+    public Connection c = db.connect_to_db("SmartroomGruppe3", "postgres", "smartroom3");
 
     @Autowired
     public PostgreSQLJDBC postgreSQLJDBC;
@@ -21,24 +23,21 @@ public class RESTController {
     //#########Rooms
 
     @GetMapping("/Rooms")
-    ResponseEntity<List<Room_Object>> getRooms() {
+    public ResponseEntity<List<Room_Object>> getRooms() {
         List<Room_Object> allRooms = postgreSQLJDBC.getAllRooms(c, "room");
         db.getAllRooms(c, "room");
         return new ResponseEntity<>(allRooms, HttpStatus.OK);
     }
 
     @PostMapping("/Rooms")
-    ResponseEntity<Room_Object> addRoom(@RequestBody Room_Object room) {
+    public ResponseEntity<Room_Object> addRoom(@RequestBody Room_Object room) {
         Room_Object room_object = new Room_Object(room.getRoom_id(), room.getRoom_size(), room.getMeasurement_unit());
-//        room_object.setRoom_id(room.getRoom_id());
-//        room_object.setRoom_size(room.getRoom_size());
-//        room_object.setMeasurement_unit(room.getMeasurement_unit());
         db.add_room(c, "room", room.getRoom_id(), room.getRoom_size(), room.getMeasurement_unit());
         return ResponseEntity.ok(room);
     }
 
     @GetMapping("/Rooms/{room_id}")
-    ResponseEntity<Room_Object> getRoomId(@PathVariable String room_id) {
+    public ResponseEntity<Room_Object> getRoomId(@PathVariable String room_id) {
         Room_Object room = postgreSQLJDBC.getRoomById(c, room_id);
         if (room == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -47,8 +46,8 @@ public class RESTController {
     }
 
     @DeleteMapping("/Rooms/{room_id}")
-    ResponseEntity<Room_Object> deleteRoom(@PathVariable String room_id) {
-        Room_Object deletedRoom = postgreSQLJDBC.deleteRoomById(c, room_id);
+    public ResponseEntity<Room_Object> deleteRoom(@PathVariable String room_id) {
+        Room_Object deletedRoom = db.deleteRoomById(c, room_id);
         if (deletedRoom == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -56,7 +55,7 @@ public class RESTController {
     }
 
     @PutMapping("Rooms/{room_id}")
-    ResponseEntity<Update_RoomObject> updateRoom(@PathVariable String room_id, @RequestBody Update_RoomObject update_roomObject) {
+    public ResponseEntity<Update_RoomObject> updateRoom(@PathVariable String room_id, @RequestBody Update_RoomObject update_roomObject) {
 
         Room_Object updatedRoom = postgreSQLJDBC.updateRoomById(c, room_id, update_roomObject);
         if (updatedRoom == null) {
@@ -66,7 +65,7 @@ public class RESTController {
     }
 
     @GetMapping("/Rooms/{room_id}/PeopleInRoom")
-    ResponseEntity<PeopleInRoomObject> getPeopleInRoom(@PathVariable String room_id) {
+    public ResponseEntity<PeopleInRoomObject> getPeopleInRoom(@PathVariable String room_id) {
         PeopleInRoomObject peopleInRoom = postgreSQLJDBC.getPeopleInRoomById(c, room_id);
         if (peopleInRoom == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -76,7 +75,7 @@ public class RESTController {
 
 
     @PostMapping("/Rooms/{room_id}/PeopleInRoom")
-    ResponseEntity<PeopleInRoomObject> addPeopleInRoom(@PathVariable String room_id, @RequestBody PeopleInRoomObject peopleInRoomObject) {
+    public ResponseEntity<PeopleInRoomObject> addPeopleInRoom(@PathVariable String room_id, @RequestBody PeopleInRoomObject peopleInRoomObject) {
         PeopleInRoomObject addedPeopleInRoom = postgreSQLJDBC.addPeopleInRoomById(c, room_id, peopleInRoomObject);
         if (addedPeopleInRoom == null) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -88,6 +87,7 @@ public class RESTController {
 
     @GetMapping("/Rooms/{room_id}/Lights")
     public ResponseEntity<List<Lights_Object>> getAllLights(@PathVariable String room_id) {
+        PostgreSQLJDBC postgreSQLJDBC = new PostgreSQLJDBC();
         List<Lights_Object> lights = postgreSQLJDBC.getLightsByRoomId(c, room_id);
         if (lights == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -97,7 +97,7 @@ public class RESTController {
 
     @PostMapping("/Rooms/{room_id}/Lights")
     public ResponseEntity<Lights_Object> addLights(@PathVariable String room_id, @RequestBody Lights_Object lights_object) {
-        Lights_Object addedLight = postgreSQLJDBC.addLight(c, room_id, lights_object);
+        Lights_Object addedLight = db.addLight(c, room_id, lights_object);
         if (addedLight == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
