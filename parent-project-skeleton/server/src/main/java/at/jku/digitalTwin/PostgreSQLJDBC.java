@@ -143,10 +143,12 @@ public class PostgreSQLJDBC {
     public PeopleInRoomObject addPeopleInRoomById(Connection c, String room_id, PeopleInRoomObject peopleInRoomObject) {
         PeopleInRoomObject addedPeopleInRoom = null;
         try {
-            String sql = "INSERT INTO peopleinroom (peopleroomid, nopeopleinroom) VALUES (?, ?)";
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+            String sql = "INSERT INTO peopleinroom (peopleroomid, nopeopleinroom, peopletimestamp) VALUES (?, ?, ?)";
             PreparedStatement stmt = c.prepareStatement(sql);
             stmt.setString(1, room_id);
             stmt.setInt(2, peopleInRoomObject.getPeople_count());
+            stmt.setTimestamp(3, timestamp);
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected == 1) {
                 addedPeopleInRoom = peopleInRoomObject;
@@ -212,8 +214,6 @@ public class PostgreSQLJDBC {
                 light = new Lights_Object();
                 light.setLight_id(rs.getString("lightid"));
                 light.setName(rs.getString("lightname"));
-                //light.setStatus(rs.getString("status"));
-                //light.setRoom_id(rs.getString("roomid"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -239,27 +239,21 @@ public class PostgreSQLJDBC {
 
     public Lights_Object updateLightById(Connection c, String room_id, String light_id, Update_LightObject update_LightObject) {
         Lights_Object updatedLight = null;
-        //Update_LightObject updatedLight = null;
         try {
             String sql = "UPDATE light SET lightname = ? WHERE lightid = ?";
             PreparedStatement stmt = c.prepareStatement(sql);
             stmt.setString(1, update_LightObject.getName());
-            //stmt.setString(2, update_LightObject.getStatus());
             stmt.setString(2, light_id);
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected == 1) {
-                // retrieve the updated light from the database
                 sql = "SELECT * FROM light WHERE lightid = ?";
                 stmt = c.prepareStatement(sql);
                 stmt.setString(1, light_id);
                 ResultSet rs = stmt.executeQuery();
                 if (rs.next()) {
                     updatedLight = new Lights_Object();
-                    //updatedLight = new Update_LightObject();
                     updatedLight.setLight_id(rs.getString("lightid"));
                     updatedLight.setName(rs.getString("lightname"));
-                    //updatedLight.setStatus(rs.getString("status"));
-                    //updatedLight.setRoom_id(rs.getString("roomid"));
                 }
             }
         } catch (SQLException e) {

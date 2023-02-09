@@ -76,7 +76,7 @@ public class RESTController {
 
     @PostMapping("/Rooms/{room_id}/PeopleInRoom")
     public ResponseEntity<PeopleInRoomObject> addPeopleInRoom(@PathVariable String room_id, @RequestBody PeopleInRoomObject peopleInRoomObject) {
-        PeopleInRoomObject addedPeopleInRoom = postgreSQLJDBC.addPeopleInRoomById(c, room_id, peopleInRoomObject);
+        PeopleInRoomObject addedPeopleInRoom = db.addPeopleInRoomById(c, room_id, peopleInRoomObject);
         if (addedPeopleInRoom == null) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -87,8 +87,7 @@ public class RESTController {
 
     @GetMapping("/Rooms/{room_id}/Lights")
     public ResponseEntity<List<Lights_Object>> getAllLights(@PathVariable String room_id) {
-        PostgreSQLJDBC postgreSQLJDBC = new PostgreSQLJDBC();
-        List<Lights_Object> lights = postgreSQLJDBC.getLightsByRoomId(c, room_id);
+        List<Lights_Object> lights = db.getLightsByRoomId(c, room_id);
         if (lights == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
