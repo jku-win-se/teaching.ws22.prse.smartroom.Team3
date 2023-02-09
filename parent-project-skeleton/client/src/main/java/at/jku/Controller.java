@@ -93,7 +93,7 @@ public class Controller implements Initializable {
     @FXML
     private ComboBox<Room_Object> comboBox1 = new ComboBox<Room_Object>();
     @FXML
-    private TableView<Room_Object> roomTableView = new TableView<>();
+    TableView<Room_Object> roomTableView = new TableView<>();
     @FXML
     private TableView<Component> detailTableView = new TableView<Component>();
     @FXML
@@ -702,19 +702,22 @@ public class Controller implements Initializable {
 
     @FXML
     public void addRandomValues() throws InterruptedException {
-
         addRandomTemp();
         addRandomPeople();
         addRandomCo2();
 
     }
 
+
+
     public void addRandomPeople(){
+        ChartUpdateProcess c = new ChartUpdateProcess(peopleChart,this,"people");
+        c.start();
 
-        seriesPeople.getData().clear();
+        //seriesPeople.getData().clear();
 
 
-        for (int i = 1; i < 10; i++) {
+        /*for (int i = 1; i < 10; i++) {
             int random = (int)(Math.random()* 30);
             seriesPeople.getData().add(new XYChart.Data<String, Integer>(Integer.toString(i),random));
         }
@@ -732,16 +735,17 @@ public class Controller implements Initializable {
             peopleChartData.add(seriesPeople);
         }
 
-        peopleChart.setData(peopleChartData);
+        peopleChart.setData(peopleChartData);*/
 
     }
 
 
 
     public void addRandomTemp() throws InterruptedException {
+        ChartUpdateProcess c = new ChartUpdateProcess(tempChart,this,"temp");
+        c.start();
 
-
-        seriesTemp.getData().clear();
+        /*seriesTemp.getData().clear();
 
         for (int i = 1; i < 10; i++) {
             int random = (int) (Math.random() * (100 - 20 + 1) + 20);
@@ -763,14 +767,15 @@ public class Controller implements Initializable {
             tempChartData.add(seriesTemp);
         }
 
-        tempChart.setData(tempChartData);
+        tempChart.setData(tempChartData);*/
 
     }
 
     @FXML
     public void addRandomCo2(){
-
-        seriesCo2.getData().clear();
+        ChartUpdateProcess c = new ChartUpdateProcess(co2Chart,this,"co2");
+        c.start();
+        /*seriesCo2.getData().clear();
 
         for (int i = 1; i < 10; i++) {
             int random = (int)(Math.random()*(1400-500+1)+500);
@@ -796,11 +801,11 @@ public class Controller implements Initializable {
         if(co2ChartData.size() == 0) {
             co2ChartData.add(seriesCo2);
         }
-        co2Chart.setData(co2ChartData);
+        co2Chart.setData(co2ChartData);*/
     }
 
 
-    private void turnAllLightsOn() {
+    void turnAllLightsOn() {
 
         String room = roomTableView.getSelectionModel().getSelectedItem().getRoom_id();
         List<Component> lights = getCompleteRoom(room).getAllLights();
@@ -823,7 +828,7 @@ public class Controller implements Initializable {
         }
     }
 
-    private void turnAllLightsOff() {
+     void turnAllLightsOff() {
 
         String room = roomTableView.getSelectionModel().getSelectedItem().getRoom_id();
         List<Component> lights = getCompleteRoom(room).getAllLights();
