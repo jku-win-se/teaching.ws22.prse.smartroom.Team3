@@ -709,99 +709,26 @@ public class Controller implements Initializable {
     }
 
 
-
+    ChartUpdateProcess cPeople = new ChartUpdateProcess(peopleChart,this,"people");
     public void addRandomPeople(){
-        ChartUpdateProcess c = new ChartUpdateProcess(peopleChart,this,"people");
-        c.start();
-
-        //seriesPeople.getData().clear();
-
-
-        /*for (int i = 1; i < 10; i++) {
-            int random = (int)(Math.random()* 30);
-            seriesPeople.getData().add(new XYChart.Data<String, Integer>(Integer.toString(i),random));
-        }
-        int random = (int)(Math.random()* 30);
-        seriesPeople.getData().add(new XYChart.Data<String, Integer>(Integer.toString(10),random));
-
-        if(random > 0){
-            turnAllLightsOn();
-        }
-        else if(random == 0){
-            turnAllLightsOff();
-            switchAllVentilatorsOff();
-        }
-        if(peopleChartData.size() == 0) {
-            peopleChartData.add(seriesPeople);
-        }
-
-        peopleChart.setData(peopleChartData);*/
-
+        cPeople.stop();
+        cPeople = new ChartUpdateProcess(peopleChart,this,"people");
+        cPeople.start();
     }
 
 
-
+    ChartUpdateProcess cTemp = new ChartUpdateProcess(tempChart,this,"temp");
     public void addRandomTemp() throws InterruptedException {
-        ChartUpdateProcess c = new ChartUpdateProcess(tempChart,this,"temp");
-        c.start();
-
-        /*seriesTemp.getData().clear();
-
-        for (int i = 1; i < 10; i++) {
-            int random = (int) (Math.random() * (100 - 20 + 1) + 20);
-            seriesTemp.getData().add(new XYChart.Data<String, Integer>(Integer.toString(i), random));
-        }
-        int randoms = (int) (Math.random() * (100 - 20 + 1) + 20);
-        seriesTemp.getData().add(new XYChart.Data<String, Integer>(Integer.toString(10), randoms));
-        if (randoms > 70) {
-            openAllDoors();
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Temperature is above 70 degrees");
-            //alert.showAndWait();
-        }
-        else if (randoms <= 70){
-            closeAllDoors();
-        }
-
-        if(tempChartData.size() == 0) {
-            tempChartData.add(seriesTemp);
-        }
-
-        tempChart.setData(tempChartData);*/
-
+        cTemp.stop();
+        cTemp = new ChartUpdateProcess(tempChart,this,"temp");
+        cTemp.start();
     }
 
-    @FXML
+    ChartUpdateProcess cCo2 = new ChartUpdateProcess(co2Chart,this,"co2");
     public void addRandomCo2(){
-        ChartUpdateProcess c = new ChartUpdateProcess(co2Chart,this,"co2");
-        c.start();
-        /*seriesCo2.getData().clear();
-
-        for (int i = 1; i < 10; i++) {
-            int random = (int)(Math.random()*(1400-500+1)+500);
-            seriesCo2.getData().add(new XYChart.Data<String, Integer>(Integer.toString(i),random));
-        }
-        int random = (int)(Math.random()*(1400-500+1)+500);
-        seriesCo2.getData().add(new XYChart.Data<String, Integer>(Integer.toString(10),random));
-
-        if(random < 800){
-            roomTableView.setStyle("-fx-selection-bar: green;");
-        }else if(random > 800 && random < 1000){
-            roomTableView.setStyle("-fx-selection-bar: yellow;");
-
-            closeAllWindows();
-            switchAllVentilatorsOff();
-        }else {
-            roomTableView.setStyle("-fx-selection-bar: red;");
-
-            openAllWindows();
-            switchAllVentilatorsOn();
-        }
-
-        if(co2ChartData.size() == 0) {
-            co2ChartData.add(seriesCo2);
-        }
-        co2Chart.setData(co2ChartData);*/
+        cCo2.stop();
+         cCo2 = new ChartUpdateProcess(co2Chart,this,"co2");
+        cCo2.start();
     }
 
 
