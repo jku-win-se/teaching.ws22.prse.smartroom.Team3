@@ -29,7 +29,7 @@
                       </Menu>
                       <Menu mnemonicParsing="false" text="Automation">
                           <items>
-                              <MenuItem mnemonicParsing="false" onAction="#enableAutoRules" text="Enable Auto Rules" />
+                              <MenuItem mnemonicParsing="false" text="Enable Auto Rules" />
                           </items>
                       </Menu>
                   </menus>
@@ -48,7 +48,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TableView fx:id="roomTableView" layoutY="26.0" maxHeight="1.7976931348623157E308" minHeight="-Infinity" onMouseClicked="#showRoom" prefHeight="432.0" prefWidth="126.0">
+      <TableView fx:id="roomTableView" layoutY="26.0" maxHeight="1.7976931348623157E308" minHeight="-Infinity" onMouseClicked="#showRoom" onMouseReleased="#addRandomValues" prefHeight="432.0" prefWidth="132.0">
          <columns>
             <TableColumn fx:id="name" prefWidth="130.39998776912688" text="Rooms" />
          </columns>
