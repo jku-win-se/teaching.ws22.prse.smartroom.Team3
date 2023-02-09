@@ -194,7 +194,6 @@ public class PostgreSQLJDBC {
                 ResultSet rs = stmt.getGeneratedKeys();
                 if (rs.next()) {
                     addedLight = lights_object;
-                    addedLight.setLight_id(rs.getString(1));
                 }
             }
         } catch (SQLException e) {

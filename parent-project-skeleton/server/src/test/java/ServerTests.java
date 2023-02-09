@@ -177,12 +177,12 @@ public class ServerTests {
     }
 
     @Test
-    public void testAddLight_checkIfLightIsAdded() throws SQLException {
+    public void testAddLight_checkIfLightIsAdded() {
         // Arrange
         RESTController restController = new RESTController();
         PostgreSQLJDBC postgreSQLJDBC = mock(PostgreSQLJDBC.class);
         restController.postgreSQLJDBC = postgreSQLJDBC;
-        Lights_Object expectedLight = new Lights_Object("testlight","testlight");
+        Lights_Object expectedLight = new Lights_Object("testlight", "testlight");
         when(postgreSQLJDBC.addLight(any(), anyString(), any(Lights_Object.class))).thenReturn(expectedLight);
 
         // Act
@@ -190,7 +190,7 @@ public class ServerTests {
 
         // Assert
         assertEquals(expectedLight, actualResponse.getBody());
-        assertEquals(HttpStatus.CREATED, actualResponse.getStatusCode());
+        assertEquals(HttpStatus.OK, actualResponse.getStatusCode());
     }
 
 
@@ -330,6 +330,8 @@ public class ServerTests {
         assertEquals(HttpStatus.OK, actualResponse.getStatusCode());
     }
 
+    //Ventilators
+
     @Test
     public void testGetAllFans_CheckIfReturnTypeIsCorrect() {
         // Arrange
@@ -348,7 +350,22 @@ public class ServerTests {
         assertEquals(HttpStatus.OK, actualResponse.getStatusCode());
     }
 
-    //Add Ventilator
+    @Test
+    public void testAddFan_checkIfFanIsAdded() {
+        // Arrange
+        RESTController restController = new RESTController();
+        PostgreSQLJDBC postgreSQLJDBC = mock(PostgreSQLJDBC.class);
+        restController.postgreSQLJDBC = postgreSQLJDBC;
+        Power_Plug_Object expectedFan = new Power_Plug_Object("testfan", "testfan");
+        when(postgreSQLJDBC.addVentilator(any(), anyString(), any(Power_Plug_Object.class))).thenReturn(expectedFan);
+
+        // Act
+        ResponseEntity<Power_Plug_Object> actualResponse = restController.addVentilator("testroom", new Power_Plug_Object());
+
+        // Assert
+        assertEquals(expectedFan, actualResponse.getBody());
+        assertEquals(HttpStatus.OK, actualResponse.getStatusCode());
+    }
 
     @Test
     public void testGetRoomFans_returnsFan() {
@@ -385,13 +402,12 @@ public class ServerTests {
         // Assert
         assertEquals(HttpStatus.OK, actualResponse.getStatusCode());
     }
-/*
+
     @Test
     public void testUpdateFan_returnsOk() {
         // Arrange
-        Power_Plug_Object updatedFan = new Power_Plug_Object("testfan", "testfan");
         PostgreSQLJDBC postgreSQLJDBC = mock(PostgreSQLJDBC.class);
-        when(postgreSQLJDBC.updateVentilator(any(Connection.class), anyString(), any(Update_PlugObject.class))).thenReturn(updatedFan);
+        when(postgreSQLJDBC.updateVentilator(any(Connection.class), anyString(), any(Update_PlugObject.class))).thenReturn(true);
         RESTController restController = new RESTController();
         restController.postgreSQLJDBC = postgreSQLJDBC;
         String room_id = "testroom";
@@ -404,6 +420,372 @@ public class ServerTests {
 
         // Assert
         assertEquals(HttpStatus.OK, actualResponse.getStatusCode());
-        assertEquals(updatedFan, actualResponse.getBody());
-    }*/
+        assertEquals(update_plugObject, actualResponse.getBody());
+    }
+
+    @Test
+    public void testActivateFan() throws Exception {
+        // Arrange
+        Connection c = mock(Connection.class);
+        PreparedStatement stmt = mock(PreparedStatement.class);
+        when(c.prepareStatement(anyString())).thenReturn(stmt);
+        when(stmt.executeUpdate()).thenReturn(1);
+        PostgreSQLJDBC postgreSQLJDBC = new PostgreSQLJDBC();
+
+        Power_Plug_Storing_Object plug_storing_object = new Power_Plug_Storing_Object();
+        plug_storing_object.setTurnon(true);
+
+        // Act
+        boolean result = postgreSQLJDBC.activateVentilator(c, "testfan", plug_storing_object);
+
+        // Assert
+        assertTrue(result);
+    }
+
+    @Test
+    public void testGetFanOperations_returnsOk() {
+        // Arrange
+        Connection c = mock(Connection.class);
+        PostgreSQLJDBC postgreSQLJDBC = mock(PostgreSQLJDBC.class);
+        when(postgreSQLJDBC.getVentilatorOperations(eq(c), anyString(), anyString()))
+                .thenReturn(Arrays.asList(new Power_Plug_Operation_Object()));
+        RESTController restController = new RESTController();
+        restController.c = c;
+        restController.postgreSQLJDBC = postgreSQLJDBC;
+        String room_id = "testroom";
+        String plug_id = "testfan";
+
+        // Act
+        ResponseEntity<List<Power_Plug_Operation_Object>> actualResponse =
+                restController.getVentilatorOperations(room_id, plug_id);
+
+        // Assert
+        assertEquals(HttpStatus.OK, actualResponse.getStatusCode());
+        List<Power_Plug_Operation_Object> plugOperations = actualResponse.getBody();
+        assertNotNull(plugOperations);
+        assertEquals(1, plugOperations.size());
+    }
+
+    //Door
+
+    @Test
+    public void testGetAllDoors_CheckIfReturnTypeIsCorrect() {
+        // Arrange
+        RESTController restController = new RESTController();
+        PostgreSQLJDBC postgreSQLJDBC = mock(PostgreSQLJDBC.class);
+        restController.postgreSQLJDBC = postgreSQLJDBC;
+        String room_id = "room_id";
+        List<Door_Object> expectedDoors = new ArrayList<>();
+        when(postgreSQLJDBC.getDoors(any(), eq(room_id))).thenReturn(expectedDoors);
+
+        // Act
+        ResponseEntity<List<Door_Object>> actualResponse = restController.getDoors(room_id);
+
+        // Assert
+        assertEquals(expectedDoors, actualResponse.getBody());
+        assertEquals(HttpStatus.OK, actualResponse.getStatusCode());
+    }
+
+    @Test
+    public void testAddDoor_checkIfDoorIsAdded() {
+        // Arrange
+        RESTController restController = new RESTController();
+        PostgreSQLJDBC postgreSQLJDBC = mock(PostgreSQLJDBC.class);
+        restController.postgreSQLJDBC = postgreSQLJDBC;
+        Door_Object expectedDoor = new Door_Object("testdoor", "testdoor");
+        when(postgreSQLJDBC.addDoor(any(), anyString(), any(Door_Object.class))).thenReturn(expectedDoor);
+
+        // Act
+        ResponseEntity<Door_Object> actualResponse = restController.addDoors("testroom", new Door_Object());
+
+        // Assert
+        assertEquals(expectedDoor, actualResponse.getBody());
+        assertEquals(HttpStatus.OK, actualResponse.getStatusCode());
+    }
+
+    @Test
+    public void testGetRoomDoors_returnsDoor() {
+        // Arrange
+        Door_Object expectedDoor = new Door_Object("testdoor", "testdoor");
+        PostgreSQLJDBC postgreSQLJDBC = mock(PostgreSQLJDBC.class);
+        when(postgreSQLJDBC.getDoor(any(Connection.class), anyString())).thenReturn(expectedDoor);
+        RESTController restController = new RESTController();
+        restController.postgreSQLJDBC = postgreSQLJDBC;
+        String room_id = "testroom";
+        String door_id = "testdoor";
+
+        // Act
+        ResponseEntity<Door_Object> actualResponse = restController.getRoomDoor(room_id, door_id);
+
+        // Assert
+        assertEquals(expectedDoor, actualResponse.getBody());
+        assertEquals(HttpStatus.OK, actualResponse.getStatusCode());
+    }
+
+    @Test
+    public void testDeleteDoor_returnsOk() {
+        // Arrange
+        PostgreSQLJDBC postgreSQLJDBC = mock(PostgreSQLJDBC.class);
+        when(postgreSQLJDBC.deleteDoor(any(Connection.class), anyString())).thenReturn(true);
+        RESTController restController = new RESTController();
+        restController.postgreSQLJDBC = postgreSQLJDBC;
+        String room_id = "testroom";
+        String door_id = "testdoor";
+
+        // Act
+        ResponseEntity<String> actualResponse = restController.deleteDoor(room_id, door_id);
+
+        // Assert
+        assertEquals(HttpStatus.OK, actualResponse.getStatusCode());
+    }
+
+    @Test
+    public void testActivateDoor() throws Exception {
+        // Arrange
+        Connection c = mock(Connection.class);
+        PreparedStatement stmt = mock(PreparedStatement.class);
+        when(c.prepareStatement(anyString())).thenReturn(stmt);
+        when(stmt.executeUpdate()).thenReturn(1);
+        PostgreSQLJDBC postgreSQLJDBC = new PostgreSQLJDBC();
+
+        Open_Door_Object open_door_object = new Open_Door_Object();
+        open_door_object.setOpen(true);
+
+        // Act
+        boolean result = postgreSQLJDBC.openDoor(c, "testdoor", open_door_object);
+
+        // Assert
+        assertTrue(result);
+    }
+
+    @Test
+    public void testGetDoorOperations_returnsOk() {
+        // Arrange
+        Connection c = mock(Connection.class);
+        PostgreSQLJDBC postgreSQLJDBC = mock(PostgreSQLJDBC.class);
+        when(postgreSQLJDBC.getDoorOperations(eq(c), anyString(), anyString()))
+                .thenReturn(Arrays.asList(new Open_Door_Operation_Object()));
+        RESTController restController = new RESTController();
+        restController.c = c;
+        restController.postgreSQLJDBC = postgreSQLJDBC;
+        String room_id = "testroom";
+        String door_id = "testdoor";
+
+        // Act
+        ResponseEntity<List<Open_Door_Operation_Object>> actualResponse =
+                restController.getDoorOperations(room_id, door_id);
+
+        // Assert
+        assertEquals(HttpStatus.OK, actualResponse.getStatusCode());
+        List<Open_Door_Operation_Object> doorOperations = actualResponse.getBody();
+        assertNotNull(doorOperations);
+        assertEquals(1, doorOperations.size());
+    }
+
+    //Windows
+
+    @Test
+    public void testGetAllWindows_CheckIfReturnTypeIsCorrect() {
+        // Arrange
+        RESTController restController = new RESTController();
+        PostgreSQLJDBC postgreSQLJDBC = mock(PostgreSQLJDBC.class);
+        restController.postgreSQLJDBC = postgreSQLJDBC;
+        String room_id = "room_id";
+        List<Window_Object> expectedWindows = new ArrayList<>();
+        when(postgreSQLJDBC.getWindows(any(), eq(room_id))).thenReturn(expectedWindows);
+
+        // Act
+        ResponseEntity<List<Window_Object>> actualResponse = restController.getWindows(room_id);
+
+        // Assert
+        assertEquals(expectedWindows, actualResponse.getBody());
+        assertEquals(HttpStatus.OK, actualResponse.getStatusCode());
+    }
+
+    @Test
+    public void testAddWindow_checkIfWindowIsAdded() {
+        // Arrange
+        RESTController restController = new RESTController();
+        PostgreSQLJDBC postgreSQLJDBC = mock(PostgreSQLJDBC.class);
+        restController.postgreSQLJDBC = postgreSQLJDBC;
+        Window_Object expectedWindow = new Window_Object("testwindow", "testwindow");
+        when(postgreSQLJDBC.addWindow(any(), anyString(), any(Window_Object.class))).thenReturn(expectedWindow);
+
+        // Act
+        ResponseEntity<Window_Object> actualResponse = restController.addWindows("testroom", new Window_Object());
+
+        // Assert
+        assertEquals(expectedWindow, actualResponse.getBody());
+        assertEquals(HttpStatus.OK, actualResponse.getStatusCode());
+    }
+
+    @Test
+    public void testGetRoomWindows_returnsWindow() {
+        // Arrange
+        Window_Object expectedWindow = new Window_Object("testwindow", "testwindow");
+        PostgreSQLJDBC postgreSQLJDBC = mock(PostgreSQLJDBC.class);
+        when(postgreSQLJDBC.getWindow(any(Connection.class), anyString())).thenReturn(expectedWindow);
+        RESTController restController = new RESTController();
+        restController.postgreSQLJDBC = postgreSQLJDBC;
+        String room_id = "testroom";
+        String window_id = "testwindow";
+
+        // Act
+        ResponseEntity<Window_Object> actualResponse = restController.getRoomWindow(room_id, window_id);
+
+        // Assert
+        assertEquals(expectedWindow, actualResponse.getBody());
+        assertEquals(HttpStatus.OK, actualResponse.getStatusCode());
+    }
+
+    @Test
+    public void testDeleteWindow_returnsOk() {
+        // Arrange
+        PostgreSQLJDBC postgreSQLJDBC = mock(PostgreSQLJDBC.class);
+        when(postgreSQLJDBC.deleteWindow(any(Connection.class), anyString())).thenReturn(true);
+        RESTController restController = new RESTController();
+        restController.postgreSQLJDBC = postgreSQLJDBC;
+        String room_id = "testroom";
+        String window_id = "testwindow";
+
+        // Act
+        ResponseEntity<String> actualResponse = restController.deleteWindow(room_id, window_id);
+
+        // Assert
+        assertEquals(HttpStatus.OK, actualResponse.getStatusCode());
+    }
+
+    @Test
+    public void testActivateWindow() throws Exception {
+        // Arrange
+        Connection c = mock(Connection.class);
+        PreparedStatement stmt = mock(PreparedStatement.class);
+        when(c.prepareStatement(anyString())).thenReturn(stmt);
+        when(stmt.executeUpdate()).thenReturn(1);
+        PostgreSQLJDBC postgreSQLJDBC = new PostgreSQLJDBC();
+
+        Open_Window_Object open_window_object = new Open_Window_Object();
+        open_window_object.setOpen(true);
+
+        // Act
+        boolean result = postgreSQLJDBC.openWindow(c, "testwindow", open_window_object);
+
+        // Assert
+        assertTrue(result);
+    }
+
+    @Test
+    public void testGetWindowOperations_returnsOk() {
+        // Arrange
+        Connection c = mock(Connection.class);
+        PostgreSQLJDBC postgreSQLJDBC = mock(PostgreSQLJDBC.class);
+        when(postgreSQLJDBC.getWindowOperations(eq(c), anyString(), anyString()))
+                .thenReturn(Arrays.asList(new Open_Window_Operation_Object()));
+        RESTController restController = new RESTController();
+        restController.c = c;
+        restController.postgreSQLJDBC = postgreSQLJDBC;
+        String room_id = "testroom";
+        String window_id = "testwindow";
+
+        // Act
+        ResponseEntity<List<Open_Window_Operation_Object>> actualResponse =
+                restController.getWindowOperations(room_id, window_id);
+
+        // Assert
+        assertEquals(HttpStatus.OK, actualResponse.getStatusCode());
+        List<Open_Window_Operation_Object> windowOperations = actualResponse.getBody();
+        assertNotNull(windowOperations);
+        assertEquals(1, windowOperations.size());
+    }
+
+    //AirQuality
+
+    @Test
+    public void addAirQuality_ValidAirQualityObject_ReturnsOkResponse() {
+        // Arrange
+        RESTController restController = new RESTController();
+        PostgreSQLJDBC postgreSQLJDBC = mock(PostgreSQLJDBC.class);
+        restController.postgreSQLJDBC = postgreSQLJDBC;
+        AirQuality_Properties_Object airQualityPropertiesObject = new AirQuality_Properties_Object("testroom","testdevice","testventilator",1000,"ppm",20,"C",50,"%","2022-01-01 12:00:00");
+        when(postgreSQLJDBC.addAirQualityProperties(any(), eq(airQualityPropertiesObject))).thenReturn(airQualityPropertiesObject);
+
+        // Act
+        ResponseEntity<AirQuality_Properties_Object> response = restController.AddAirQuality(airQualityPropertiesObject);
+
+        // Assert
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(airQualityPropertiesObject, response.getBody());
+    }
+
+    @Test
+    public void getAirQuality_ExistingRoomId_ReturnsOkResponse() {
+        // Arrange
+        RESTController restController = new RESTController();
+        PostgreSQLJDBC postgreSQLJDBC = mock(PostgreSQLJDBC.class);
+        restController.postgreSQLJDBC = postgreSQLJDBC;
+        String roomId = "testroom";
+        AirQuality_Properties_Object airQualityPropertiesObject = new AirQuality_Properties_Object("testroom","testdevice","testventilator",1000,"ppm",20,"C",50,"%","2022-01-01 12:00:00");
+        when(postgreSQLJDBC.getAirQualityProperties(any(), eq(roomId))).thenReturn(airQualityPropertiesObject);
+
+        // Act
+        ResponseEntity<AirQuality_Properties_Object> response = restController.getAirQuality(roomId);
+
+        // Assert
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(airQualityPropertiesObject, response.getBody());
+    }
+
+    @Test
+    public void getAirQualityTemperature_ValidRoomId_ReturnsOkResponse() {
+        // Arrange
+        RESTController restController = new RESTController();
+        PostgreSQLJDBC postgreSQLJDBC = mock(PostgreSQLJDBC.class);
+        restController.postgreSQLJDBC = postgreSQLJDBC;
+        String roomId = "testroom";
+        AirQuality_Temperature_Object expectedAirQuality = new AirQuality_Temperature_Object(roomId, "testfan", 20, "C", "2022-01-01 00:00:00");
+        when(postgreSQLJDBC.getAirQualityTemperature(any(), eq(roomId))).thenReturn(expectedAirQuality);
+
+        // Act
+        ResponseEntity<AirQuality_Temperature_Object> response = restController.getAirQualityTemperature(roomId);
+
+        // Assert
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(expectedAirQuality, response.getBody());
+    }
+
+    @Test
+    public void getAirQualityHumidity_ValidRoomId_ReturnsOkResponse() {
+        // Arrange
+        RESTController restController = new RESTController();
+        PostgreSQLJDBC postgreSQLJDBC = mock(PostgreSQLJDBC.class);
+        restController.postgreSQLJDBC = postgreSQLJDBC;
+        String roomId = "testroom";
+        AirQuality_Humidity_Object expectedAirQuality = new AirQuality_Humidity_Object(roomId, "testfan", 50, "%", "2022-01-01 00:00:00");
+        when(postgreSQLJDBC.getAirQualityHumidity(any(), eq(roomId))).thenReturn(expectedAirQuality);
+
+        // Act
+        ResponseEntity<AirQuality_Humidity_Object> response = restController.getAirQualityHumidity(roomId);
+
+        // Assert
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(expectedAirQuality, response.getBody());
+    }
+
+    @Test
+    public void getAirQualityCo2_ValidRoomId_ReturnsOkResponse() {
+        // Arrange
+        RESTController restController = new RESTController();
+        PostgreSQLJDBC postgreSQLJDBC = mock(PostgreSQLJDBC.class);
+        restController.postgreSQLJDBC = postgreSQLJDBC;
+        String roomId = "testroom";
+        AirQuality_Co2_Object expectedAirQuality = new AirQuality_Co2_Object(roomId, "testfan", 1000, "ppm", "2022-01-01 00:00:00");
+        when(postgreSQLJDBC.getAirQualityCo2(any(), eq(roomId))).thenReturn(expectedAirQuality);
+
+        // Act
+        ResponseEntity<AirQuality_Co2_Object> response = restController.getAirQualityCo2(roomId);
+
+        // Assert
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(expectedAirQuality, response.getBody());
+    }
 }

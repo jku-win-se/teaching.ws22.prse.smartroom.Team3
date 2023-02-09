@@ -87,7 +87,7 @@ public class RESTController {
 
     @GetMapping("/Rooms/{room_id}/Lights")
     public ResponseEntity<List<Lights_Object>> getAllLights(@PathVariable String room_id) {
-        List<Lights_Object> lights = db.getLightsByRoomId(c, room_id);
+        List<Lights_Object> lights = postgreSQLJDBC.getLightsByRoomId(c, room_id);
         if (lights == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -96,11 +96,11 @@ public class RESTController {
 
     @PostMapping("/Rooms/{room_id}/Lights")
     public ResponseEntity<Lights_Object> addLights(@PathVariable String room_id, @RequestBody Lights_Object lights_object) {
-        Lights_Object addedLight = db.addLight(c, room_id, lights_object);
+        Lights_Object addedLight = postgreSQLJDBC.addLight(c, room_id, lights_object);
         if (addedLight == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(addedLight, HttpStatus.CREATED);
+        return new ResponseEntity<>(addedLight, HttpStatus.OK);
     }
 
     @GetMapping("/Rooms/{room_id}/Lights/{light_id}")
@@ -265,8 +265,6 @@ public class RESTController {
         }
     }
 
-    //Rest von Door
-
     @PostMapping("/Rooms/{room_id}/Doors/{door_id}/Open")
     public ResponseEntity<String> openDoor (@PathVariable String room_id, @PathVariable String door_id, @RequestBody Open_Door_Object openDoorObject) {
         System.out.println("rest door door " + openDoorObject.isOpen());
@@ -285,13 +283,6 @@ public class RESTController {
         }
         return new ResponseEntity<>(doorOperations, HttpStatus.OK);
     }
-
-
-
-
-
-
-
 
 
     //#########Window
@@ -324,7 +315,7 @@ public class RESTController {
     }
 
     @DeleteMapping("/Rooms/{room_id}/Windows/{window_id}")
-    public ResponseEntity<String> windowDoor(@PathVariable String room_id, @PathVariable String window_id) {
+    public ResponseEntity<String> deleteWindow(@PathVariable String room_id, @PathVariable String window_id) {
         boolean isDeleted = postgreSQLJDBC.deleteWindow(c, window_id);
         if (isDeleted) {
             return new ResponseEntity<>("Door with id " + window_id + " has been deleted", HttpStatus.OK);
