@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="feb1e5aa-cf87-42a9-8180-1301f8cbca17" name="Changes" comment="Window+Door Impl">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/ChartUpdateTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/ChartUpdateTask.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/resources/StartScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/resources/StartScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/StartScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/StartScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Controller.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,9 +72,15 @@
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/parent-project-skeleton/client/src/main/resources" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15039062" />
     <property name="project.structure.side.proportion" value="0.2658228" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Jakob\Documents\GitHub\teaching.ws22.prse.smartroom.Team3\parent-project-skeleton\client\src\main\resources" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
@@ -202,6 +213,8 @@
       <workItem from="1675867189659" duration="11354000" />
       <workItem from="1675959457963" duration="4115000" />
       <workItem from="1675964121089" duration="10545000" />
+      <workItem from="1676017760177" duration="2147000" />
+      <workItem from="1676020842607" duration="1628000" />
     </task>
     <task id="LOCAL-00001" summary="getPeopleInRoom added">
       <created>1670446267606</created>
@@ -280,6 +293,15 @@
     <option name="LAST_COMMIT_MESSAGE" value="Window+Door Impl" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Controller.java</url>
+          <line>954</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="peopleChart" language="JAVA" />
