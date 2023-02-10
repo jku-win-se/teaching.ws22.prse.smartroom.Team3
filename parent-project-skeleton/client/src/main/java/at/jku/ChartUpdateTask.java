@@ -109,7 +109,7 @@ public class ChartUpdateTask extends Thread{
                             controller.openAllDoors();
                             Alert alert = new Alert(Alert.AlertType.WARNING);
                             alert.setTitle("Temperature is above 70 degrees");
-                            //alert.showAndWait();
+                            alert.showAndWait();
                         } else if (series.getData().get(9).getYValue() <= 70) {
                             controller.closeAllDoors();
                         }
