@@ -65,7 +65,7 @@ public class Controller implements Initializable {
     @FXML
     private MenuItem enableAutoRules;
     @FXML
-    private CheckMenuItem autoRules;
+    CheckMenuItem autoRules;
     @FXML
     private Label roomUpdated;
     @FXML
@@ -773,23 +773,9 @@ public class Controller implements Initializable {
 
     @FXML
     public void addRandomValues() throws InterruptedException {
-
-
-        if(autoRules.isSelected()){
-            addRandomTemp();
-            addRandomPeople();
-            addRandomCo2();
-        }
-        else{
-            cPeople.stop();
-            cTemp.stop();
-            cCo2.stop();
-            roomTableView.setStyle("-fx-selection-bar: #0077ff; -fx-selection-bar-non-focused: #0077ff;");
-            peopleChart.getData().clear();
-            co2Chart.getData().clear();
-            tempChart.getData().clear();
-        }
-
+        addRandomTemp();
+        addRandomPeople();
+        addRandomCo2();
     }
 
 
@@ -818,190 +804,198 @@ public class Controller implements Initializable {
 
 
     void turnAllLightsOn() {
+        if(autoRules.isSelected()) {
+            String room = roomTableView.getSelectionModel().getSelectedItem().getRoom_id();
+            List<Component> lights = getCompleteRoom(room).getAllLights();
+            if (lights.size() >= 1) {
 
-        String room = roomTableView.getSelectionModel().getSelectedItem().getRoom_id();
-        List<Component> lights = getCompleteRoom(room).getAllLights();
-        if(lights.size() >= 1) {
-
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Es sind Leute im Raum, alle Lichter werden eingeschaltet!");
-            //alert.showAndWait();
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Es sind Leute im Raum, alle Lichter werden eingeschaltet!");
+                //alert.showAndWait();
 
 
-            for (int i = 0; i < lights.size(); i++) {
-                if (!lights.get(i).getStatus()) {
-                    lights.get(i).changeStatus();
-                    System.out.println(!lights.get(i).getStatus() + " Light"); //nur zum testen
+                for (int i = 0; i < lights.size(); i++) {
+                    if (!lights.get(i).getStatus()) {
+                        lights.get(i).changeStatus();
+                        System.out.println(!lights.get(i).getStatus() + " Light"); //nur zum testen
+                    }
                 }
-            }
 
-            details.clear();
-            showRoom();
+                details.clear();
+                showRoom();
+            }
         }
     }
 
      void turnAllLightsOff() {
+         if(autoRules.isSelected()) {
+             String room = roomTableView.getSelectionModel().getSelectedItem().getRoom_id();
+             List<Component> lights = getCompleteRoom(room).getAllLights();
 
-        String room = roomTableView.getSelectionModel().getSelectedItem().getRoom_id();
-        List<Component> lights = getCompleteRoom(room).getAllLights();
+             if (lights.size() >= 1) {
 
-        if(lights.size() >= 1) {
-
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Es sind kein Leute im Raum, alle Lichter werden ausgeschaltet!");
-            //alert.showAndWait();
+                 Alert alert = new Alert(Alert.AlertType.WARNING);
+                 alert.setTitle("Es sind kein Leute im Raum, alle Lichter werden ausgeschaltet!");
+                 //alert.showAndWait();
 
 
-            for (int i = 0; i < lights.size(); i++) {
-                if (lights.get(i).getStatus()) {
-                    lights.get(i).changeStatus();
-                    System.out.println(!lights.get(i).getStatus() + " Light");//nur zum testen
-                }
-            }
+                 for (int i = 0; i < lights.size(); i++) {
+                     if (lights.get(i).getStatus()) {
+                         lights.get(i).changeStatus();
+                         System.out.println(!lights.get(i).getStatus() + " Light");//nur zum testen
+                     }
+                 }
 
-            details.clear();
-            showRoom();
-        }
+                 details.clear();
+                 showRoom();
+             }
+         }
     }
 
     public void openAllDoors()  {
+        if(autoRules.isSelected()) {
+            String room = roomTableView.getSelectionModel().getSelectedItem().getRoom_id();
+            List<Component> doors = getCompleteRoom(room).getAllDoors();
 
-        String room = roomTableView.getSelectionModel().getSelectedItem().getRoom_id();
-        List<Component> doors = getCompleteRoom(room).getAllDoors();
+            if (doors.size() >= 1) {
 
-        if(doors.size() >= 1) {
-
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Es werden alle Tueren geoeffnet, es hat ueber 70 Grad!");
-            //alert.showAndWait();
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Es werden alle Tueren geoeffnet, es hat ueber 70 Grad!");
+                //alert.showAndWait();
 
 
-            for (int i = 0; i < doors.size(); i++) {
-                if (!doors.get(i).getStatus()) {
-                    doors.get(i).changeStatus();
-                    System.out.println(!doors.get(i).getStatus() + " Door");//nur zum testen
+                for (int i = 0; i < doors.size(); i++) {
+                    if (!doors.get(i).getStatus()) {
+                        doors.get(i).changeStatus();
+                        System.out.println(!doors.get(i).getStatus() + " Door");//nur zum testen
+                    }
                 }
-            }
 
-            details.clear();
-            showRoom();
+                details.clear();
+                showRoom();
+            }
         }
     }
 
     public void closeAllDoors()  {
+        if(autoRules.isSelected()) {
+            String room = roomTableView.getSelectionModel().getSelectedItem().getRoom_id();
+            List<Component> doors = getCompleteRoom(room).getAllDoors();
 
-        String room = roomTableView.getSelectionModel().getSelectedItem().getRoom_id();
-        List<Component> doors = getCompleteRoom(room).getAllDoors();
+            if (doors.size() >= 1) {
 
-        if(doors.size() >= 1) {
-
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Es werden alle Tueren geoeffnet, es hat ueber 70 Grad!");
-            //alert.showAndWait();
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Es werden alle Tueren geoeffnet, es hat ueber 70 Grad!");
+                //alert.showAndWait();
 
 
-            for (int i = 0; i < doors.size(); i++) {
-                if (doors.get(i).getStatus()) {
-                    doors.get(i).changeStatus();
+                for (int i = 0; i < doors.size(); i++) {
+                    if (doors.get(i).getStatus()) {
+                        doors.get(i).changeStatus();
+                    }
                 }
-            }
 
-            details.clear();
-            showRoom();
+                details.clear();
+                showRoom();
+            }
         }
     }
 
     public void openAllWindows()  {
+        if(autoRules.isSelected()) {
+            String room = roomTableView.getSelectionModel().getSelectedItem().getRoom_id();
+            List<Component> windows = getCompleteRoom(room).getAllWindows();
 
-        String room = roomTableView.getSelectionModel().getSelectedItem().getRoom_id();
-        List<Component> windows = getCompleteRoom(room).getAllWindows();
+            if (windows.size() >= 1) {
 
-        if(windows.size() >= 1) {
-
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Es werden alle Fenster geoeffnet, die Luftqualitaet ist über 1000 ppm!");
-            //alert.showAndWait();
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Es werden alle Fenster geoeffnet, die Luftqualitaet ist über 1000 ppm!");
+                //alert.showAndWait();
 
 
-            for (int i = 0; i < windows.size(); i++) {
-                if (!windows.get(i).getStatus()) {
-                    windows.get(i).changeStatus();
-                    System.out.println(!windows.get(i).getStatus() + " Window");//nur zum testen
+                for (int i = 0; i < windows.size(); i++) {
+                    if (!windows.get(i).getStatus()) {
+                        windows.get(i).changeStatus();
+                        System.out.println(!windows.get(i).getStatus() + " Window");//nur zum testen
+                    }
                 }
-            }
 
-            details.clear();
-            showRoom();
+                details.clear();
+                showRoom();
+            }
         }
     }
 
     public void closeAllWindows()  {
+        if(autoRules.isSelected()) {
+            String room = roomTableView.getSelectionModel().getSelectedItem().getRoom_id();
+            List<Component> windows = getCompleteRoom(room).getAllWindows();
 
-        String room = roomTableView.getSelectionModel().getSelectedItem().getRoom_id();
-        List<Component> windows = getCompleteRoom(room).getAllWindows();
+            if (windows.size() >= 1) {
 
-        if(windows.size() >= 1) {
-
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Es werden alle Fenster geoeffnet, die Luftqualitaet ist über 1000 ppm!");
-            //alert.showAndWait();
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Es werden alle Fenster geoeffnet, die Luftqualitaet ist über 1000 ppm!");
+                //alert.showAndWait();
 
 
-            for (int i = 0; i < windows.size(); i++) {
-                if (windows.get(i).getStatus()) {
-                    windows.get(i).changeStatus();
-                    System.out.println(!windows.get(i).getStatus() + " Window");//nur zum testen
+                for (int i = 0; i < windows.size(); i++) {
+                    if (windows.get(i).getStatus()) {
+                        windows.get(i).changeStatus();
+                        System.out.println(!windows.get(i).getStatus() + " Window");//nur zum testen
+                    }
                 }
-            }
 
-            details.clear();
-            showRoom();
+                details.clear();
+                showRoom();
+            }
         }
     }
 
     public void switchAllVentilatorsOn(){
+        if(autoRules.isSelected()) {
+            String room = roomTableView.getSelectionModel().getSelectedItem().getRoom_id();
+            List<Component> fans = getCompleteRoom(room).getAllVentilators();
 
-        String room = roomTableView.getSelectionModel().getSelectedItem().getRoom_id();
-        List<Component> fans = getCompleteRoom(room).getAllVentilators();
+            if (fans.size() >= 1) {
 
-        if(fans.size() >= 1) {
-
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Es werden alle Ventilatoren eingeschaltet, die Luftqualitaet ist über 1000 ppm!");
-            //alert.showAndWait();
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Es werden alle Ventilatoren eingeschaltet, die Luftqualitaet ist über 1000 ppm!");
+                //alert.showAndWait();
 
 
-            for (int i = 0; i < fans.size(); i++) {
-                if (!fans.get(i).getStatus()) {
-                    fans.get(i).changeStatus();
-                    System.out.println(!fans.get(i).getStatus() + " Ventilator");//nur zum testen
+                for (int i = 0; i < fans.size(); i++) {
+                    if (!fans.get(i).getStatus()) {
+                        fans.get(i).changeStatus();
+                        System.out.println(!fans.get(i).getStatus() + " Ventilator");//nur zum testen
+                    }
                 }
-            }
 
-            details.clear();
-            showRoom();
+                details.clear();
+                showRoom();
+            }
         }
     }
     public void switchAllVentilatorsOff(){
+        if(autoRules.isSelected()) {
+            String room = roomTableView.getSelectionModel().getSelectedItem().getRoom_id();
+            List<Component> fans = getCompleteRoom(room).getAllVentilators();
 
-        String room = roomTableView.getSelectionModel().getSelectedItem().getRoom_id();
-        List<Component> fans = getCompleteRoom(room).getAllVentilators();
+            if (fans.size() >= 1) {
 
-        if(fans.size() >= 1) {
-
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Es werden alle Ventilatoren ausgeschaltet, es sind keine Leute im Raum!");
-            //alert.showAndWait();
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Es werden alle Ventilatoren ausgeschaltet, es sind keine Leute im Raum!");
+                //alert.showAndWait();
 
 
-            for (int i = 0; i < fans.size(); i++) {
-                if (fans.get(i).getStatus()) {
-                    fans.get(i).changeStatus();
-                    System.out.println(!fans.get(i).getStatus() + " Ventilator"); //nur zum testen
+                for (int i = 0; i < fans.size(); i++) {
+                    if (fans.get(i).getStatus()) {
+                        fans.get(i).changeStatus();
+                        System.out.println(!fans.get(i).getStatus() + " Ventilator"); //nur zum testen
+                    }
                 }
+                details.clear();
+                showRoom();
             }
-            details.clear();
-            showRoom();
         }
     }
 

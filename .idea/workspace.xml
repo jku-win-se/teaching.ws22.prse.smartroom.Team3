@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="feb1e5aa-cf87-42a9-8180-1301f8cbca17" name="Changes" comment="Window+Door Impl">
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/ChartUpdateTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/ChartUpdateTask.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/resources/StartScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/resources/StartScene.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/StartScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/StartScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Controller$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Controller$2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Controller$2$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Controller$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Controller$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/target/classes/at/jku/Controller.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -113,7 +110,7 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="at.jku.Main" />
       <module name="client" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Studium\Wirtschaftsinformatik\PR_Software_Engineering\DigitalRoom_Test3\client\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\Admin\Desktop\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="at.jku.*" />
@@ -163,8 +160,9 @@
         </pattern>
       </extension>
       <option name="SPRING_BOOT_MAIN_CLASS" value="at.jku.digitalTwin.RestApplication" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Studium\Wirtschaftsinformatik\PR_Software_Engineering\DigitalRoom_Test3\client\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\Admin\Desktop\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SHORTEN_COMMAND_LINE" value="NONE" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -216,6 +214,7 @@
       <workItem from="1675959457963" duration="4115000" />
       <workItem from="1675964121089" duration="10545000" />
       <workItem from="1676017760177" duration="2147000" />
+      <workItem from="1676020842607" duration="1628000" />
     </task>
     <task id="LOCAL-00001" summary="getPeopleInRoom added">
       <created>1670446267606</created>
@@ -282,6 +281,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="getPeopleInRoom added" />
@@ -296,9 +296,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Main.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Controller.java</url>
+          <line>954</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
