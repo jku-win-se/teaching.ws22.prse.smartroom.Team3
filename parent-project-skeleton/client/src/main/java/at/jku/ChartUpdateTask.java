@@ -95,6 +95,7 @@ public class ChartUpdateTask extends Thread{
                 if(type == "people"){
                     if(series.getData().get(9).getYValue() > 0){
                         controller.turnAllLightsOn();
+                        controller.switchAllVentilatorsOn();
                     }
                     else if(series.getData().get(9).getYValue() == 0){
                         controller.turnAllLightsOff();
@@ -116,14 +117,16 @@ public class ChartUpdateTask extends Thread{
                 if(type == "co2")
                 {
                     if(series.getData().get(9).getYValue() < 800){
-                        controller.roomTableView.setStyle("-fx-selection-bar: green;");
+                        controller.roomTableView.setStyle("-fx-selection-bar: green; -fx-selection-bar-non-focused: green;");
+                        controller.closeAllWindows();
+                        controller.switchAllVentilatorsOff();
                     }else if(series.getData().get(9).getYValue() > 800 && series.getData().get(9).getYValue() < 1000){
-                        controller.roomTableView.setStyle("-fx-selection-bar: yellow;");
+                        controller.roomTableView.setStyle("-fx-selection-bar: yellow; -fx-selection-bar-non-focused: yellow;");
 
                         controller.closeAllWindows();
                         controller.switchAllVentilatorsOff();
                     }else {
-                        controller.roomTableView.setStyle("-fx-selection-bar: red;");
+                        controller.roomTableView.setStyle("-fx-selection-bar: red; -fx-selection-bar-non-focused: red;");
 
                         controller.openAllWindows();
                         controller.switchAllVentilatorsOn();

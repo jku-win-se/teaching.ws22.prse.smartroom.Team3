@@ -43,11 +43,6 @@
             <TableColumn fx:id="type" prefWidth="147.0" text="Type" />
          </columns>
       </TableView>
-      <Label fx:id="peopleInRoomLabel" layoutX="642.0" layoutY="64.0" text=".">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
       <TableView fx:id="roomTableView" layoutY="26.0" maxHeight="1.7976931348623157E308" minHeight="-Infinity" onMouseClicked="#showRoom" onMouseReleased="#addRandomValues" prefHeight="432.0" prefWidth="132.0">
          <columns>
             <TableColumn fx:id="name" prefWidth="130.39998776912688" text="Rooms" />
@@ -59,18 +54,18 @@
             <Button fx:id="deleteRoom" mnemonicParsing="false" onAction="#deleteRoom" prefWidth="100.0" text="Delete Room" />
          </children>
       </VBox>
-      <Label fx:id="roomNameLabel" layoutX="296.0" layoutY="57.0" text=".">
+      <Label fx:id="roomNameLabel" layoutX="296.0" layoutY="57.0">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="roomSizeLabel" layoutX="473.0" layoutY="64.0" text=".">
+      <Label fx:id="roomSizeLabel" layoutX="473.0" layoutY="64.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Button layoutX="659.0" layoutY="217.0" mnemonicParsing="false" onAction="#changeStatus" text="Change Status" />
-      <LineChart fx:id="tempChart" layoutX="393.0" layoutY="341.0" prefHeight="204.0" prefWidth="202.0" title="Temp Value">
+      <Button layoutX="665.0" layoutY="210.0" mnemonicParsing="false" onAction="#changeStatus" prefWidth="125.0" text="Change Status" />
+      <LineChart fx:id="tempChart" layoutX="391.0" layoutY="341.0" prefHeight="204.0" prefWidth="250.0" title="Temperature:">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -78,7 +73,7 @@
           <NumberAxis label="degrees" side="LEFT" upperBound="75.0" />
         </yAxis>
       </LineChart>
-      <LineChart fx:id="peopleChart" layoutX="622.0" layoutY="341.0" prefHeight="204.0" prefWidth="202.0" title="People in Room">
+      <LineChart fx:id="peopleChart" layoutX="622.0" layoutY="341.0" prefHeight="204.0" prefWidth="250.0" title="People in Room:">
          <xAxis>
             <CategoryAxis side="BOTTOM" />
          </xAxis>
@@ -86,8 +81,8 @@
             <NumberAxis label="people" minorTickCount="1" minorTickLength="1.0" side="LEFT" tickUnit="1.0" upperBound="25.0" />
          </yAxis>
       </LineChart>
-      <Button fx:id="deleteComponentButton" layoutX="659.0" layoutY="260.0" mnemonicParsing="false" onAction="#deleteComponent" text="Delete Component" />
-      <LineChart fx:id="co2Chart" layoutX="178.0" layoutY="348.0" prefHeight="204.0" prefWidth="202.0" title="CO2 Value">
+      <Button fx:id="deleteComponentButton" layoutX="665.0" layoutY="253.0" mnemonicParsing="false" onAction="#deleteComponent" prefWidth="125.0" text="Delete Component" />
+      <LineChart fx:id="co2Chart" layoutX="162.0" layoutY="341.0" prefHeight="204.0" prefWidth="250.0" title="CO2 Value:">
          <xAxis>
             <CategoryAxis side="BOTTOM" />
          </xAxis>
@@ -95,6 +90,7 @@
             <NumberAxis label="ppm" side="LEFT" upperBound="1300.0" />
          </yAxis>
       </LineChart>
-      <Button fx:id="createRoom1" layoutX="660.0" layoutY="174.0" mnemonicParsing="false" onAction="#switchToUpdateRoomScene" prefWidth="100.0" text="Update Room" />
+      <Button fx:id="createRoom1" layoutX="666.0" layoutY="167.0" mnemonicParsing="false" onAction="#switchToUpdateRoomScene" prefWidth="125.0" text="Update Room" />
+      <Label fx:id="fehlermeldungLabel" layoutX="665.0" layoutY="310.0" />
     </children>
 </AnchorPane>
