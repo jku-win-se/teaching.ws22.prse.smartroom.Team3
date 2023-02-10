@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="feb1e5aa-cf87-42a9-8180-1301f8cbca17" name="Changes" comment="Window+Door Impl">
-      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/ChartUpdateTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/ChartUpdateTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/PostgreSQLJDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/PostgreSQLJDBC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/RESTController.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/RESTController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/objects/AirQuality_Properties_Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/src/main/java/at/jku/digitalTwin/objects/AirQuality_Properties_Object.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/PostgreSQLJDBC.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/PostgreSQLJDBC.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/RESTController.class" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/server/target/classes/at/jku/digitalTwin/RESTController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,18 +65,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
-    <property name="RequestMappingsPanelOrder0" value="0" />
-    <property name="RequestMappingsPanelOrder1" value="1" />
-    <property name="RequestMappingsPanelWidth0" value="75" />
-    <property name="RequestMappingsPanelWidth1" value="75" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/parent-project-skeleton/client/src/main/resources" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.15039062" />
-    <property name="project.structure.side.proportion" value="0.2658228" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Jakob\Documents\GitHub\teaching.ws22.prse.smartroom.Team3\parent-project-skeleton\client\src\main\resources" />
@@ -89,23 +93,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="at.jku.App" />
-      <module name="client" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="at.jku.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="at.jku.Main" />
       <module name="client" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\Admin\Desktop\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\f.leidwein\Desktop\JavaFX&quot; --add-modules javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="at.jku.*" />
@@ -116,66 +107,64 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RestApplicationTests (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ServerTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="at.jku.digitalTwin.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="at.jku.digitalTwin" />
-      <option name="MAIN_CLASS_NAME" value="at.jku.digitalTwin.RestApplicationTests" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ServerTests" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RestApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ServerTests.testAddLight_checkIfLightIsAdded" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="at.jku.digitalTwin.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="at.jku.digitalTwin" />
-      <option name="MAIN_CLASS_NAME" value="at.jku.digitalTwin.RestApplicationTests" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ServerTests" />
+      <option name="METHOD_NAME" value="testAddLight_checkIfLightIsAdded" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServerTests.testAddPeopleInRoom_checkIfPeopleInRoomIsAdded" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="server" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ServerTests" />
+      <option name="METHOD_NAME" value="testAddPeopleInRoom_checkIfPeopleInRoomIsAdded" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="RestApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="ACTIVE_PROFILES" />
       <module name="server" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="at.jku.digitalTwin.RestApplication" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\f.leidwein\Desktop\JavaFX&quot; --add-modules javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="at.jku.digitalTwin.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="at.jku.digitalTwin.RestApplication" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\Admin\Desktop\lib&quot; --add-modules javafx.controls,javafx.fxml" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SHORTEN_COMMAND_LINE" value="NONE" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.App" />
       <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.RestApplicationTests (1)" />
-      <item itemvalue="JUnit.RestApplicationTests" />
+      <item itemvalue="JUnit.ServerTests" />
+      <item itemvalue="JUnit.ServerTests.testAddLight_checkIfLightIsAdded" />
+      <item itemvalue="JUnit.ServerTests.testAddPeopleInRoom_checkIfPeopleInRoomIsAdded" />
       <item itemvalue="Spring Boot.RestApplication" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
         <item itemvalue="Spring Boot.RestApplication" />
-        <item itemvalue="Application.App" />
-        <item itemvalue="JUnit.RestApplicationTests" />
-        <item itemvalue="JUnit.RestApplicationTests (1)" />
+        <item itemvalue="JUnit.ServerTests" />
+        <item itemvalue="JUnit.ServerTests.testAddPeopleInRoom_checkIfPeopleInRoomIsAdded" />
+        <item itemvalue="JUnit.ServerTests.testAddLight_checkIfLightIsAdded" />
       </list>
     </recent_temporary>
   </component>
@@ -277,7 +266,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="getPeopleInRoom added" />

@@ -12,8 +12,8 @@ import java.util.List;
 @RestController
 public class RESTController {
 
-    PostgreSQLJDBC db = new PostgreSQLJDBC();
-    Connection c = db.connect_to_db("SmartroomGruppe3", "postgres", "smartroom3");
+    public PostgreSQLJDBC db = new PostgreSQLJDBC();
+    public Connection c = db.connect_to_db("SmartroomGruppe3", "postgres", "smartroom3");
 
     @Autowired
     public PostgreSQLJDBC postgreSQLJDBC;
@@ -21,14 +21,14 @@ public class RESTController {
     //#########Rooms
 
     @GetMapping("/Rooms")
-    ResponseEntity<List<Room_Object>> getRooms() {
+    public ResponseEntity<List<Room_Object>> getRooms() {
         List<Room_Object> allRooms = postgreSQLJDBC.getAllRooms(c, "room");
         db.getAllRooms(c, "room");
         return new ResponseEntity<>(allRooms, HttpStatus.OK);
     }
 
     @PostMapping("/Rooms")
-    ResponseEntity<Room_Object> addRoom(@RequestBody Room_Object room) {
+    public ResponseEntity<Room_Object> addRoom(@RequestBody Room_Object room) {
         Room_Object room_object = new Room_Object(room.getRoom_id(), room.getRoom_size(), room.getMeasurement_unit());
 //        room_object.setRoom_id(room.getRoom_id());
 //        room_object.setRoom_size(room.getRoom_size());
@@ -38,7 +38,7 @@ public class RESTController {
     }
 
     @GetMapping("/Rooms/{room_id}")
-    ResponseEntity<Room_Object> getRoomId(@PathVariable String room_id) {
+    public ResponseEntity<Room_Object> getRoomId(@PathVariable String room_id) {
         Room_Object room = postgreSQLJDBC.getRoomById(c, room_id);
         if (room == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -47,8 +47,8 @@ public class RESTController {
     }
 
     @DeleteMapping("/Rooms/{room_id}")
-    ResponseEntity<Room_Object> deleteRoom(@PathVariable String room_id) {
-        Room_Object deletedRoom = postgreSQLJDBC.deleteRoomById(c, room_id);
+    public ResponseEntity<Room_Object> deleteRoom(@PathVariable String room_id) {
+        Room_Object deletedRoom = db.deleteRoomById(c, room_id);
         if (deletedRoom == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -56,7 +56,7 @@ public class RESTController {
     }
 
     @PutMapping("Rooms/{room_id}")
-    ResponseEntity<Update_RoomObject> updateRoom(@PathVariable String room_id, @RequestBody Update_RoomObject update_roomObject) {
+    public ResponseEntity<Update_RoomObject> updateRoom(@PathVariable String room_id, @RequestBody Update_RoomObject update_roomObject) {
 
         Room_Object updatedRoom = postgreSQLJDBC.updateRoomById(c, room_id, update_roomObject);
         if (updatedRoom == null) {
@@ -66,7 +66,7 @@ public class RESTController {
     }
 
     @GetMapping("/Rooms/{room_id}/PeopleInRoom")
-    ResponseEntity<PeopleInRoomObject> getPeopleInRoom(@PathVariable String room_id) {
+    public ResponseEntity<PeopleInRoomObject> getPeopleInRoom(@PathVariable String room_id) {
         PeopleInRoomObject peopleInRoom = postgreSQLJDBC.getPeopleInRoomById(c, room_id);
         if (peopleInRoom == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -76,8 +76,8 @@ public class RESTController {
 
 
     @PostMapping("/Rooms/{room_id}/PeopleInRoom")
-    ResponseEntity<PeopleInRoomObject> addPeopleInRoom(@PathVariable String room_id, @RequestBody PeopleInRoomObject peopleInRoomObject) {
-        PeopleInRoomObject addedPeopleInRoom = postgreSQLJDBC.addPeopleInRoomById(c, room_id, peopleInRoomObject);
+    public ResponseEntity<PeopleInRoomObject> addPeopleInRoom(@PathVariable String room_id, @RequestBody PeopleInRoomObject peopleInRoomObject) {
+        PeopleInRoomObject addedPeopleInRoom = db.addPeopleInRoomById(c, room_id, peopleInRoomObject);
         if (addedPeopleInRoom == null) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -325,7 +325,7 @@ public class RESTController {
     }
 
     @DeleteMapping("/Rooms/{room_id}/Windows/{window_id}")
-    public ResponseEntity<String> windowDoor(@PathVariable String room_id, @PathVariable String window_id) {
+    public ResponseEntity<String> deleteWindow(@PathVariable String room_id, @PathVariable String window_id) {
         boolean isDeleted = postgreSQLJDBC.deleteWindow(c, window_id);
         if (isDeleted) {
             return new ResponseEntity<>("Door with id " + window_id + " has been deleted", HttpStatus.OK);
@@ -352,5 +352,53 @@ public class RESTController {
         }
         return new ResponseEntity<>(windowOperations, HttpStatus.OK);
     }
+
+
+    //AirQuality
+    @PostMapping("/Room/AirQuality/")
+    public ResponseEntity<AirQuality_Properties_Object> AddAirQuality (@RequestBody AirQuality_Properties_Object airQualityPropertiesObject) {
+        AirQuality_Properties_Object airQuality = postgreSQLJDBC.addAirQualityProperties(c, airQualityPropertiesObject);
+        if (airQuality == null) {
+            return new ResponseEntity<>(airQuality, HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(airQuality, HttpStatus.OK);
+    }
+
+    @GetMapping("/Rooms/{room_id}/AirQuality")
+    public ResponseEntity<AirQuality_Properties_Object> getAirQuality (@PathVariable String room_id) {
+        AirQuality_Properties_Object airQuality = postgreSQLJDBC.getAirQualityProperties(c, room_id);
+        if (airQuality == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(airQuality, HttpStatus.OK);
+    }
+
+    @GetMapping("/Rooms/{room_id}/AirQuality/temperature/")
+    public ResponseEntity<AirQuality_Temperature_Object> getAirQualityTemperature (@PathVariable String room_id) {
+        AirQuality_Temperature_Object airQuality = postgreSQLJDBC.getAirQualityTemperature(c, room_id);
+        if (airQuality == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(airQuality, HttpStatus.OK);
+    }
+
+    @GetMapping("/Rooms/{room_id}/AirQuality/humidity/")
+    public ResponseEntity<AirQuality_Humidity_Object> getAirQualityHumidity (@PathVariable String room_id) {
+        AirQuality_Humidity_Object airQuality = postgreSQLJDBC.getAirQualityHumidity(c, room_id);
+        if (airQuality == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(airQuality, HttpStatus.OK);
+    }
+
+    @GetMapping("/Rooms/{room_id}/AirQuality/co2/")
+    public ResponseEntity<AirQuality_Co2_Object> getAirQualityCo2 (@PathVariable String room_id) {
+        AirQuality_Co2_Object airQuality = postgreSQLJDBC.getAirQualityCo2(c, room_id);
+        if (airQuality == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(airQuality, HttpStatus.OK);
+    }
+
 
 }
