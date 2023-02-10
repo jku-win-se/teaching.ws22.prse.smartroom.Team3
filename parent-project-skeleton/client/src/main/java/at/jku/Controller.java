@@ -63,6 +63,10 @@ public class Controller implements Initializable {
     @FXML
     private Label createdLight;
     @FXML
+    private MenuItem enableAutoRules;
+    @FXML
+    private CheckMenuItem autoRules;
+    @FXML
     private Label roomUpdated;
     @FXML
     private TextField roomSize;
@@ -769,11 +773,25 @@ public class Controller implements Initializable {
 
     @FXML
     public void addRandomValues() throws InterruptedException {
-        addRandomTemp();
-        addRandomPeople();
-        addRandomCo2();
+
+
+        if(autoRules.isSelected()){
+            addRandomTemp();
+            addRandomPeople();
+            addRandomCo2();
+        }
+        else{
+            cPeople.stop();
+            cTemp.stop();
+            cCo2.stop();
+            roomTableView.setStyle("-fx-selection-bar: #0077ff; -fx-selection-bar-non-focused: #0077ff;");
+            peopleChart.getData().clear();
+            co2Chart.getData().clear();
+            tempChart.getData().clear();
+        }
 
     }
+
 
 
     ChartUpdateProcess cPeople = new ChartUpdateProcess(peopleChart,this,"people");
