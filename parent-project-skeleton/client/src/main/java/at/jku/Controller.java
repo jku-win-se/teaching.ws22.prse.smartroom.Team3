@@ -202,26 +202,6 @@ public class Controller implements Initializable {
         }
 
 
-
-/*
-        //client.getCurrentLightStatus(room_id,l.getLight_id()).isTurnon(); in status of for()
-
-
-        //client.getCurrentPowerPlugStatus(room_id,p.plug_id).isTurnon() in status of for()
-
-
-        //client.getWindowStatus(room_id,w.window_id) in status of for()
-
-        List<Door_Object> doors = client.getAllRoomDoor(room_id);
-
-        for(Door_Object d : doors)
-        {
-            components.add(new Component(d.getDoor_id(),d.getName(),room_id,ComponentType.DOOR,false));
-        }
-        //client.getDoorStatus(room_id,d.door_id). in status of for()
-
-*/
-
         //alle airquality abfragen
         return new Room(room_id,(int)r.getRoom_size(),room_id,0,components);
     }
@@ -400,7 +380,6 @@ public class Controller implements Initializable {
 
         name.setCellValueFactory(new PropertyValueFactory<Room_Object, Integer>("room_id"));
         size.setCellValueFactory(new PropertyValueFactory<Room_Object, Integer>("room_size"));
-        //size.setCellValueFactory(new PropertyValueFactory<Room_Object, Integer>("measurement_unit"));
 
         device.setCellValueFactory(new PropertyValueFactory<Component, Integer>("name"));
         type.setCellValueFactory(new PropertyValueFactory<Component, Integer>("type"));
@@ -561,15 +540,6 @@ public class Controller implements Initializable {
 
         roomNameLabel.setText(currentRoom.getRoom_id());
         roomSizeLabel.setText("Size: " + currentRoom.getSize() + " " + globalMeasurementUnit);
-        //peopleInRoomLabel.setText("People in Room: " + client.getPeopleCount(roomId).getPeople_count());
-        //deviceLabel1.setText(details.);
-        //Test
-
-        //People Line Chart
-        //peopleChart.getData().removeAll();
-        //peopleSeries.getData().add(new XYChart.Data<String,Integer>("test", client.getPeopleCount(roomId).getPeople_count()));
-        //peopleChartData.add(peopleSeries);
-        //peopleChart.setData(peopleChartData);
 
 
 
@@ -1025,38 +995,3 @@ public class Controller implements Initializable {
 
 }
 
-/*
-    @FXML
-    public void doorButton(ActionEvent event) throws IOException {
-        doorLabel.setText("offen");
-    }
-    @FXML
-    public void windowButton(ActionEvent event) throws IOException {
-        windowLabel.setText("offen");
-    }
-    @FXML
-    public void fanButton(ActionEvent event) throws IOException {
-        fanLabel.setText("an");
-    }
-    @FXML
-    public void lightButton(ActionEvent event) throws IOException {
-        lightLabel.setText("an");
-    }
-*/
-
-
-/*
-    @FXML
-    public void startScene() throws IOException {
-
-
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("StartScene.fxml"));
-            AnchorPane pane = loader.load();
-
-            scene = new Scene(pane);
-
-            primaryStage.setScene(scene);
-            primaryStage.setTitle("Smart Room Applikation");
-            primaryStage.show();
-
-    }   */

@@ -30,9 +30,6 @@ public class RESTController {
     @PostMapping("/Rooms")
     public ResponseEntity<Room_Object> addRoom(@RequestBody Room_Object room) {
         Room_Object room_object = new Room_Object(room.getRoom_id(), room.getRoom_size(), room.getMeasurement_unit());
-//        room_object.setRoom_id(room.getRoom_id());
-//        room_object.setRoom_size(room.getRoom_size());
-//        room_object.setMeasurement_unit(room.getMeasurement_unit());
         db.add_room(c, "room", room.getRoom_id(), room.getRoom_size(), room.getMeasurement_unit());
         return ResponseEntity.ok(room);
     }

@@ -478,24 +478,7 @@ public class Client implements APIFunctions{
         }
         return null;
     }
-//    public boolean activateVent(String roomId, String plug_id) {
-//
-//        String body = "";
-//        HttpRequest request =
-//                HttpRequest.newBuilder().uri(URI.create(startURI + "/Rooms/" + roomId+"/Ventilators/"+plug_id + "/Activation")).
-//                        header("Content-Type", "application/json").
-//                        POST(HttpRequest.BodyPublishers.ofString(body)).build();
-//
-//        try {
-//            HttpResponse<String> response =  client.send(request, HttpResponse.BodyHandlers.ofString());
-//            if(response.statusCode()==200)
-//                return true;
-//        } catch (IOException | InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return false;
-//    }
+
 
 
 
