@@ -6,6 +6,10 @@ import java.io.IOException;
 import java.net.http.HttpResponse;
 import java.util.List;
 
+/**
+ * This interface provides all abstract Methods to communicate with the REST API
+ */
+
 public interface APIFunctions {
 
     //Rooms

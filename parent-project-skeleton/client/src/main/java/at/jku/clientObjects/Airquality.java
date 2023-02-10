@@ -6,6 +6,14 @@ int humidity;
 int co2;
 String timeStamp;
 
+    /**
+     * Class to save an airquility Object
+     * @param temperature temperature at given time
+     * @param humidity humidtiy at given time
+     * @param co2 co2 level at given time
+     * @param timeStamp time on which the values were created values
+     */
+
     public Airquality(int temperature, int humidity, int co2, String timeStamp) {
         this.temperature = temperature;
         this.humidity = humidity;

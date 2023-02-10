@@ -13,6 +13,10 @@ import java.io.IOException;
 
 //--module-path "C:\Studium\Wirtschaftsinformatik\PR_Software_Engineering\DigitalRoom_Test3\client\lib" --add-modules javafx.controls,javafx.fxml
 
+/**
+ * Start class to load the Startscene
+ */
+
 public class Main extends Application {
 
     private Stage stage;

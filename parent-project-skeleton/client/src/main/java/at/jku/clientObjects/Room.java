@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Class to save a Room as full Object, includes the Components and Airwquality data.
+ */
 public class Room {
     String name;
     int size;
@@ -88,24 +91,54 @@ public class Room {
         return this.components.stream().filter(c -> c.getType()==ComponentType.FAN).collect(Collectors.toList());
     }
 
+    /**
+     * Adds a light to the component list and sends it to the server
+     * @param light_id id of light
+     * @param name name of light
+     * @param status current status of the Light
+     * @return returns if the server request was successful
+     */
+
     public boolean addLight(String light_id,String name, Boolean status){
         client.addLight(this.room_id,light_id,name);
         client.activateLight(room_id,light_id,status);
         components.add(new Component(light_id,name,this.room_id,ComponentType.LIGHT,status));
         return true;
     }
+
+    /**
+     * Adds a window to the component list and sends it to the server
+     * @param window_id id of window
+     * @param name name of window
+     * @param status current status of window
+     * @return returns if the server request was successful
+     */
     public boolean addWindow(String window_id,String name, Boolean status){
         client.addRoomWindow(this.room_id,window_id,name);
         client.changeWindowStatus(this.room_id,window_id,status);
         components.add(new Component(window_id,name,this.room_id,ComponentType.WINDOW,status));
         return true;
     }
+    /**
+     * Adds a door to the component list and sends it to the server
+     * @param door_id id of door
+     * @param name name of door
+     * @param status current status of door
+     * @return returns if the server request was successful
+     */
     public boolean addDoor(String door_id,String name, Boolean status){
         client.addRoomDoor(this.room_id,door_id,name);
         client.changeDoorStatus(this.room_id, door_id, status);
         components.add(new Component(door_id,name,this.room_id,ComponentType.DOOR,status));
         return true;
     }
+    /**
+     * Adds a ventilator to the component list and sends it to the server
+     * @param ventilator_id id of ventilator
+     * @param name name of ventilator
+     * @param status current status of ventilator
+     * @return returns if the server request was successful
+     */
     public boolean addVentilator(String ventilator_id,String name, Boolean status){
         client.addVentilator(this.room_id,ventilator_id,name);
         client.activateVent(this.room_id,ventilator_id,status);

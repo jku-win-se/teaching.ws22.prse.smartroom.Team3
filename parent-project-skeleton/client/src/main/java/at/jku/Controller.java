@@ -27,9 +27,16 @@ import java.nio.file.Files;
 import java.sql.SQLException;
 import java.util.*;
 
+/**
+ * Java fx controller which includes the logic of all graphic components of all scenes
+ */
+
 public class Controller implements Initializable {
 
     private Stage stage;
+    /**
+     * Current loaded scene
+     */
     private Scene scene;
     private Parent root;
 
@@ -137,8 +144,15 @@ public class Controller implements Initializable {
     @FXML
     private TableColumn<Room_Object, Integer> unit;
 
+    /**
+     * client object provides server functions
+     */
 
     public Client client = new Client();
+
+    /**
+     * Saves current displayed room
+     */
     Room currentRoom = new Room();
 
 
@@ -148,10 +162,11 @@ public class Controller implements Initializable {
     ObservableList<Component> details = FXCollections.observableArrayList();
 
 
-
-
-
-
+    /**
+     * Gets a complete Room from the server which also includes all Components and Airqualtity data
+     * @param room_id id of wanted room
+     * @return returns a complete room with all its components
+     */
     public Room getCompleteRoom(String room_id){
         Room_Object r = client.getRoomID(room_id);
         List<Component> components =  new ArrayList<>();

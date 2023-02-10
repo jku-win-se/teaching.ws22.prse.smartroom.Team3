@@ -13,6 +13,9 @@ import java.net.http.HttpResponse;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Implementation of API functions. Implements all Server calls
+ */
 public class Client implements APIFunctions{
     static final String startURI = "http://localhost:8080";
     HttpClient client = HttpClient.newHttpClient();

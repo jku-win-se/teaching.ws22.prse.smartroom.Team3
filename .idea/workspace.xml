@@ -6,7 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="feb1e5aa-cf87-42a9-8180-1301f8cbca17" name="Changes" comment="Window+Door Impl">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/APIFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/APIFunctions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/clientObjects/Airquality.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/clientObjects/Airquality.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/clientObjects/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/clientObjects/Component.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/clientObjects/ComponentType.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/clientObjects/ComponentType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/clientObjects/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/clientObjects/Room.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +81,7 @@
       <recent name="C:\Users\Jakob\Documents\GitHub\teaching.ws22.prse.smartroom.Team3\parent-project-skeleton\client\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.ServerTests">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -157,10 +164,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ServerTests" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.App" />
         <item itemvalue="Spring Boot.RestApplication" />
-        <item itemvalue="JUnit.ServerTests" />
         <item itemvalue="JUnit.ServerTests.testAddPeopleInRoom_checkIfPeopleInRoomIsAdded" />
       </list>
     </recent_temporary>
@@ -197,7 +204,7 @@
       <workItem from="1676017760177" duration="2147000" />
       <workItem from="1676020842607" duration="1628000" />
       <workItem from="1676022882481" duration="301000" />
-      <workItem from="1676031875012" duration="793000" />
+      <workItem from="1676031875012" duration="5671000" />
     </task>
     <task id="LOCAL-00001" summary="getPeopleInRoom added">
       <created>1670446267606</created>
@@ -276,15 +283,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Window+Door Impl" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/parent-project-skeleton/client/src/main/java/at/jku/Controller.java</url>
-          <line>959</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="peopleChart" language="JAVA" />
