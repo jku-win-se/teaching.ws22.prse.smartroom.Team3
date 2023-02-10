@@ -92,41 +92,44 @@ public class ChartUpdateTask extends Thread{
 
                 }
                 //rules
-                if(type == "people"){
-                    if(series.getData().get(9).getYValue() > 0){
-                        controller.turnAllLightsOn();
-                    }
-                    else if(series.getData().get(9).getYValue() == 0){
-                        controller.turnAllLightsOff();
-                        controller.switchAllVentilatorsOff();
-                    }
-                }
 
-                if(type == "temp"){
-                    if (series.getData().get(9).getYValue() > 70) {
-                        controller.openAllDoors();
-                        Alert alert = new Alert(Alert.AlertType.WARNING);
-                        alert.setTitle("Temperature is above 70 degrees");
-                        //alert.showAndWait();
+                if(controller.autoRules.isSelected()) {
+                    if (type == "people") {
+                        if (series.getData().get(9).getYValue() > 0) {
+                            controller.turnAllLightsOn();
+                            //controller.switchAllVentilatorsOn();
+                        } else if (series.getData().get(9).getYValue() == 0) {
+                            controller.turnAllLightsOff();
+                            controller.switchAllVentilatorsOff();
+                        }
                     }
-                    else if (series.getData().get(9).getYValue() <= 70){
-                        controller.closeAllDoors();
+
+                    if (type == "temp") {
+                        if (series.getData().get(9).getYValue() > 70) {
+                            controller.openAllDoors();
+                            Alert alert = new Alert(Alert.AlertType.WARNING);
+                            alert.setTitle("Temperature is above 70 degrees");
+                            alert.showAndWait();
+                        } else if (series.getData().get(9).getYValue() <= 70) {
+                            controller.closeAllDoors();
+                        }
                     }
-                }
-                if(type == "co2")
-                {
-                    if(series.getData().get(9).getYValue() < 800){
-                        controller.roomTableView.setStyle("-fx-selection-bar: green;");
-                    }else if(series.getData().get(9).getYValue() > 800 && series.getData().get(9).getYValue() < 1000){
-                        controller.roomTableView.setStyle("-fx-selection-bar: yellow;");
+                    if (type == "co2") {
+                        if (series.getData().get(9).getYValue() < 800) {
+                            controller.roomTableView.setStyle("-fx-selection-bar: green; -fx-selection-bar-non-focused: green;");
+                            controller.closeAllWindows();
+                            controller.switchAllVentilatorsOff();
+                        } else if (series.getData().get(9).getYValue() > 800 && series.getData().get(9).getYValue() < 1000) {
+                            controller.roomTableView.setStyle("-fx-selection-bar: yellow; -fx-selection-bar-non-focused: yellow;");
 
-                        controller.closeAllWindows();
-                        controller.switchAllVentilatorsOff();
-                    }else {
-                        controller.roomTableView.setStyle("-fx-selection-bar: red;");
+                            controller.closeAllWindows();
+                            controller.switchAllVentilatorsOff();
+                        } else {
+                            controller.roomTableView.setStyle("-fx-selection-bar: red; -fx-selection-bar-non-focused: red;");
 
-                        controller.openAllWindows();
-                        controller.switchAllVentilatorsOn();
+                            controller.openAllWindows();
+                            controller.switchAllVentilatorsOn();
+                        }
                     }
                 }
 
@@ -134,7 +137,7 @@ public class ChartUpdateTask extends Thread{
 
             try {
                 // Simulate heavy processing stuff
-                Thread.sleep(3000);
+                Thread.sleep(10000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
