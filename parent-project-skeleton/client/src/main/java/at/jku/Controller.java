@@ -279,7 +279,12 @@ public class Controller implements Initializable {
             createdLight.setText("Fill in all required values!");
             return;
         }
-        if(roomSize.getText().getClass().getSimpleName().equals("String")){
+
+        try{
+            Integer.parseInt(roomSize.getText());
+
+        }
+        catch(Exception e){
             createdLight.setText("Fill in a number!");
             return;
         }
